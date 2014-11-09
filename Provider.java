@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sogeti;
 
 /**
  *
@@ -69,15 +68,19 @@ public class Provider implements Serializable{
     public int getId(){
         return this._ID;
     } 
-    
-    //Don't know what this does yet or how to implement
-    public void addServiceRecord(){
-        
-    }
-    
+       
     //Updates the provider bank account. 
-    public void update(String bankName, int accountNum){
+    public void updateBankAccount(String bankName, int accountNum){
         this.bankName = bankName;
         this.accountNum = accountNum;
+    }
+
+    public void update(String name, int ID, String address, String city, String state, String zipCode){
+        this._name = name;
+        this._ID = ID;
+        this._address = address;
+        this._city = city;
+        this._state = state;
+        this._zipcode = zipCode;       
     }
 }

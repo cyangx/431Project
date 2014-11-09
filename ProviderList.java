@@ -3,9 +3,7 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
 
-package sogeti;
 import java.util.*;
 import java.io.*;
 
@@ -71,7 +69,6 @@ public class ProviderList implements Serializable {
     public Provider getProvider(int ID) {
         for (Iterator iterator = providers.iterator(); iterator.hasNext();) {
             Provider provider = (Provider) iterator.next();
-            //if (ID.equals(provider.getId())) {
             if(ID == provider.getId()){
                 return provider;
             }
@@ -84,6 +81,15 @@ public class ProviderList implements Serializable {
         return providers.toString();
     }   
     
-    //Add a delete method, update provider(), what is Validate again?
-    //What is updateProvder()?
+    public boolean validate(int ID){
+        for (Iterator iterator = providers.iterator(); iterator.hasNext();) {
+            Provider provider = (Provider) iterator.next();
+            if(ID == provider.getId()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //Missing delete, will add later
 }
