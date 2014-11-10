@@ -1,5 +1,8 @@
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -9,28 +12,27 @@ import java.util.List;
  */
 public class ServiceList implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List services = new LinkedList();
+    private List _services = new LinkedList();
     private static ServiceList serviceList;
 
     private ServiceList() {
-        
     }
 
     public static ServiceList instance() {
         if (serviceList == null) {
-            return (serviceList = new serviceList());
+            return (serviceList = new ServiceList());
         } else {
             return serviceList;
         }
     }
 
     public boolean addService(Service service) {
-        services.add(service);
+        _services.add(service);
         return true;
     }
 
-    public Iterator getServiceIDs() {
-        return Services.iterator();
+    public Iterator getServices() {
+        return _services.iterator();
     }
 
     private void writeObject(java.io.ObjectOutputStream output) {
@@ -61,12 +63,11 @@ public class ServiceList implements Serializable {
         }
     }
 
-    // returns the product if found
+    // returns the service if found
     public Service getService(int ID) {
-        for (Iterator iterator = services.iterator(); iterator.hasNext();) {
+        for (Iterator iterator = _services.iterator(); iterator.hasNext();) {
             Service service = (Service) iterator.next();
-            //if (ID.equals(service.getId())) {
-            if(ID == service.getId()){
+            if(ID == service.getID()){
                 return service;
             }
         }
@@ -75,7 +76,7 @@ public class ServiceList implements Serializable {
 
     @Override
     public String toString() {
-        return services.toString();
+        return _services.toString();
     }   
     
     // delete method, update provider(), Validate (ID)

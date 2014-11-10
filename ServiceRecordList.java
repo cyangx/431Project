@@ -1,7 +1,5 @@
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
+import java.io.*;
 
 /*
  * Here comes the text of your license
@@ -11,14 +9,12 @@ import java.util.List;
  *
  * @author Garrett
  */
-public class ServiceRecordList {
+public class ServiceRecordList implements Serializable {
+    private static final long serialVersionUID = 1L;
     private static ServiceRecordList instance;
-    private List<ServiceRecord> serviceRecords;
+    private List<ServiceRecord> serviceRecords = new LinkedList();
     
-    private ServiceRecordList()
-    {
-        serviceRecords = new ArrayList<ServiceRecord>();
-    }
+    private ServiceRecordList(){ }
     /**
      * 
      * @return Instance of the ServiceRecordList singleton

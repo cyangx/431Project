@@ -1,9 +1,3 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
-
 import java.util.*;
 import java.io.*;
 
@@ -65,7 +59,7 @@ public class ProviderList implements Serializable {
         }
     }
 
-    // returns the product if found
+    // returns the provider if found
     public Provider getProvider(int ID) {
         for (Iterator iterator = providers.iterator(); iterator.hasNext();) {
             Provider provider = (Provider) iterator.next();
@@ -91,5 +85,8 @@ public class ProviderList implements Serializable {
         return false;
     }
     
-    //Missing delete, will add later
+    public void delete(int ID)
+    {
+        this.providers.remove(this.getProvider(ID));
+    }
 }
