@@ -14,15 +14,13 @@ public class Member {
     private String _zipcode;
     private boolean _suspendStatus;
 
-    public Member(String Name, String Address, String City, String State, String ZipCode) {
+    public Member(String Name, int ID, String Address, String City, String State, String ZipCode) {
         this._name = Name;
         this._address = Address;
         this._city = City;
         this._state = State;
         this._zipcode = ZipCode;
-        // set by the ID factory
-        //this._ID = ;
-
+        this._ID = ID;
     }
 
     public void update(String Name, String Address, String City, String State, String ZipCode) {
