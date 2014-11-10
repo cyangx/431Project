@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class ProviderList implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List providers = new LinkedList();
+    private List<Provider> providers = new LinkedList<>();
     private static ProviderList providerList;
 
     private ProviderList() {
@@ -76,8 +76,7 @@ public class ProviderList implements Serializable {
     }   
     
     public boolean validate(int ID){
-        for (Iterator iterator = providers.iterator(); iterator.hasNext();) {
-            Provider provider = (Provider) iterator.next();
+        for (Provider provider : providers) {
             if(ID == provider.getId()){
                 return true;
             }
@@ -88,5 +87,14 @@ public class ProviderList implements Serializable {
     public void delete(int ID)
     {
         this.providers.remove(this.getProvider(ID));
+    }
+    
+    public void update(int ID, String name, String address, String city, String state, String zipCode)
+    {
+        Provider myProvider = this.getProvider(ID);
+        if(null != myProvider)
+        {
+            myProvider.update(name, address, city, state, zipCode);
+        }
     }
 }

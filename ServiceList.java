@@ -1,10 +1,5 @@
-import java.io.IOException;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.*;
+import java.io.*;
 
 /*
  *
@@ -12,7 +7,7 @@ import java.util.List;
  */
 public class ServiceList implements Serializable {
     private static final long serialVersionUID = 1L;
-    private List _services = new LinkedList();
+    private List<Service> _services = new LinkedList<>();
     private static ServiceList serviceList;
 
     private ServiceList() {
@@ -79,5 +74,27 @@ public class ServiceList implements Serializable {
         return _services.toString();
     }   
     
-    // delete method, update provider(), Validate (ID)
+     public boolean validate(int ID){
+        for (Service service : _services) {
+            if(ID == service.getID()){
+                return true;
+            }
+        }
+        return false;
+    }
+     
+    public void delete(int ID)
+    {
+        this._services.remove(this.getService(ID));
+    }
+    
+    public void update(int ID, String Name, double fee)
+    {
+        Service myService = this.getService(ID);
+        if(myService != null)
+        {
+            myService.update(Name, fee);
+        }
+    }
+
 }

@@ -8,8 +8,6 @@ public class Service {
     private String _name;
     private int _ID;
     private double _fee;
-
-    ;
     
     public Service(String Name, int ID, double Fee) {
         this._name = Name;

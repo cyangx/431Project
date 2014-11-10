@@ -12,9 +12,7 @@ import java.util.*;
 import java.io.*;
 
 public class Provider implements Serializable{
-    private static final long serialVersionUID = 1L;
-    private List services = new LinkedList();
-    
+    private static final long serialVersionUID = 1L;  
     
   
     private String _name;
@@ -37,11 +35,6 @@ public class Provider implements Serializable{
         this._zipcode = zipCode;
         //Factory should also account for account name
         //And account number of provider
-    }
-    
-    //Returns the list of services
-    public Iterator getListOfServices(){
-        return services.iterator();
     }
     
     //Returns the provider name
@@ -75,9 +68,8 @@ public class Provider implements Serializable{
         this.accountNum = accountNum;
     }
 
-    public void update(String name, int ID, String address, String city, String state, String zipCode){
+    public void update(String name, String address, String city, String state, String zipCode){
         this._name = name;
-        this._ID = ID;
         this._address = address;
         this._city = city;
         this._state = state;
