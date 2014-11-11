@@ -13,6 +13,10 @@ public class MemberTester {
     public static void main(String args[]) {
 
         Member myMember;
+        
+        System.out.println("** TESTING MEMBER CODE**");
+        System.out.println('\n');
+        
         /**
          * This tests for more than the maximum characters
          */

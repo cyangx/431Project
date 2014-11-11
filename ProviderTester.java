@@ -15,6 +15,10 @@ public class ProviderTester {
     
     public static void main(String args[]) {
         Provider myProvider;
+        
+        System.out.println("** TESTING PROVIDER CODE**");
+        System.out.println('\n');
+        
         /**
          * This tests for more than the maximum characters
          */
