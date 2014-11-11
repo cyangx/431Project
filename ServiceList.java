@@ -26,10 +26,6 @@ public class ServiceList implements Serializable {
         return true;
     }
 
-    public Iterator getServices() {
-        return _services.iterator();
-    }
-
     private void writeObject(java.io.ObjectOutputStream output) {
         try {
             output.defaultWriteObject();
@@ -68,11 +64,6 @@ public class ServiceList implements Serializable {
         }
         return null;
     }
-
-    @Override
-    public String toString() {
-        return _services.toString();
-    }   
     
      public boolean validate(int ID){
         for (Service service : _services) {

@@ -1,7 +1,3 @@
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 /**
  *
  * @author Garrett
@@ -120,7 +116,30 @@ public class ServiceTester {
             System.out.println("FAILED");
             System.out.println(e.getMessage());
             System.out.println('\n');
-        }   
+        } 
+        
+         /**
+          *  This tests update inputs
+          */
+        System.out.println("**Testing update inputs**");
+        try {
+            myService = new Service("", 5, 0);
+            myService.update("This should be truncated after update", MAX_FEE + 100.0256);
+            System.out.println(myService.getServiceName() + " " + myService.getServiceName().length());
+            System.out.println(myService.getID());
+            System.out.println(myService.getServiceCost());
+            if (NAME_LENGTH == myService.getServiceName().length()
+                    && MAX_FEE == myService.getServiceCost()) {
+                System.out.println("PASSED");
+            } else {
+                throw new Exception("Field update failed");
+            }
+            System.out.println('\n');
+        } catch (Exception e) {
+            System.out.println("FAILED");
+            System.out.println(e.getMessage());
+            System.out.println('\n');
+        } 
     }
 
 }

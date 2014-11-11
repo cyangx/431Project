@@ -13,10 +13,10 @@ public class MemberTester {
     public static void main(String args[]) {
 
         Member myMember;
-        
+
         System.out.println("** TESTING MEMBER CODE**");
         System.out.println('\n');
-        
+
         /**
          * This tests for more than the maximum characters
          */
@@ -57,10 +57,10 @@ public class MemberTester {
             System.out.println("FAILED");
             System.out.println(e.getMessage());
             System.out.println('\n');
-        } 
-            
+        }
+
         /**
-         *  This tests boundary inputs
+         * This tests boundary inputs
          */
         System.out.println("**Testing boundary inputs**");
         try {
@@ -86,10 +86,9 @@ public class MemberTester {
             System.out.println(e.getMessage());
             System.out.println('\n');
         }
-    
-            
+
         /**
-         *  This tests valid inputs
+         * This tests valid inputs
          */
         System.out.println("**Testing valid inputs**");
         try {
@@ -115,11 +114,10 @@ public class MemberTester {
             System.out.println(e.getMessage());
             System.out.println('\n');
         }
-            
-            
-         /**
-          *  This tests empty string inputs
-          */
+
+        /**
+         * This tests empty string inputs
+         */
         System.out.println("**Testing empty inputs**");
         try {
             myMember = new Member("", 5, "", "", "", "");
@@ -143,6 +141,39 @@ public class MemberTester {
             System.out.println("FAILED");
             System.out.println(e.getMessage());
             System.out.println('\n');
-        }        
+        }
+
+        /**
+         * This tests updating
+         */
+        System.out.println("**Testing Update inputs**");
+        try {
+            myMember = new Member("", 5, "", "", "", "");
+            myMember.update("This is new and should be truncated", "So is this and it will also be truncated", "this too is too big", "Yup", "New Zipcode");
+            System.out.println(myMember.getName() + " " + myMember.getName().length());
+            System.out.println(myMember.getID());
+            System.out.println(myMember.getAddress() + " " + myMember.getAddress().length());
+            System.out.println(myMember.getCity() + " " + myMember.getCity().length());
+            System.out.println(myMember.getState() + " " + myMember.getState().length());
+            System.out.println(myMember.getZipcode() + " " + myMember.getZipcode().length());
+            if (NAME_LENGTH == myMember.getName().length()
+                    && ADDRESS_LENGTH == myMember.getAddress().length()
+                    && CITY_LENGTH == myMember.getCity().length()
+                    && STATE_LENGTH == myMember.getState().length()
+                    && ZIP_LENGTH == myMember.getZipcode().length()) {
+                System.out.println("PASSED");
+            } else {
+                throw new Exception("Update failed");
+            }
+            System.out.println('\n');
+        } catch (Exception e) {
+            System.out.println("FAILED");
+            System.out.println(e.getMessage());
+            System.out.println('\n');
+        }
+        
+        /**
+         *  TODO: Test supending and unsuspending
+         */
     }
 }

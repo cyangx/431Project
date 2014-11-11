@@ -38,9 +38,6 @@ public class MemberList implements Serializable {
         return null;
     }
 
-
-    // I think validate, delete, and update should be outside of MemberList
-    // in PAASystem
     public boolean validate(int ID){
         for (Member member : members) {
             if(ID == member.getID()){
