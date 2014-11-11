@@ -14,7 +14,7 @@ public class Service {
 
     public Service(String Name, int ID, double Fee) {
         if (Name != null && Name.length() > NAME_LENGTH) {
-            Name = Name.substring(0, NAME_LENGTH - 1);
+            Name = Name.substring(0, NAME_LENGTH);
         }
         this._name = Name;
 
@@ -43,7 +43,7 @@ public class Service {
 
     public void update(String _name, double _fee) {
         if (_name != null && _name.length() > NAME_LENGTH) {
-            _name = _name.substring(0, NAME_LENGTH - 1);
+            _name = _name.substring(0, NAME_LENGTH);
         }
         this._name = _name;
         

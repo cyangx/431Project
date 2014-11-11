@@ -21,23 +21,23 @@ public class Member {
 
     public Member(String Name, int ID, String Address, String City, String State, String ZipCode) {
         if(Name != null && Name.length() > NAME_LENGTH)
-            Name = Name.substring(0, NAME_LENGTH - 1);
+            Name = Name.substring(0, NAME_LENGTH);
         this._name = Name;
         
         if(Address != null && Address.length() > ADDRESS_LENGTH)
-            Address = Address.substring(0, ADDRESS_LENGTH - 1);
+            Address = Address.substring(0, ADDRESS_LENGTH);
         this._address = Address;
         
         if(City != null && City.length() > CITY_LENGTH)
-            City = City.substring(0, CITY_LENGTH - 1);
+            City = City.substring(0, CITY_LENGTH);
         this._city = City;
         
         if(State != null && State.length() > STATE_LENGTH)
-            State = State.substring(0, STATE_LENGTH - 1);
+            State = State.substring(0, STATE_LENGTH);
         this._state = State;
         
         if(ZipCode != null && ZipCode.length() > ZIP_LENGTH)
-            ZipCode = ZipCode.substring(0, ZIP_LENGTH - 1);
+            ZipCode = ZipCode.substring(0, ZIP_LENGTH);
         this._zipcode = ZipCode;
         
         this._ID = ID;
