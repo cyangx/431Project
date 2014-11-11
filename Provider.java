@@ -21,6 +21,8 @@ public class Provider implements Serializable{
     private String _city;
     private String _state;
     private String _zipcode;
+    
+    // bank stuff
     private String bankName;
     private int accountNum;
     private double providerAmount;
@@ -57,25 +59,43 @@ public class Provider implements Serializable{
         return _name;
     }
     
-    //Changes the provider name
-    public void setProviderName(String providerName){
-        this._name = providerName;
-    }
+    //Returns the ID of the provider
+    public int getId(){
+        return this._ID;
+    } 
     
     //returns the amount owed to the provider
     public double getProviderAmt(){
         return providerAmount;
     }
     
-    //Adds the amount owed to the provider
-    public void setProviderAmt(double providerAmount){
-        this.providerAmount += providerAmount;
+    /**
+    * @param address the address to set
+    */
+    public String getAddress() {
+        return this._address;
     }
     
-    //Returns the ID of the provider
-    public int getId(){
-        return this._ID;
-    } 
+    /**
+     * @return the _city
+     */
+    public String getCity() {
+        return _city;
+    }
+
+    /**
+     * @return the _state
+     */
+    public String getState() {
+        return _state;
+    }
+
+    /**
+     * @return the _zipcode
+     */
+    public String getZipcode() {
+        return _zipcode;
+    }
        
     //Updates the provider bank account. 
     public void updateBankAccount(String bankName, int accountNum){
