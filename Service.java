@@ -5,13 +5,24 @@
  */
 public class Service {
 
+    private final int NAME_LENGTH = 20;
+    private final double MAX_FEE = 999.99;
+
     private String _name;
     private int _ID;
     private double _fee;
-    
+
     public Service(String Name, int ID, double Fee) {
+        if (Name != null && Name.length() > NAME_LENGTH) {
+            Name = Name.substring(0, NAME_LENGTH - 1);
+        }
         this._name = Name;
+
         this._ID = ID;
+
+        if (Fee > MAX_FEE) {
+            Fee = MAX_FEE;
+        }
         this._fee = Fee;
     }
 
@@ -19,21 +30,8 @@ public class Service {
         return _name;
     }
 
-    public void setServiceName(String serviceName) {
-        this._name = serviceName;
-    }
-
     public double getServiceCost() {
         return _fee;
-    }
-
-    public void setServiceCost(double Fee) {
-        this._fee = Fee;
-    }
-
-    public void update(String _name, double _fee) {
-        this._name = _name;
-        this._fee = _fee;
     }
 
     /**
@@ -43,10 +41,16 @@ public class Service {
         return _ID;
     }
 
-    /**
-     * @param _ID the _ID to set
-     */
-    public void setID(int _ID) {
-        this._ID = _ID;
+    public void update(String _name, double _fee) {
+        if (_name != null && _name.length() > NAME_LENGTH) {
+            _name = _name.substring(0, NAME_LENGTH - 1);
+        }
+        this._name = _name;
+        
+        if (_fee > MAX_FEE) {
+            _fee = MAX_FEE;
+        }
+        this._fee = _fee;
     }
+
 }
