@@ -16,12 +16,26 @@ public class ServiceRecord {
     private Date _billDate;
     private Date _serviceDate;
     
-    public ServiceRecord(Provider provider, Member member, Service service)
+    public ServiceRecord(Provider provider, Member member, Service service, Date serviceDate)
     {
-        _provider = provider;
-        _member = member;
-        _service = service;
-        _billDate = new Date();      
+        // TODO: Add a copy method to these classes
+        _provider = new Provider(provider.getProviderName(),
+                provider.getId(), 
+                provider.getAddress(), 
+                provider.getCity(),
+                provider.getState(),
+                provider.getZipcode());
+        _member = new Member(member.getName(), 
+                member.getID(), 
+                member.getAddress(), 
+                member.getCity(), 
+                member.getState(), 
+                member.getZipcode());
+        _service = new Service(service.getServiceName(), 
+                service.getID(), 
+                service.getServiceCost());
+        _billDate = new Date();    
+        _serviceDate = serviceDate;
     }
 
     /**
@@ -32,13 +46,6 @@ public class ServiceRecord {
     }
 
     /**
-     * @param _provider the _provider to set
-     */
-    public void setProvider(Provider _provider) {
-        this._provider = _provider;
-    }
-
-    /**
      * @return the _member
      */
     public Member getMember() {
@@ -46,24 +53,10 @@ public class ServiceRecord {
     }
 
     /**
-     * @param _member the _member to set
-     */
-    public void setMember(Member _member) {
-        this._member = _member;
-    }
-
-    /**
      * @return the _service
      */
     public Service getService() {
         return _service;
-    }
-
-    /**
-     * @param _service the _service to set
-     */
-    public void setService(Service _service) {
-        this._service = _service;
     }
 
     /**
@@ -87,10 +80,4 @@ public class ServiceRecord {
         return _serviceDate;
     }
 
-    /**
-     * @param _serviceDate the _serviceDate to set
-     */
-    public void setServiceDate(Date _serviceDate) {
-        this._serviceDate = _serviceDate;
-    }
 }

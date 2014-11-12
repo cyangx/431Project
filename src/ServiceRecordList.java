@@ -1,10 +1,6 @@
 import java.util.*;
 import java.io.*;
 
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 /**
  *
  * @author Garrett
@@ -19,7 +15,7 @@ public class ServiceRecordList implements Serializable {
      * 
      * @return Instance of the ServiceRecordList singleton
      */
-    public ServiceRecordList getInstance()
+    public static ServiceRecordList getInstance()
     {
         if(instance == null)
         {
@@ -41,9 +37,18 @@ public class ServiceRecordList implements Serializable {
      * @param member
      * @param service 
      */
-    public void CaptureService(Provider provider, Member member, Service service)
+    public void CaptureService(Provider provider, Member member, Service service, Date date)
     {
-        this.serviceRecords.add(new ServiceRecord(provider, member, service));
+        this.serviceRecords.add(new ServiceRecord(provider, member, service, date));
+    }
+    
+    /**
+     * Removes a service Record from the list
+     * @param sr 
+     */
+    public void RemoveServiceRecord(ServiceRecord sr)
+    {
+        this.serviceRecords.remove(sr);
     }
     
 }

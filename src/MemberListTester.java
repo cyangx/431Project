@@ -1,3 +1,6 @@
+
+import java.util.Date;
+
 /*
  * Here comes the text of your license
  * Each line should be prefixed with  * 
@@ -9,7 +12,7 @@
 public class MemberListTester {
 
     public static void main(String args[]) {
-
+    
         System.out.println("** TESTING MEMBERLIST CODE**");          
         
         MemberList myMemberList = MemberList.instance();
