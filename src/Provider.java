@@ -1,3 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pkg431tester;
+
 /**
  *
  * @author Brandon
@@ -13,6 +20,8 @@ public class Provider implements Serializable{
     private final int CITY_LENGTH = 14;
     private final int STATE_LENGTH = 2;
     private final int ZIP_LENGTH = 5;
+    private final int BANK_LENGTH = 25;
+    private final int ACC_NUM_LENGTH = 5;
     
   
     private String _name;
@@ -24,10 +33,10 @@ public class Provider implements Serializable{
     
     // bank stuff
     private String bankName;
-    private int accountNum;
+    private String accountNum;
     private double providerAmount;
     
-    public Provider(String name, int ID, String address, String city, String state, String zipCode)
+    public Provider(String name, int ID, String address, String city, String state, String zipCode, String bankName, String accountNum)
     {
         if(name != null && name.length() > NAME_LENGTH)
             name = name.substring(0, NAME_LENGTH);
@@ -50,8 +59,18 @@ public class Provider implements Serializable{
         if(zipCode != null && zipCode.length() > ZIP_LENGTH)
             zipCode = zipCode.substring(0, ZIP_LENGTH);
         this._zipcode = zipCode;
+        
+        
         //Factory should also account for account name
         //And account number of provider
+        
+        if(bankName != null && bankName.length() > BANK_LENGTH)
+            bankName = bankName.substring(0, BANK_LENGTH);
+        this.bankName = bankName;
+        
+        if(accountNum != null && accountNum.length() > ACC_NUM_LENGTH)
+            accountNum = accountNum.substring(0, ACC_NUM_LENGTH);
+        this.accountNum = accountNum;
     }
     
     //Returns the provider name
@@ -67,6 +86,11 @@ public class Provider implements Serializable{
     //returns the amount owed to the provider
     public double getProviderAmt(){
         return providerAmount;
+    }
+    
+    //Adds (or subtracts if amtOwed is negative) to the total amount owed to the provider
+    public void setProviderAmt(double amtOwed){
+        this.providerAmount += amtOwed;
     }
     
     /**
@@ -98,9 +122,22 @@ public class Provider implements Serializable{
     }
        
     //Updates the provider bank account. 
-    public void updateBankAccount(String bankName, int accountNum){
+    public void updateBankAccount(String bankName, String accountNum){
+        if(bankName != null && bankName.length() > BANK_LENGTH)
+            bankName = bankName.substring(0, BANK_LENGTH);
         this.bankName = bankName;
+        
+        if(accountNum != null && accountNum.length() > ACC_NUM_LENGTH)
+            accountNum = accountNum.substring(0, ACC_NUM_LENGTH);
         this.accountNum = accountNum;
+    }
+    
+    public String getBankAccountName(){
+        return bankName;
+    }
+    
+    public String getBankAccountNum(){
+        return accountNum;
     }
 
     public void update(String name, String address, String city, String state, String zipCode){
@@ -124,4 +161,5 @@ public class Provider implements Serializable{
             zipCode = zipCode.substring(0, ZIP_LENGTH);
         this._zipcode = zipCode;       
     }
+    
 }

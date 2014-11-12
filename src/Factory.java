@@ -48,9 +48,9 @@ public class Factory {
          * @param ZipCode, the zip code of the provider
          * @return The new Provider
          */    
-        public synchronized static Provider MakeProvider(String Name, String Address, String City, String State, String ZipCode)
+        public synchronized static Provider MakeProvider(String Name, String Address, String City, String State, String ZipCode, String bankName, String accNumber)
         {
-            Provider result = new Provider(Name, _providerID, Address, City, State, ZipCode);
+            Provider result = new Provider(Name, _providerID, Address, City, State, ZipCode, bankName, accNumber);
             _providerID++; 
             return result;
         }

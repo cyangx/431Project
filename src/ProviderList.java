@@ -1,3 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pkg431tester;
+
+/**
+ *
+ * @author Brandon
+ */
 import java.util.*;
 import java.io.*;
 
@@ -97,4 +108,13 @@ public class ProviderList implements Serializable {
             myProvider.update(name, address, city, state, zipCode);
         }
     }
+    
+    public void updateBankAccount(int ID, String bankName, String accNum)
+    {
+        Provider myProvider = this.getProvider(ID);
+        if(null != myProvider)
+        {
+            myProvider.updateBankAccount(bankName,accNum);
+        }
+    }    
 }
