@@ -20,7 +20,7 @@ public class Reporting {
      *
      * @param ID
      */
-    public static void generateProviderReport(int ID, Date since) {
+    public static String generateProviderReport(int ID, Date since) {
         SimpleDateFormat dt = new SimpleDateFormat(serviceDateFormat);
         SimpleDateFormat dt2 = new SimpleDateFormat(billDateFormat);
 
@@ -88,29 +88,118 @@ public class Reporting {
                     + System.lineSeparator();
             output += "Total Fees: " + totalFee + System.lineSeparator();
 
-            try {
-                PrintWriter out = new PrintWriter("Provider" + myProvider.getId() + new Date() + ".txt");
-                out.println(output);
-                out.close();
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(Reporting.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
+        return output;
     }
 
     /**
      *
      * @param ID
      */
-    public void generateAccountsPayableReport(int ID, Date since) {
+    public static String generateMemberReport(int ID, Date since) {
+        SimpleDateFormat dt = new SimpleDateFormat(serviceDateFormat);
+        SimpleDateFormat dt2 = new SimpleDateFormat(billDateFormat);
 
+        ServiceRecordList srl = ServiceRecordList.getInstance();
+        Iterator<ServiceRecord> it = srl.getServiceRecords();
+
+        Member myMember = MemberList.instance().getMember(ID);
+
+        String output = new String();
+
+        output += "+===================+" + System.lineSeparator();
+        output += "   Member Report   " + System.lineSeparator();
+        output += "+===================+" + System.lineSeparator();
+
+        if (myMember != null) {
+
+            output += "Name: " + myMember.getName()
+                    + System.lineSeparator();
+            output += "ID: " + myMember.getID()
+                    + System.lineSeparator();
+            output += "Address: " + myMember.getAddress()
+                    + System.lineSeparator();
+            output += "City: " + myMember.getCity()
+                    + System.lineSeparator();
+            output += "State: " + myMember.getState()
+                    + System.lineSeparator();
+            output += "Zip Code: " + myMember.getZipcode()
+                    + System.lineSeparator();
+
+            output += "\t" + "+====================+" + System.lineSeparator();
+            output += "\t" + "  Services Received" + System.lineSeparator();
+            output += "\t" + "+====================+" + System.lineSeparator();
+
+            while (it.hasNext()) {
+                ServiceRecord sr = it.next();
+                if (sr.getMember().getID() == ID) {
+                    if (since == null || sr.getServiceDate().after(since)) {
+                        output += "\t" + "Service Date: "
+                                + dt.format(sr.getServiceDate())
+                                + System.lineSeparator();
+                        output += "\t" + "Name: "
+                                + sr.getProvider().getProviderName()
+                                + System.lineSeparator();
+                        output += "\t" + "Service: "
+                                + sr.getService().getServiceName()
+                                + System.lineSeparator();
+                        output += "\t" + "----------------------"
+                                + System.lineSeparator();
+                    }
+                }
+            }
+
+        }
+        return output;
     }
 
     /**
      *
      * @param ID
      */
-    public void generateMemberReport(int ID, Date since) {
+    public static String generateAccountsPayableReport(Date since) {
+        SimpleDateFormat dt = new SimpleDateFormat(serviceDateFormat);
+        SimpleDateFormat dt2 = new SimpleDateFormat(billDateFormat);
 
+        ServiceRecordList srl = ServiceRecordList.getInstance();
+        
+        Iterator<Provider> pit = ProviderList.instance().getProviderIDs();
+
+        String output = new String();
+        double subTotalFee = 0;
+        double totalFee = 0;
+        int subTotalConsultations = 0;
+        int totalConsultations = 0;
+
+        output += "+===================+" + System.lineSeparator();
+        output += "   Accounts Payable   " + System.lineSeparator();
+        output += "+===================+" + System.lineSeparator();
+
+        while (pit.hasNext()) {
+            Provider provider = pit.next();
+            output += provider.getProviderName() + System.lineSeparator();
+            Iterator<ServiceRecord> it = srl.getServiceRecords();
+            while (it.hasNext()) {
+                ServiceRecord sr = it.next();
+                if (provider.getId() == sr.getProvider().getId()) {
+                    if (since == null || sr.getServiceDate().after(since)) {
+                        subTotalFee += sr.getService().getServiceCost();
+                        subTotalConsultations++;
+                    }
+                }
+            }
+            output += "SubTotal Consultations: " + subTotalConsultations
+                    + System.lineSeparator();
+            output += "SubTotal Fees: " + subTotalFee + System.lineSeparator();
+            output += "-------------------------" + System.lineSeparator();
+            totalFee += subTotalFee;
+            subTotalFee = 0;
+            totalConsultations += subTotalConsultations;
+            subTotalConsultations = 0;
+        }
+        output += "Total Consultations: " + totalConsultations
+                + System.lineSeparator();
+        output += "Total Fees: " + totalFee + System.lineSeparator();
+        return output;
     }
 }
