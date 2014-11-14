@@ -67,6 +67,11 @@ public class ServiceList implements Serializable {
         return null;
     }
     
+    public Iterator<Service> getServiceDirectory()
+    {
+        return this._services.iterator();
+    }
+    
      public boolean validate(int ID){
         for (Service service : _services) {
             if(ID == service.getID()){
