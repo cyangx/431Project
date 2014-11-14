@@ -78,7 +78,7 @@ public class ServiceListTester {
             service2 = myServiceList.getService(2);
             service3 = myServiceList.getService(3);
             service4 = myServiceList.getService(4);
-            service5 = myProviderList.getService(5);
+            service5 = myServiceList.getService(5);
             
             System.out.println("Service Name: " + service1.getServiceName() + " Service ID: " + service1.getID() + " Service Cost: " + service1.getServiceCost());
             System.out.println("Service Name: " + service2.getServiceName() + " Service ID: " + service2.getID() + " Service Cost: " + service2.getServiceCost());
@@ -89,7 +89,7 @@ public class ServiceListTester {
             System.out.println("Information after update: ");
             
             //ID, Name, Address, City, State, Zip
-            myServiceList.update("Service 1", 500);
+            myServiceList.update(1, "Service 1", 500);
             myServiceList.update(2, "Service 2", 0);
             myServiceList.update(3, "Service 3", 0.084);
             myServiceList.update(4, "Service 4", 10000000);
