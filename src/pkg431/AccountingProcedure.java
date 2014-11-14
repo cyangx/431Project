@@ -6,4 +6,9 @@ package pkg431;
  */
 public class AccountingProcedure {
     
+    public AccountingProcedure(){
+       
+    }
+    
+    
 }
