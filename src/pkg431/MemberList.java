@@ -39,6 +39,10 @@ public class MemberList implements Serializable {
         }
         return null;
     }
+    
+    public Iterator<Member> getMembers() {
+        return this.members.iterator();
+    }
 
     public boolean validate(int ID){
         for (Member member : members) {
