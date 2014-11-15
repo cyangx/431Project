@@ -54,7 +54,7 @@ public class ServiceList implements Serializable {
                 }
             }
         } catch (IOException ioe) {
-            System.out.println("in Catalog readObject \n" + ioe);
+            System.out.println("in ServiceList readObject \n" + ioe);
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
