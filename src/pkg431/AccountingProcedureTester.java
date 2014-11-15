@@ -41,5 +41,14 @@ public class AccountingProcedureTester {
          */
         AccountingProcedure.instance().generateMemberReports();
         
+        /**
+         * Test generate provider reports
+         */
+        AccountingProcedure.instance().generateProviderReports();
+        
+        /**
+         * Test generate accounts payable
+         */
+        AccountingProcedure.instance().generateAccountingProcedureReports();
     }
 }
