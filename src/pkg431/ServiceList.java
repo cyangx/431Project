@@ -1,13 +1,17 @@
 package pkg431;
 
+import java.beans.XMLEncoder;
 import java.util.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  *
  * @author Nabin
  */
 public class ServiceList implements Serializable {
+
     private static final long serialVersionUID = 1L;
     private List<Service> _services = new LinkedList<>();
     private static ServiceList serviceList;
@@ -31,7 +35,7 @@ public class ServiceList implements Serializable {
     private void writeObject(java.io.ObjectOutputStream output) {
         try {
             output.defaultWriteObject();
-            output.writeObject(serviceList);
+            output.writeObject(this);
         } catch (IOException ioe) {
             System.out.println(ioe);
         }
@@ -60,37 +64,33 @@ public class ServiceList implements Serializable {
     public Service getService(int ID) {
         for (Iterator iterator = _services.iterator(); iterator.hasNext();) {
             Service service = (Service) iterator.next();
-            if(ID == service.getID()){
+            if (ID == service.getID()) {
                 return service;
             }
         }
         return null;
     }
-    
-    public Iterator<Service> getServiceDirectory()
-    {
+
+    public Iterator<Service> getServiceDirectory() {
         return this._services.iterator();
     }
-    
-     public boolean validate(int ID){
+
+    public boolean validate(int ID) {
         for (Service service : _services) {
-            if(ID == service.getID()){
+            if (ID == service.getID()) {
                 return true;
             }
         }
         return false;
     }
-     
-    public void delete(int ID)
-    {
+
+    public void delete(int ID) {
         this._services.remove(this.getService(ID));
     }
-    
-    public void update(int ID, String Name, double fee)
-    {
+
+    public void update(int ID, String Name, double fee) {
         Service myService = this.getService(ID);
-        if(myService != null)
-        {
+        if (myService != null) {
             myService.update(Name, fee);
         }
     }

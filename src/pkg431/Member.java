@@ -1,12 +1,16 @@
 package pkg431;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Garrett
  * @author Cha
  * @since 11/7/14
  */
-public class Member {
+public class Member implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private final int NAME_LENGTH = 25;
     private final int ADDRESS_LENGTH = 25;
     private final int CITY_LENGTH = 14;

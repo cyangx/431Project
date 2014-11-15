@@ -11,7 +11,9 @@ import java.io.*;
  *
  * @author Garrett
  */
-public class ServiceRecord {
+public class ServiceRecord implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private Provider _provider;
     private Member _member;
     private Service _service;

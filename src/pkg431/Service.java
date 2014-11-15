@@ -1,11 +1,15 @@
 package pkg431;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nabin
  * @since 11/7/14
  */
-public class Service {
+public class Service implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final int NAME_LENGTH = 20;
     private final double MAX_FEE = 999.99;

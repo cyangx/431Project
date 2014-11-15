@@ -18,7 +18,6 @@ import java.util.logging.Logger;
  */
 public class AccountingProcedure {
 
-    private static final long serialVersionUID = 1L;
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy");
     private static AccountingProcedure accountingProcedure;
     private Timer generateReportTimer = new Timer();
