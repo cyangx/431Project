@@ -50,5 +50,13 @@ public class AccountingProcedureTester {
          * Test generate accounts payable
          */
         AccountingProcedure.instance().generateAccountingProcedureReports();
+        
+        /**
+         * 
+         */
+        AccountingProcedure.instance().setReportTime(new Date());
+        
+        System.out.println("DONE");
+        
     }
 }

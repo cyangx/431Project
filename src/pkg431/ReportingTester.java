@@ -23,10 +23,10 @@ public class ReportingTester {
         Service myService2 = new Service("Test Name2", 2, 50.01);
 
         Date myDate = new Date();
-        Calendar c = Calendar.getInstance();
-        c.setTime(myDate);
-        c.add(Calendar.DATE, 1);
-        Date myDate2 = c.getTime();
+        Calendar myCal = (Calendar)Calendar.getInstance().clone();
+        myCal.setTime(myDate);
+        myCal.add(Calendar.DATE, 1);
+        Date myDate2 = myCal.getTime();
 
         ProviderList pl = ProviderList.instance();
         pl.addProvider(myProvider);
@@ -49,13 +49,13 @@ public class ReportingTester {
         try {
             Date date1 = sdf.parse("2009-12-31");
 
-            PrintWriter out = new PrintWriter("Provider1" + date1 + ".txt");
+            PrintWriter out = new PrintWriter("Provider1_" + sdf.format(date1) + ".txt");
             out.print(Reporting.generateProviderReport(1, date1)
                     + System.lineSeparator()
                     + "SHOULD HAVE 3 SERVICES");
             out.close();
 
-            out = new PrintWriter("Member1" + date1 + ".txt");
+            out = new PrintWriter("Member1_" + sdf.format(date1) + ".txt");
             out.print(Reporting.generateMemberReport(1, date1)
                     + System.lineSeparator()
                     + "SHOULD HAVE 2 SERVICES");
@@ -73,13 +73,13 @@ public class ReportingTester {
 
             Date date1 = sdf.parse("2999-12-31");
 
-            PrintWriter out = new PrintWriter("Provider1" + date1 + ".txt");
+            PrintWriter out = new PrintWriter("Provider1_" + sdf.format(date1) + ".txt");
             out.print(Reporting.generateProviderReport(1, date1)
                     + System.lineSeparator()
                     + "SHOULD HAVE NO SERVICES");
             out.close();
 
-            out = new PrintWriter("Member1" + date1 + ".txt");
+            out = new PrintWriter("Member1_" + sdf.format(date1) + ".txt");
             out.print(Reporting.generateMemberReport(1, date1)
                     + System.lineSeparator()
                     + "SHOULD HAVE NO SERVICES");
@@ -95,13 +95,13 @@ public class ReportingTester {
          * services
          */
         try {
-            PrintWriter out = new PrintWriter("Provider1" + myDate + ".txt");
+            PrintWriter out = new PrintWriter("Provider1_" + sdf.format(myDate) + ".txt");
             out.print(Reporting.generateProviderReport(1, myDate)
                     + System.lineSeparator()
                     + "SHOULD HAVE 2 SERVICES");
             out.close();
 
-            out = new PrintWriter("Member1" + myDate + ".txt");
+            out = new PrintWriter("Member1_" + sdf.format(myDate) + ".txt");
             out.print(Reporting.generateMemberReport(1, myDate)
                     + System.lineSeparator()
                     + "SHOULD HAVE 1 SERVICE");
@@ -117,13 +117,13 @@ public class ReportingTester {
          * because our date is null
          */
         try {
-            PrintWriter out = new PrintWriter("Provider1" + "ALL" + ".txt");
+            PrintWriter out = new PrintWriter("Provider1_" + "ALL" + ".txt");
             out.print(Reporting.generateProviderReport(1, null)
                     + System.lineSeparator()
                     + "SHOULD HAVE 3 SERVICES");
             out.close();
 
-            out = new PrintWriter("Member1" + "ALL" + ".txt");
+            out = new PrintWriter("Member1_" + "ALL" + ".txt");
             out.print(Reporting.generateMemberReport(1, null)
                     + System.lineSeparator()
                     + "SHOULD HAVE 2 SERVICES");
