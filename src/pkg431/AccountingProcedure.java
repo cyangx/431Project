@@ -2,6 +2,8 @@ package pkg431;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Timer;
@@ -14,6 +16,7 @@ import java.util.logging.Logger;
  */
 public class AccountingProcedure {
     private static final long serialVersionUID = 1L;
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy");
     private static AccountingProcedure accountingProcedure;
     private Timer generateReportTimer;
     
@@ -32,16 +35,19 @@ public class AccountingProcedure {
     
     public void generateMemberReports()
     {
-        Date myDate = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        Date myDate = cal.getTime();
         Iterator<Member> it = MemberList.instance().getMembers();
+        
         while(it.hasNext())
         {
             Member myMember = it.next();
-            String generatedMemberReport = Reporting.generateMemberReport(myMember.getID(), null); 
+            String generatedMemberReport = Reporting.generateMemberReport(myMember.getID(), myDate); 
             PrintWriter out;
             try {
-                out = new PrintWriter("Member" + myMember.getID() + myDate + ".txt");
-                out.print(Reporting.generateMemberReport(1, myDate));
+                out = new PrintWriter("Member" + myMember.getID() + "_" + sdf.format(myDate) + ".txt");
+                out.print(generatedMemberReport);
                 out.close();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(AccountingProcedure.class.getName()).log(Level.SEVERE, null, ex);

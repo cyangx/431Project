@@ -12,8 +12,8 @@ import java.util.logging.Logger;
  */
 public class Reporting {
 
-    private final static String serviceDateFormat = "mm-dd-yyy";
-    private final static String billDateFormat = "mm-dd-yyy hh:mm:ss";
+    private final static String serviceDateFormat = "MM-dd-yyy";
+    private final static String billDateFormat = "MM-dd-yyy hh:mm:ss";
 
     /**
      * TODO: Add bool output for success
@@ -137,7 +137,7 @@ public class Reporting {
                         output += "\t" + "Service Date: "
                                 + dt.format(sr.getServiceDate())
                                 + System.lineSeparator();
-                        output += "\t" + "Name: "
+                            output += "\t" + "Name: "
                                 + sr.getProvider().getProviderName()
                                 + System.lineSeparator();
                         output += "\t" + "Service: "

@@ -35,11 +35,6 @@ public class ReportingTester {
         ml.addMember(myMember);
         ml.addMember(myMember2);
 
-        myServiceRecord = new ServiceRecord(
-                myProvider,
-                myMember,
-                myService,
-                myDate);
 
         ServiceRecordList myServiceRecordList = ServiceRecordList.getInstance();
 
