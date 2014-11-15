@@ -3,13 +3,11 @@ package pkg431;
 import java.util.*;
 import java.io.*;
 
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 /**
- *
- * @author Garrett
+ * Service Record Class
+ * Records a service being provided by a provider
+ * for a member
+ * @author Garrett 
  */
 public class ServiceRecord implements Serializable {
 
@@ -20,6 +18,13 @@ public class ServiceRecord implements Serializable {
     private Date _billDate;
     private Date _serviceDate;
     
+    /**
+     * The ServiceRecord constructor, creates copies of the inputs
+     * @param provider Provider to record
+     * @param member Member to record
+     * @param service Service to record
+     * @param serviceDate 
+     */
     public ServiceRecord(Provider provider, Member member, Service service, Date serviceDate)
     {
         // TODO: Add a copy method to these classes

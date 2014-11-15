@@ -7,23 +7,26 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Tests the report class
  *
  * @author Garrett
  */
 public class ReportingTester {
 
     public static void main(String args[]) {
+        // sets up the test data
         ServiceRecord myServiceRecord;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "Bank", "123");
         Provider myProvider2 = new Provider("Test Name2", 2, "Test Address2", "St. Croix", "WI", "56377", "Bank", "123");
+        Provider myProvider3 = new Provider("Test Name3", 2, "Test Address3", "St. Paul", "MN", "56345", "Bank", "123456");
         Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
         Member myMember2 = new Member("Test Name2", 2, "Test Address2", "St. Croix", "WI", "66345");
         Service myService = new Service("Test Name", 1, 500.59);
         Service myService2 = new Service("Test Name2", 2, 50.01);
 
         Date myDate = new Date();
-        Calendar myCal = (Calendar)Calendar.getInstance().clone();
+        Calendar myCal = (Calendar) Calendar.getInstance().clone();
         myCal.setTime(myDate);
         myCal.add(Calendar.DATE, 1);
         Date myDate2 = myCal.getTime();
@@ -34,7 +37,6 @@ public class ReportingTester {
         MemberList ml = MemberList.instance();
         ml.addMember(myMember);
         ml.addMember(myMember2);
-
 
         ServiceRecordList myServiceRecordList = ServiceRecordList.getInstance();
 
@@ -143,13 +145,11 @@ public class ReportingTester {
             out.print(Reporting.generateAccountsPayableReport(date1));
         } catch (Exception ex) {
             Logger.getLogger(ReportingTester.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally
-        {
-            if(out != null)
+        } finally {
+            if (out != null) {
                 out.close();
+            }
         }
-        
 
     }
 }

@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 
 /**
- *
+ * List of Service Records
  * @author Garrett
  */
 public class ServiceRecordList implements Serializable {
@@ -17,7 +17,7 @@ public class ServiceRecordList implements Serializable {
     }
 
     /**
-     *
+     * 
      * @return Instance of the ServiceRecordList singleton
      */
     public static ServiceRecordList getInstance() {
@@ -56,6 +56,10 @@ public class ServiceRecordList implements Serializable {
         this.serviceRecords.remove(sr);
     }
     
+    /**
+     * Writes the object to a serialized file
+     * @param output The Output stream to write to
+     */
     private void writeObject(java.io.ObjectOutputStream output) {
         try {
             output.defaultWriteObject();
@@ -64,6 +68,11 @@ public class ServiceRecordList implements Serializable {
             System.out.println(ioe);
         }
     }
+    
+    /**
+     * Reads the object from a serialized file
+     * @param input Input stream to read from
+     */
     private void readObject(java.io.ObjectInputStream input) {
         try {
             if (instance != null) {

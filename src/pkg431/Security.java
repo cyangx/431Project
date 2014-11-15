@@ -1,19 +1,22 @@
 package pkg431;
 
 /**
+ * Provides some credentials
  *
  * @author Garrett
  */
 public class Security {
-    
-    public boolean validateProvider(String Pwd)
-    {
-        return(Pwd == "PROVIDER");
+
+    Security() {
+
     }
-    
-    public boolean validateAdmin(String Pwd)
-    {
-        return(Pwd == "ADMIN");
+
+    public boolean validateProvider(String Pwd) {
+        return ("PROVIDER".equals(Pwd));
     }
-    
+
+    public boolean validateAdmin(String Pwd) {
+        return ("ADMIN".equals(Pwd));
+    }
+
 }
