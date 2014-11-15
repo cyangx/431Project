@@ -4,11 +4,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- *
+ * Tests the Accounting Procedure Class
  * @author Garrett
  */
 public class AccountingProcedureTester {
     public static void main(String args[]) {
+        
         
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -8);
@@ -22,12 +23,23 @@ public class AccountingProcedureTester {
         Service myService = new Service("Test Name", 1, 500.59);
         Service myService2 = new Service("Test Name2", 2, 50.01);
         
+        /**
+         * Add Providers
+         */
         ProviderList pl = ProviderList.instance();
         pl.addProvider(myProvider);
         pl.addProvider(myProvider2);
+        
+        /**
+         * Add Members
+         */
         MemberList ml = MemberList.instance();
         ml.addMember(myMember);
         ml.addMember(myMember2);
+        
+        /**
+         *  Add services
+         */
         ServiceList.instance().addService(myService);
         ServiceList.instance().addService(myService2);
         
@@ -35,7 +47,7 @@ public class AccountingProcedureTester {
         ServiceRecordList.getInstance().CaptureService(myProvider, myMember2, myService2, Now);
         ServiceRecordList.getInstance().CaptureService(myProvider2, myMember2, myService, Now);
         ServiceRecordList.getInstance().CaptureService(myProvider, myMember, myService, Now);
-        
+               
         /**
          * Test generate member reports
          */
@@ -52,11 +64,20 @@ public class AccountingProcedureTester {
         AccountingProcedure.instance().generateAccountingProcedureReports();
         
         /**
-         * 
+         * Test the reseting of the scheduled time
+         * It will be set to one minute from now
          */
-        AccountingProcedure.instance().setReportTime(new Date());
-        
+        long ONE_MINUTE_IN_MILLIS=60000;//millisecs
+        Date date = new Date();
+        long t=date.getTime();
+        Date AddedTime=new Date(t + (ONE_MINUTE_IN_MILLIS));
+        Date waitUntil = new Date(t + (2* ONE_MINUTE_IN_MILLIS));
+        AccountingProcedure.instance().setReportTime(AddedTime);
+        int i = 0;
+        while(new Date().before(waitUntil))
+        {
+            // let's wait for a while            
+        }
         System.out.println("DONE");
-        
     }
 }

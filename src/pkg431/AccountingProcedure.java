@@ -1,16 +1,10 @@
 package pkg431;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
+import java.util.logging.*;
 
 /**
  *
@@ -18,12 +12,22 @@ import java.util.logging.Logger;
  */
 public class AccountingProcedure {
 
+    // Date format for file names
+
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy");
+    // Singleton Instance
     private static AccountingProcedure accountingProcedure;
-    private Timer generateReportTimer = new Timer();
+    // Timer for automated events
+    private Timer generateReportTimer;
+    // task to be done by the timer
     private TimerTask task;
 
+    /**
+     * Private Constructor for the singleton AccountingProcedure
+     * Creates a scheduled task to print all reports at midnight on Friday
+     */
     private AccountingProcedure() {
+        generateReportTimer = new Timer();
         this.task = new java.util.TimerTask() {
             @Override
             public void run() {
@@ -32,23 +36,41 @@ public class AccountingProcedure {
                 AccountingProcedure.instance().generateAccountingProcedureReports();
             }
         };
+
+        Calendar scheduledDate = (Calendar) Calendar.getInstance().clone();
+        scheduledDate.setTime(nextFriday());
+        scheduledDate.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+        scheduledDate.set(Calendar.AM_PM, Calendar.AM);
+        scheduledDate.set(Calendar.HOUR, 0);
+        scheduledDate.set(Calendar.MINUTE, 0);
+        scheduledDate.set(Calendar.SECOND, 0);
+        scheduledDate.set(Calendar.MILLISECOND, 0);
+
+        long week = 604800000;
+        generateReportTimer.scheduleAtFixedRate(task, scheduledDate.getTime(), week);
+    }
+
+    /**
+     * Calculates the date of next Friday 
+     * @return Date for next Friday
+     */
+    private Date nextFriday() {
         Calendar today = Calendar.getInstance();
         int dayOfWeek = today.get(Calendar.DAY_OF_WEEK);
         int daysUntilNextFriday = Calendar.FRIDAY - dayOfWeek;
         if (daysUntilNextFriday < 0) {
             daysUntilNextFriday = daysUntilNextFriday + 7;
         }
-
         Calendar nextFriday = (Calendar) today.clone();
         nextFriday.add(Calendar.DAY_OF_WEEK, daysUntilNextFriday);
-        if (nextFriday.get(Calendar.WEEK_OF_YEAR) % 2 == 0) {
-            nextFriday.add(Calendar.DAY_OF_WEEK, 7);
-        }
-
-        long week = 604800000;
-        generateReportTimer.scheduleAtFixedRate(task, nextFriday.getTime(), week);
+        
+        return nextFriday.getTime();
     }
 
+    /**
+     * Gets the instance of the Singleton
+     * @return Instance of the Singleton
+     */
     public static AccountingProcedure instance() {
         if (accountingProcedure == null) {
             return (accountingProcedure = new AccountingProcedure());
@@ -57,6 +79,9 @@ public class AccountingProcedure {
         }
     }
 
+    /**
+     * Generates a member report for all members in the list
+     */
     public void generateMemberReports() {
         Calendar myCal = (Calendar) Calendar.getInstance().clone();
         myCal.add(Calendar.DATE, -7);
@@ -78,6 +103,9 @@ public class AccountingProcedure {
         }
     }
 
+    /**
+     * Generates a provider report for all providers in the list
+     */
     public void generateProviderReports() {
         Calendar myCal = (Calendar) Calendar.getInstance().clone();
         myCal.add(Calendar.DATE, -7);
@@ -98,6 +126,9 @@ public class AccountingProcedure {
         }
     }
 
+    /**
+     * Generates an accounts payable Report
+     */
     public void generateAccountingProcedureReports() {
         Calendar myCal = (Calendar) Calendar.getInstance().clone();
         Date myDate = myCal.getTime();
@@ -112,7 +143,11 @@ public class AccountingProcedure {
         }
 
     }
-    // TODO test this, possibly remove it
+
+    /**
+     * Sets the time when report should be auto-generated (weekly)
+     * @param dt Date to generate the reports next
+     */
     public void setReportTime(Date dt) {
         long week = 604800000;
         task = new java.util.TimerTask() {
@@ -123,6 +158,8 @@ public class AccountingProcedure {
                 AccountingProcedure.instance().generateAccountingProcedureReports();
             }
         };
+        generateReportTimer.cancel();
+        generateReportTimer = new Timer();
         generateReportTimer.scheduleAtFixedRate(task, dt, week);
     }
 
