@@ -196,9 +196,13 @@ public class AccountingProcedure {
             for(String line : lines)
             {
                 String[] parts = line.split(" ");
-                if(parts.length == 2)
+                if(parts.length >= 2)
                 {
-                    System.out.println("yay");
+                    Member myMember = MemberList.instance().getMember(Integer.parseInt(parts[0]));
+                    if(myMember != null)
+                    {
+                        myMember.setSuspendStatus(("S".equals(parts[1])));
+                    }
                 }
             }
         } catch (IOException ex) {

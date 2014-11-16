@@ -47,6 +47,8 @@ public class Member implements Serializable {
         this._zipcode = ZipCode;
         
         this._ID = ID;
+        
+        this._suspendStatus = false;
     }
 
     public void update(String Name, String Address, String City, String State, String ZipCode) {
