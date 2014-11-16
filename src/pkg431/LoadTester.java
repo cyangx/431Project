@@ -5,6 +5,8 @@
  */
 package pkg431;
 
+import java.util.Iterator;
+
 /**
  *
  * @author Garrett
@@ -84,8 +86,35 @@ public class LoadTester {
         /**
          * Service Record Test
          */
-        if (ServiceRecordList.getInstance().getServiceRecords().hasNext()) {
-            System.out.println("SERVICE_RECORD PASSED");
+        Iterator<ServiceRecord> it = ServiceRecordList.getInstance().getServiceRecords();
+        if (it.hasNext()) {
+            while (it.hasNext()) {
+                ServiceRecord test = it.next();
+                if (test.getMember() != null
+                        && test.getProvider() != null
+                        && test.getService() != null) {
+                    System.out.println(test.getMember().getName() + " "
+                            + test.getMember().getID() + " "
+                            + test.getMember().getAddress() + " "
+                            + test.getMember().getCity() + " "
+                            + test.getMember().getState() + " "
+                            + test.getMember().getZipcode());
+                    System.out.println(test.getProvider().getProviderName() + " "
+                            + test.getProvider().getId() + " "
+                            + test.getProvider().getAddress() + " "
+                            + test.getProvider().getCity() + " "
+                            + test.getProvider().getState() + " "
+                            + test.getProvider().getZipcode());
+                    System.out.println(test.getService().getServiceName() + " "
+                            + test.getService().getID() + " "
+                            + test.getService().getServiceCost());
+                    System.out.println(test.getServiceDate() + " "
+                            + test.getBillDate());
+                    System.out.println("SERVICE_RECORD PASSED");
+                } else {
+                    System.out.println("SERVICE_RECORD FAILED");
+                }
+            }
         } else {
             System.out.println("SERVICE_RECORD FAILED");
         }

@@ -242,7 +242,7 @@ public class Reporting {
                 }
             }
             // TODO Print EFT
-            
+            printEFT(provider.getProviderName(), provider.getId(), provider.getBankAccountName(), provider.getBankAccountNum(), subTotalFee);
             
             //  prints the sub total for this provider
             output += "SubTotal Consultations: " + subTotalConsultations
@@ -261,5 +261,17 @@ public class Reporting {
                 + System.lineSeparator();
         output += "Total Fees: " + totalFee + System.lineSeparator();
         return output;
+    }
+    
+    private static void printEFT(String name, int number, String bank, String bankNum, double Amount)
+    {
+        PrintWriter out;
+        try {
+            out = new PrintWriter(name+number + ".txt");
+            out.print(name + ", " + number + ", " + bank + ", " + bankNum + ", " + Amount);
+            out.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AccountingProcedure.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -1,6 +1,10 @@
 package pkg431;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
@@ -17,10 +21,15 @@ public class AccountingProcedure {
     private static final SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy");
     // Singleton Instance
     private static AccountingProcedure accountingProcedure;
-    // Timer for automated events
+    // Timer for automated reporting events
     private Timer generateReportTimer;
-    // task to be done by the timer
-    private TimerTask task;
+    // reporting task to be done by the timer
+    private TimerTask reportTask;
+    // Timer for automated member updating
+    private Timer updateMemberTimer;
+    // Task for member updating
+    private TimerTask memberTask;
+    
 
     /**
      * Private Constructor for the singleton AccountingProcedure
@@ -28,12 +37,20 @@ public class AccountingProcedure {
      */
     private AccountingProcedure() {
         generateReportTimer = new Timer();
-        this.task = new java.util.TimerTask() {
+        updateMemberTimer = new Timer();
+        this.reportTask = new java.util.TimerTask() {
             @Override
             public void run() {
                 AccountingProcedure.instance().generateMemberReports();
                 AccountingProcedure.instance().generateProviderReports();
                 AccountingProcedure.instance().generateAccountingProcedureReports();
+            }
+        };
+        
+        this.memberTask = new java.util.TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("member task old");
             }
         };
 
@@ -45,9 +62,18 @@ public class AccountingProcedure {
         scheduledDate.set(Calendar.MINUTE, 0);
         scheduledDate.set(Calendar.SECOND, 0);
         scheduledDate.set(Calendar.MILLISECOND, 0);
-
+        
+        Calendar memberDate = (Calendar) Calendar.getInstance().clone();
+        memberDate.setTime(new Date());
+        memberDate.set(Calendar.HOUR, 22);
+        memberDate.set(Calendar.MINUTE, 0);
+        memberDate.set(Calendar.SECOND, 0);
+        memberDate.set(Calendar.MILLISECOND, 0);
+        
         long week = 604800000;
-        generateReportTimer.scheduleAtFixedRate(task, scheduledDate.getTime(), week);
+        long day = 86400000;
+        generateReportTimer.scheduleAtFixedRate(reportTask, scheduledDate.getTime(), week);
+        updateMemberTimer.scheduleAtFixedRate(memberTask, memberDate.getTime(), day);
     }
 
     /**
@@ -150,7 +176,7 @@ public class AccountingProcedure {
      */
     public void setReportTime(Date dt) {
         long week = 604800000;
-        task = new java.util.TimerTask() {
+        reportTask = new java.util.TimerTask() {
             @Override
             public void run() {
                 AccountingProcedure.instance().generateMemberReports();
@@ -160,7 +186,25 @@ public class AccountingProcedure {
         };
         generateReportTimer.cancel();
         generateReportTimer = new Timer();
-        generateReportTimer.scheduleAtFixedRate(task, dt, week);
+        generateReportTimer.scheduleAtFixedRate(reportTask, dt, week);
     }
+    
+    public void readAcmeFile()
+    {
+        try {
+            List<String> lines = Files.readAllLines(Paths.get("Acme.txt"), Charset.defaultCharset());
+            for(String line : lines)
+            {
+                String[] parts = line.split(" ");
+                if(parts.length == 2)
+                {
+                    System.out.println("yay");
+                }
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(AccountingProcedure.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
 }
