@@ -39,7 +39,7 @@ public class ProviderList implements Serializable {
         return true;
     }
 
-    public Iterator getProviderIDs() {
+    public Iterator<Provider> getProviderIDs() {
         return providers.iterator();
     }
 

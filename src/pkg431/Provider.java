@@ -35,7 +35,6 @@ public class Provider implements Serializable{
     // bank stuff
     private String bankName;
     private String accountNum;
-    private double providerAmount;
     
     public Provider(String name, int ID, String address, String city, String state, String zipCode, String bankName, String accountNum)
     {
@@ -83,16 +82,6 @@ public class Provider implements Serializable{
     public int getId(){
         return this._ID;
     } 
-    
-    //returns the amount owed to the provider
-    public double getProviderAmt(){
-        return providerAmount;
-    }
-    
-    //Adds (or subtracts if amtOwed is negative) to the total amount owed to the provider
-    public void setProviderAmt(double amtOwed){
-        this.providerAmount += amtOwed;
-    }
     
     /**
     * @param address the address to set
