@@ -12,6 +12,7 @@ import java.io.*;
 public class ServiceRecord implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private final int COMMENT_LENGTH = 100;
     private Provider _provider;
     private Member _member;
     private Service _service;
@@ -49,6 +50,8 @@ public class ServiceRecord implements Serializable {
                 service.getServiceCost());
         _billDate = new Date();    
         _serviceDate = serviceDate;
+        if(comments != null && comments.length() > COMMENT_LENGTH)
+            comments = comments.substring(0, COMMENT_LENGTH);
         _comments = comments;
     }
 
