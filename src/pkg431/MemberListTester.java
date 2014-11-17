@@ -1,6 +1,5 @@
 package pkg431;
 
-
 import java.util.Date;
 
 /*
@@ -14,12 +13,12 @@ import java.util.Date;
 public class MemberListTester {
 
     public static void main(String args[]) {
-    
-        System.out.println("** TESTING MEMBERLIST CODE**");          
-        
+
+        System.out.println("** TESTING MEMBERLIST CODE**");
+
         MemberList myMemberList = MemberList.instance();
         /**
-         *  Testing add and getMember
+         * Testing add and getMember
          */
         System.out.println("**Testing add and getMember**");
         try {
@@ -43,9 +42,9 @@ public class MemberListTester {
             System.out.println(e.getMessage());
             System.out.println('\n');
         }
-        
+
         /**
-         *  Test Validate
+         * Test Validate
          */
         System.out.println("**Testing validate**");
         try {
@@ -63,16 +62,65 @@ public class MemberListTester {
             System.out.println(e.getMessage());
             System.out.println('\n');
         }
-        
+
         /**
-         *  TODO: Testing update
+         * Test Update
          */
-        System.out.println("**Testing update**");
- 
+        System.out.println("**Testing Update inputs**");
+        try {
+            System.out.println("**Updating member 1**");
+            Member myMember = myMemberList.getMember(1);
+            System.out.println("**Current information**");
+            System.out.println(myMember.getName());
+            System.out.println(myMember.getID());
+            System.out.println(myMember.getAddress());
+            System.out.println(myMember.getCity());
+            System.out.println(myMember.getState());
+            System.out.println(myMember.getZipcode());
+
+            System.out.println("**Updated Information**");
+            myMember.update("Bob", "123 Fake St", "St Cloud", "Mn", "56304");
+            System.out.println(myMember.getName());
+            System.out.println(myMember.getID());
+            System.out.println(myMember.getAddress());
+            System.out.println(myMember.getCity());
+            System.out.println(myMember.getState());
+            System.out.println(myMember.getZipcode());
+
+            if ("Bob".equals(myMember.getName())
+                    && "123 Fake St".equals(myMember.getAddress())
+                    && "St Cloud".equals(myMember.getCity())
+                    && "Mn".equals(myMember.getState())
+                    && "56304".equals(myMember.getZipcode())) {
+                System.out.println("PASSED");
+            } else {
+                throw new Exception("Update failed");
+            }
+            System.out.println('\n');
+        } catch (Exception e) {
+            System.out.println("FAILED");
+            System.out.println(e.getMessage());
+            System.out.println('\n');
+        }
+
         /**
-         *  TODO : Test delete
+         * Test Delete
          */
-        System.out.println("**Testing delete**");
+        System.out.println("**Testing Deleting a member**");
+        try {
+            System.out.println("**Deleting member 1**");
+            myMemberList.delete(1);
+            if (myMemberList.getMember(1) == null) {
+                System.out.println("PASSED");
+            } else {
+                throw new Exception("Delete failed");
+            }
+            System.out.println('\n');
+        } catch (Exception e) {
+            System.out.println("FAILED");
+            System.out.println(e.getMessage());
+            System.out.println('\n');
+        }
     }
 
 }

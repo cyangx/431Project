@@ -173,9 +173,49 @@ public class MemberTester {
             System.out.println(e.getMessage());
             System.out.println('\n');
         }
+
+        /**
+         * This tests suspending a member
+         */
+        System.out.println("**Testing suspending a member**");
+        try {
+            myMember = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+            System.out.println(myMember.isSuspend());
+            myMember.setSuspendStatus(true);
+            System.out.println(myMember.isSuspend());
+            if (true == myMember.isSuspend()) {
+                System.out.println("PASSED");
+            } else {
+                throw new Exception("Suspend failed");
+            }
+            System.out.println('\n');
+        } catch (Exception e) {
+            System.out.println("FAILED");
+            System.out.println(e.getMessage());
+            System.out.println('\n');
+        }
         
         /**
-         *  TODO: Test supending and unsuspending
+         * This tests unsuspending a member
          */
+        System.out.println("**Testing unsuspending a member**");
+        try {
+            myMember = new Member("Test Name", 7, "Test Address", "St. Cloud", "MN", "56301");
+            // suspend a member first
+            myMember.setSuspendStatus(true);
+            System.out.println(myMember.isSuspend());
+            myMember.setSuspendStatus(false);
+            System.out.println(myMember.isSuspend());
+            if (false == myMember.isSuspend()) {
+                System.out.println("PASSED");
+            } else {
+                throw new Exception("Unsuspend failed");
+            }
+            System.out.println('\n');
+        } catch (Exception e) {
+            System.out.println("FAILED");
+            System.out.println(e.getMessage());
+            System.out.println('\n');
+        }
     }
 }
