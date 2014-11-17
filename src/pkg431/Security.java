@@ -11,11 +11,11 @@ public class Security {
 
     }
 
-    public boolean validateProvider(String Pwd) {
+    public static boolean validateProvider(String Pwd) {
         return ("PROVIDER".equals(Pwd));
     }
 
-    public boolean validateAdmin(String Pwd) {
+    public static boolean validateAdmin(String Pwd) {
         return ("ADMIN".equals(Pwd));
     }
 

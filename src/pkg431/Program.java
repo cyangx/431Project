@@ -13,9 +13,9 @@ public class Program {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JFrame f = new JFrame("Test");
+        JFrame f = new JFrame("Pizza Anonymous");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.add(new ProviderSystemPanel());
+        f.add(new TerminalSelection());
         f.pack();
         f.setVisible(true);
     }
