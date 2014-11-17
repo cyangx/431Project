@@ -1,21 +1,23 @@
 package pkg431;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author Brandon
+ * @author Brandon Theisen
  */
+/*
+ProviderTester.java
+Description: Tests the funtionality of the Provider class. Makes sure
+             that all of the information is properly saved and retrieved
+             within the defined constraints, and that methods perform
+             the actions sufficiently without fail.
+*/
 public class ProviderTester {
     private final static int NAME_LENGTH = 25;
     private final static int ADDRESS_LENGTH = 25;
     private final static int CITY_LENGTH = 14;
     private final static int STATE_LENGTH = 2;
     private final static int ZIP_LENGTH = 5;
+    private final static int BANK_LENGTH = 25;
+    private final static int ACC_NUM_LENGTH = 5;
 
     public static void main(String args[]) {
         Provider myProvider;
@@ -25,6 +27,8 @@ public class ProviderTester {
 
         /**
          * This tests for more than the maximum characters
+         * Since each string being stored is larger than the maximum amount
+         * then each string should be truncated to that value
          */
         System.out.println("**Testing big inputs**");
         try {
@@ -39,7 +43,9 @@ public class ProviderTester {
                     && ADDRESS_LENGTH == myProvider.getAddress().length()
                     && CITY_LENGTH == myProvider.getCity().length()
                     && STATE_LENGTH == myProvider.getState().length()
-                    && ZIP_LENGTH == myProvider.getZipcode().length()) {
+                    && ZIP_LENGTH == myProvider.getZipcode().length()
+                    && BANK_LENGTH == myProvider.getBankAccountName().length()
+                    && ACC_NUM_LENGTH == myProvider.getBankAccountNum().length()) {
                 System.out.println("PASSED");
             } else {
                 throw new Exception("Field length mismatch");
@@ -53,6 +59,7 @@ public class ProviderTester {
 
         /**
          * This tests for null inputs
+         * Null inputs are empty inputs
          */
         System.out.println("**Testing Null inputs**");
         try {
@@ -67,6 +74,8 @@ public class ProviderTester {
 
         /**
          * This tests boundary inputs
+         * This tests the maximum length of each input, making sure
+         * each input can indeed only hold up to the maximum amount, not more or less
          */
         System.out.println("**Testing boundary inputs**");
         try {
@@ -81,7 +90,9 @@ public class ProviderTester {
                     && ADDRESS_LENGTH == myProvider.getAddress().length()
                     && CITY_LENGTH == myProvider.getCity().length()
                     && STATE_LENGTH == myProvider.getState().length()
-                    && ZIP_LENGTH == myProvider.getZipcode().length()) {
+                    && ZIP_LENGTH == myProvider.getZipcode().length()
+                    && BANK_LENGTH == myProvider.getBankAccountName().length()
+                    && ACC_NUM_LENGTH == myProvider.getBankAccountNum().length()) {
                 System.out.println("PASSED");
             } else {
                 throw new Exception("Field length mismatch");
@@ -94,7 +105,9 @@ public class ProviderTester {
         }
 
         /**
-         * This tests valid inputs
+         * This tests valid inputs for the provider
+         * Input is within string length
+         * All of the input should be displayed due to fitting within constraints
          */
         System.out.println("**Testing valid inputs**");
         try {
@@ -109,7 +122,9 @@ public class ProviderTester {
                     && ADDRESS_LENGTH >= myProvider.getAddress().length()
                     && CITY_LENGTH >= myProvider.getCity().length()
                     && STATE_LENGTH >= myProvider.getState().length()
-                    && ZIP_LENGTH >= myProvider.getZipcode().length()) {
+                    && ZIP_LENGTH >= myProvider.getZipcode().length()
+                    && BANK_LENGTH >= myProvider.getBankAccountName().length()
+                    && ACC_NUM_LENGTH >= myProvider.getBankAccountNum().length()) {
                 System.out.println("PASSED");
             } else {
                 throw new Exception("Field length mismatch");
@@ -122,7 +137,8 @@ public class ProviderTester {
         }
 
         /**
-         * This tests empty string inputs
+         * This tests empty string inputs being input into provider
+         * Empty sets of information are allowed
          */
         System.out.println("**Testing empty inputs**");
         try {
@@ -137,7 +153,9 @@ public class ProviderTester {
                     && ADDRESS_LENGTH >= myProvider.getAddress().length()
                     && CITY_LENGTH >= myProvider.getCity().length()
                     && STATE_LENGTH >= myProvider.getState().length()
-                    && ZIP_LENGTH >= myProvider.getZipcode().length()) {
+                    && ZIP_LENGTH >= myProvider.getZipcode().length()
+                    && BANK_LENGTH >= myProvider.getBankAccountName().length()
+                    && ACC_NUM_LENGTH >= myProvider.getBankAccountNum().length()) {
                 System.out.println("PASSED");
             } else {
                 throw new Exception("Field length mismatch");
@@ -150,12 +168,15 @@ public class ProviderTester {
         }
 
         /**
-         * This tests updating
+         * This tests updating the provider
+         * which updates only the name, address, city, state and zipcode
+         * Update is based on an empty provider. But should be the same if
+         * the provider already had information entered
          */
         System.out.println("**Testing Update inputs**");
         try {
             myProvider = new Provider("", 5, "", "", "", "","","");
-            myProvider.update("This is new and should be truncated", "So is this and it will also be truncated", "this too is too big", "Yup", "New Zipcode");
+            myProvider.update("This is new and should be truncated", "So is this and it will also be truncated", "this too is too big", "Yup this should be truncated", "New Zipcode");
             System.out.println(myProvider.getProviderName()+ " " + myProvider.getProviderName().length());
             System.out.println(myProvider.getId());
             System.out.println(myProvider.getAddress() + " " + myProvider.getAddress().length());
@@ -179,7 +200,11 @@ public class ProviderTester {
         }
         
         /**
-         *  TODO: Test Update bank account information
+         *  Test Update bank account information
+         *  Uses information of a provider that's already created
+         *  Then updates only the bank account info.
+         *  Test is successful if the original bank name or account number is different
+         *  than the original. This pass or fail is determined by output.
          */
         try{
             System.out.println("Testing Update Bank Account Information.");

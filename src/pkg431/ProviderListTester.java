@@ -1,15 +1,15 @@
 package pkg431;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author Brandon
+ * @author Brandon Theisen
  */
+/*
+ProviderListTester.java
+Description: Tests the funtionality of the ProviderList class. 
+             Makes sure that the list can properly add, remove, serialize,
+             deserialize, update and validate providers.
+             Updates pass based on output.
+*/
 public class ProviderListTester {
 
     /**
@@ -23,7 +23,10 @@ public class ProviderListTester {
         
 
         /**
-         *  TODO: Testing add and getProvider
+         *  Testing add and getProvider
+         * Add and get passes if provider is successfully added to the list
+         * and getProvider can retrieve the newly added provider
+         * Fails if the provider in the list is null
          */
         try{
             System.out.println("Adding and getting provider...");
@@ -52,7 +55,10 @@ public class ProviderListTester {
         }
 
         /**
-         *  TODO: Test Validate
+         *  Test Validate
+         * Tests whether or not the provider is in the list
+         * if it is in the list, the test passes
+         * If the provider isn't in the list, then the validate fails.
          */
         
         System.out.println("**Testing validate**");
@@ -73,7 +79,10 @@ public class ProviderListTester {
         }
 
         /**
-         *  TODO: Testing update
+         *  Testing update
+         *  Update is passed if the information appears different
+         *  than the previous information added. Can only be verified
+         *  by viewing the output.
          */
         
         try{
@@ -127,7 +136,9 @@ public class ProviderListTester {
         }
  
         /**
-         *  TODO : Test delete
+         *  Test delete
+         *  Test is successful if the provider in the list is null
+         *  Test fails if the provider is still in the list
          */
         try{
             System.out.println("**Testing Delete**");

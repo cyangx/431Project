@@ -1,22 +1,20 @@
 package pkg431;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Brandon
+ * @author Brandon Theisen
  */
+/*
+ProviderList.java
+Description: Manages the provider list
+             ProviderList accesses the functionality of Provider.java
+             and passes data to it for instantiation or updating.
+             The list has the ability to add, remove and update providers.
+             Also contains methods for serializing and deserializing the information
+             Information is stored/retrieved via a linked list.
+*/
+
 import java.util.*;
 import java.io.*;
 
-/**
- *
- * @author Brandon
- */
 public class ProviderList implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<Provider> providers = new LinkedList<>();
@@ -25,7 +23,10 @@ public class ProviderList implements Serializable {
     private ProviderList() {
         
     }
-
+    
+    //Singleton instantiation
+    //If the list doesn't already exist, create it
+    //If it does, return the list and do not instantiate another.
     public static ProviderList instance() {
         if (providerList == null) {
             return (providerList = new ProviderList());
@@ -34,15 +35,18 @@ public class ProviderList implements Serializable {
         }
     }
 
+    //Adds a provider to the current list.
     public boolean addProvider(Provider provider) {
         providers.add(provider);
         return true;
     }
 
+    //Returns a list of provider ID's.
     public Iterator<Provider> getProviderIDs() {
         return providers.iterator();
     }
 
+    //Writes the information to a file using the ObjectOutputStream
     private void writeObject(java.io.ObjectOutputStream output) {
         try {
             output.defaultWriteObject();
@@ -52,6 +56,7 @@ public class ProviderList implements Serializable {
         }
     }
 
+    //Deserializes the information from the file using ObjectInputStream.
     private void readObject(java.io.ObjectInputStream input) {
         try {
             if (providerList != null) {
@@ -65,7 +70,7 @@ public class ProviderList implements Serializable {
                 }
             }
         } catch (IOException ioe) {
-            System.out.println("in ProviderList readObject \n" + ioe);
+            System.out.println("in Catalog readObject \n" + ioe);
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
@@ -81,12 +86,9 @@ public class ProviderList implements Serializable {
         }
         return null;
     }
-
-    @Override
-    public String toString() {
-        return providers.toString();
-    }   
+   
     
+    //Returns a boolean value of whether or not the provider ID exists
     public boolean validate(int ID){
         for (Provider provider : providers) {
             if(ID == provider.getId()){
@@ -96,11 +98,14 @@ public class ProviderList implements Serializable {
         return false;
     }
     
+    //Removes the provider from the list by ID
     public void delete(int ID)
     {
         this.providers.remove(this.getProvider(ID));
     }
     
+    //Locates the provider by ID
+    //And is used to update the name, address, city, state and zip
     public void update(int ID, String name, String address, String city, String state, String zipCode)
     {
         Provider myProvider = this.getProvider(ID);
@@ -110,6 +115,8 @@ public class ProviderList implements Serializable {
         }
     }
     
+    //Locates the provider by id
+    //And is used to update the bank name and account number
     public void updateBankAccount(int ID, String bankName, String accNum)
     {
         Provider myProvider = this.getProvider(ID);
