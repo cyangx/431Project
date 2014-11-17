@@ -27,7 +27,8 @@ public class ServiceRecordTester {
                     myProvider,
                     myMember,
                     myService,
-                    myDate);
+                    myDate,
+                    "Comments");
             /**
              * Service Tests
              */
@@ -53,7 +54,8 @@ public class ServiceRecordTester {
                     myProvider,
                     myMember,
                     myService,
-                    myDate);
+                    myDate,
+                    "Comments");
             /**
              * Provider Tests
              */
@@ -86,7 +88,8 @@ public class ServiceRecordTester {
                     myProvider,
                     myMember,
                     myService,
-                    myDate);
+                    myDate,
+                    "Comments");
             /**
              * Member Tests
              */
@@ -122,7 +125,8 @@ public class ServiceRecordTester {
                     myProvider,
                     myMember,
                     myService,
-                    myDate);
+                    myDate,
+                    "Comments");
             myServiceRecord.setBillDate(myDate);
             if (myServiceRecord.getBillDate() == myDate) {
                 System.out.println("DATE CHANGE PASSED");

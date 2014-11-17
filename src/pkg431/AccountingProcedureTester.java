@@ -43,10 +43,10 @@ public class AccountingProcedureTester {
         ServiceList.instance().addService(myService);
         ServiceList.instance().addService(myService2);
         
-        ServiceRecordList.getInstance().CaptureService(myProvider, myMember, myService, eightDaysAgo);
-        ServiceRecordList.getInstance().CaptureService(myProvider, myMember2, myService2, Now);
-        ServiceRecordList.getInstance().CaptureService(myProvider2, myMember2, myService, Now);
-        ServiceRecordList.getInstance().CaptureService(myProvider, myMember, myService, Now);
+        ServiceRecordList.getInstance().CaptureService(myProvider, myMember, myService, eightDaysAgo, "Comments");
+        ServiceRecordList.getInstance().CaptureService(myProvider, myMember2, myService2, Now, "Comments");
+        ServiceRecordList.getInstance().CaptureService(myProvider2, myMember2, myService, Now, "Comments");
+        ServiceRecordList.getInstance().CaptureService(myProvider, myMember, myService, Now, "Comments");
                
         /**
          * Test generate member reports

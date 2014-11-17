@@ -25,8 +25,8 @@ public class ServiceRecordListTester {
          * Testing capture and iterator
          */
         System.out.println("**Testing add and iterator**");
-        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate);
-        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate);
+        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate, "Comments");
+        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate, "Comments");
 
         Iterator<ServiceRecord> it = myServiceRecordList.getServiceRecords();
         List<ServiceRecord> srl = new LinkedList<>();

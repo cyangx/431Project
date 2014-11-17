@@ -40,10 +40,10 @@ public class ReportingTester {
 
         ServiceRecordList myServiceRecordList = ServiceRecordList.getInstance();
 
-        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate);
-        myServiceRecordList.CaptureService(myProvider, myMember2, myService2, myDate2);
-        myServiceRecordList.CaptureService(myProvider2, myMember2, myService, myDate2);
-        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate2);
+        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate, "Comments");
+        myServiceRecordList.CaptureService(myProvider, myMember2, myService2, myDate2, "Comments");
+        myServiceRecordList.CaptureService(myProvider2, myMember2, myService, myDate2, "Comments");
+        myServiceRecordList.CaptureService(myProvider, myMember, myService, myDate2, "Comments");
 
         /**
          * Test with a date where a report should be generated with services

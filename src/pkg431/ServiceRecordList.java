@@ -43,8 +43,8 @@ public class ServiceRecordList implements Serializable {
      * @param member
      * @param service
      */
-    public void CaptureService(Provider provider, Member member, Service service, Date date) {
-        this.serviceRecords.add(new ServiceRecord(provider, member, service, date));
+    public void CaptureService(Provider provider, Member member, Service service, Date date, String comments) {
+        this.serviceRecords.add(new ServiceRecord(provider, member, service, date, comments));
     }
 
     /**

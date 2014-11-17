@@ -17,15 +17,17 @@ public class ServiceRecord implements Serializable {
     private Service _service;
     private Date _billDate;
     private Date _serviceDate;
+    private String _comments;
     
     /**
      * The ServiceRecord constructor, creates copies of the inputs
      * @param provider Provider to record
      * @param member Member to record
      * @param service Service to record
-     * @param serviceDate 
+     * @param serviceDate
+     * @param comments
      */
-    public ServiceRecord(Provider provider, Member member, Service service, Date serviceDate)
+    public ServiceRecord(Provider provider, Member member, Service service, Date serviceDate, String comments)
     {
         // TODO: Add a copy method to these classes
         _provider = new Provider(provider.getProviderName(),
@@ -47,6 +49,7 @@ public class ServiceRecord implements Serializable {
                 service.getServiceCost());
         _billDate = new Date();    
         _serviceDate = serviceDate;
+        _comments = comments;
     }
 
     /**
@@ -89,6 +92,13 @@ public class ServiceRecord implements Serializable {
      */
     public Date getServiceDate() {
         return _serviceDate;
+    }
+    
+    /**
+     * @return the comments
+     */
+    public String getComments(){
+        return _comments;
     }
 
 }
