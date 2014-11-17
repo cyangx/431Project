@@ -106,7 +106,7 @@ public class MemberListTester {
         /**
          * Test Delete
          */
-        System.out.println("**Testing Deleting a member**");
+        System.out.println("**Testing Delete**");
         try {
             System.out.println("**Deleting member 1**");
             myMemberList.delete(1);
