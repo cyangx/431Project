@@ -31,8 +31,9 @@ public class TerminalSelection extends javax.swing.JPanel {
     private void initComponents() {
 
         ProviderButton = new javax.swing.JButton();
-        PizzaAnonymousButton = new javax.swing.JButton();
+        PizzaAnonymousManagerButton = new javax.swing.JButton();
         SelectionLabel = new javax.swing.JLabel();
+        PizzaAnonymousOperatorButton = new javax.swing.JButton();
 
         ProviderButton.setText("Provider Terminal");
         ProviderButton.setMaximumSize(new java.awt.Dimension(159, 23));
@@ -44,31 +45,41 @@ public class TerminalSelection extends javax.swing.JPanel {
             }
         });
 
-        PizzaAnonymousButton.setText("Pizza Anonymous Terminal");
-        PizzaAnonymousButton.addActionListener(new java.awt.event.ActionListener() {
+        PizzaAnonymousManagerButton.setText("Pizza Anonymous Manager Terminal");
+        PizzaAnonymousManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PizzaAnonymousButtonActionPerformed(evt);
+                PizzaAnonymousManagerButtonActionPerformed(evt);
             }
         });
 
         SelectionLabel.setText("Select a terminal to use:");
 
+        PizzaAnonymousOperatorButton.setText("Pizza Anonymous Operator Terminal");
+        PizzaAnonymousOperatorButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PizzaAnonymousOperatorButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(PizzaAnonymousButton)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(SelectionLabel)
-                            .addGap(19, 19, 19)))
+                    .addComponent(PizzaAnonymousManagerButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(ProviderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                        .addComponent(PizzaAnonymousOperatorButton)
+                        .addGap(46, 46, 46))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ProviderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(SelectionLabel)
+                        .addGap(15, 15, 15)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,8 +89,10 @@ public class TerminalSelection extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ProviderButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(PizzaAnonymousButton)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addComponent(PizzaAnonymousManagerButton)
+                .addGap(18, 18, 18)
+                .addComponent(PizzaAnonymousOperatorButton)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -96,16 +109,20 @@ public class TerminalSelection extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ProviderButtonActionPerformed
 
-    private void PizzaAnonymousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaAnonymousButtonActionPerformed
+    private void PizzaAnonymousManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaAnonymousManagerButtonActionPerformed
         String pass = this.getPassword("Enter Admin password:");
         if (pass != null) {
             if (Security.validateAdmin(pass)) {
-                // TODO happy path
+                // TODO happy path;
             } else {
                 JOptionPane.showMessageDialog(null, "Wrong Password");
             }
         }
-    }//GEN-LAST:event_PizzaAnonymousButtonActionPerformed
+    }//GEN-LAST:event_PizzaAnonymousManagerButtonActionPerformed
+
+    private void PizzaAnonymousOperatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaAnonymousOperatorButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PizzaAnonymousOperatorButtonActionPerformed
 
     private String getPassword(String prompt) {
         String result = null;
@@ -131,7 +148,8 @@ public class TerminalSelection extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton PizzaAnonymousButton;
+    private javax.swing.JButton PizzaAnonymousManagerButton;
+    private javax.swing.JButton PizzaAnonymousOperatorButton;
     private javax.swing.JButton ProviderButton;
     private javax.swing.JLabel SelectionLabel;
     // End of variables declaration//GEN-END:variables
