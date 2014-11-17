@@ -70,7 +70,7 @@ public class ProviderList implements Serializable {
                 }
             }
         } catch (IOException ioe) {
-            System.out.println("in Catalog readObject \n" + ioe);
+            System.out.println("in ProviderList readObject \n" + ioe);
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }
