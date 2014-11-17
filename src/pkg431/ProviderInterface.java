@@ -116,7 +116,7 @@ public class ProviderInterface {
         String _state = getToken("Enter state");
         String _zipCode = getToken("Enter zip code");
 
-        Member newMember = Factory.MemberFactory.MakeMember(_name,
+        Member newMember = Factory.getInstance().MakeMember(_name,
                 _address, _city, _state, _zipCode);
 
         if (newMember == null) {

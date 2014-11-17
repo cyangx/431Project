@@ -198,7 +198,7 @@ public class AddMemberPanel extends javax.swing.JFrame {
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         // TODO add your handling code here:
         // Create a member
-        Member newMember = Factory.MemberFactory.MakeMember(_name.getText(), _address.getText(), _city.getText(), _state.getText(), _zipCode.getText());
+        Member newMember = Factory.getInstance().MakeMember(_name.getText(), _address.getText(), _city.getText(), _state.getText(), _zipCode.getText());
         // Add member to the MemberList
         // Need to check for empty strings
 

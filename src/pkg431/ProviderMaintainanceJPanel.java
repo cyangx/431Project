@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  *
  * @author Garrett
  */
-public class MemberMaintainanceJPanel extends javax.swing.JPanel {
+public class ProviderMaintainanceJPanel extends javax.swing.JPanel {
 
     private int _ID;
     private boolean _update = false;
@@ -19,7 +19,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddMemberJPanel
      */
-    public MemberMaintainanceJPanel(boolean update, int ID) {
+    public ProviderMaintainanceJPanel(boolean update, int ID) {
         initComponents();
         _update = update;
         _ID = ID;
@@ -48,6 +48,10 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
         _address = new javax.swing.JTextField();
         _city = new javax.swing.JTextField();
         DeleteButton = new javax.swing.JButton();
+        _bankName = new javax.swing.JTextField();
+        _bankNumber = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         _state.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +66,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Member:");
+        jLabel1.setText("Provider:");
 
         Add.setText("Add");
         Add.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +110,22 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
             }
         });
 
+        _bankName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _bankNameActionPerformed(evt);
+            }
+        });
+
+        _bankNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _bankNumberActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Bank Name");
+
+        jLabel8.setText("Bank Number");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,19 +143,19 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE))
+                                .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Add))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(28, 28, 28)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(_state, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(_city, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(_address, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(_name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(_state, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(_city, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(_address, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(_name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(_bankName, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(_bankNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Add))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DeleteButton)
                         .addContainerGap())
@@ -173,9 +193,17 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(_bankName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(_bankNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
                 .addComponent(Add)
-                .addContainerGap(89, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,16 +217,21 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
         if (_update) {
-            MemberList.instance().updateMember(_ID,
+            ProviderList.instance().update(_ID,
                     this._name.getText(), this._address.getText(),
                     this._city.getText(), this._state.getText(),
                     this._zipCode.getText());
+            ProviderList.instance().updateBankAccount(_ID,
+                    this._bankName.getText(), this._bankNumber.getText());
             JOptionPane.showMessageDialog(null, "Updated.");
         } else {
-            // Create a member
-            Member newMember = Factory.getInstance().MakeMember(_name.getText(), _address.getText(), _city.getText(), _state.getText(), _zipCode.getText());
-            // Add member to the MemberList
-            if (MemberList.instance().addMember(newMember)) {
+            // Create a provider
+            Provider newProvider = Factory.getInstance().MakeProvider(
+                    _name.getText(), _address.getText(), _city.getText(),
+                    _state.getText(), _zipCode.getText(),
+                    this._bankName.getText(), this._bankNumber.getText());
+            // Add provider to the ProviderList
+            if (ProviderList.instance().addProvider(newProvider)) {
                 JOptionPane.showMessageDialog(null, "Added.");
                 ResetView();
             }
@@ -224,8 +257,16 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
             MemberList.instance().delete(_ID);
             ResetView();
         }
-        
+
     }//GEN-LAST:event_DeleteButtonActionPerformed
+
+    private void _bankNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__bankNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event__bankNameActionPerformed
+
+    private void _bankNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__bankNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event__bankNumberActionPerformed
     private void ResetView() {
         _ID = 0;
         _update = false;
@@ -234,23 +275,25 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
         _city.setText(null);
         _state.setText(null);
         _zipCode.setText(null);
+        this._bankName.setText(null);
+        this._bankNumber.setText(null);
         SetView();
     }
 
     private void SetView() {
         if (_update) {
             this.Add.setText("Update");
-            Member myMember = MemberList.instance().getMember(_ID);
-            if (null != myMember) {
-                this._address.setText(myMember.getAddress());
-                this._city.setText(myMember.getCity());
-                this._name.setText(myMember.getName());
-                this._state.setText(myMember.getState());
-                this._zipCode.setText(myMember.getZipcode());
+            Provider myProvider = ProviderList.instance().getProvider(_ID);
+            if (null != myProvider) {
+                this._address.setText(myProvider.getAddress());
+                this._city.setText(myProvider.getCity());
+                this._name.setText(myProvider.getProviderName());
+                this._state.setText(myProvider.getState());
+                this._zipCode.setText(myProvider.getZipcode());
+                this._bankName.setText(myProvider.getBankAccountName());
+                this._bankNumber.setText(myProvider.getBankAccountNum());
             }
-        }
-        else
-        {
+        } else {
             this.Add.setText("Add");
         }
         this.DeleteButton.setVisible(_update);
@@ -260,6 +303,8 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
     private javax.swing.JButton Add;
     private javax.swing.JButton DeleteButton;
     private javax.swing.JTextField _address;
+    private javax.swing.JTextField _bankName;
+    private javax.swing.JTextField _bankNumber;
     private javax.swing.JTextField _city;
     private javax.swing.JTextField _name;
     private javax.swing.JTextField _state;
@@ -270,5 +315,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

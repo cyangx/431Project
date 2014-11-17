@@ -236,7 +236,7 @@ public class AddProviderPanel extends javax.swing.JFrame {
         //String Name, String Address, String City, String State, String ZipCode, String bankName, String accNumber
         // Need to check for empty strings
 
-        Provider newProvider = Factory.ProviderFactory.MakeProvider(
+        Provider newProvider = Factory.getInstance().MakeProvider(
                 _name.getText(), _address.getText(), _city.getText(),
                 _state.getText(), _zipCode.getText(), _bankName.getText(),
                 _accountNumber.getText());

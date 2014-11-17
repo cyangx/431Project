@@ -24,14 +24,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="UpdateServiceButton" min="-2" pref="179" max="-2" attributes="0"/>
+                  <Component id="AddServiceButton" min="-2" pref="179" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="AddServiceButton" min="-2" pref="179" max="-2" attributes="0"/>
+                          <Component id="AddProviderButton" min="-2" pref="179" max="-2" attributes="0"/>
                           <Component id="UpdateMemberButton" min="-2" pref="179" max="-2" attributes="0"/>
                           <Component id="UpdateProviderButton" alignment="1" min="-2" pref="179" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="AddProviderButton" alignment="1" min="-2" pref="179" max="-2" attributes="0"/>
+                      <Component id="UpdateServiceButton" alignment="1" min="-2" pref="179" max="-2" attributes="0"/>
                       <Component id="AddMemberButton" min="-2" pref="179" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -49,13 +49,13 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="UpdateMemberButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="AddServiceButton" min="-2" max="-2" attributes="0"/>
+              <Component id="AddProviderButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="UpdateProviderButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Component id="UpdateServiceButton" min="-2" max="-2" attributes="0"/>
+              <Component id="AddServiceButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="AddProviderButton" min="-2" max="-2" attributes="0"/>
+              <Component id="UpdateServiceButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="61" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -78,12 +78,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateMemberButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AddProviderButton">
+    <Component class="javax.swing.JButton" name="UpdateServiceButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Update Service"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddProviderButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateServiceButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="UpdateProviderButton">
@@ -94,12 +94,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateProviderButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="AddServiceButton">
+    <Component class="javax.swing.JButton" name="AddProviderButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Provider"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddServiceButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddProviderButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="OperatorMenuLabel">
@@ -110,12 +110,12 @@
         <Property name="text" type="java.lang.String" value="Operator Menu"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="UpdateServiceButton">
+    <Component class="javax.swing.JButton" name="AddServiceButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Add Service"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateServiceButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddServiceButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

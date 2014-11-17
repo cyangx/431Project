@@ -13,8 +13,8 @@ public class FactoryTester {
         /**
          * Test the member
          */
-        Member member1 = Factory.MemberFactory.MakeMember("Name", "Addr", "City", "St", "11111");
-        Member member2 = Factory.MemberFactory.MakeMember("Name", "Addr", "City", "St", "11111");
+        Member member1 = Factory.getInstance().MakeMember("Name", "Addr", "City", "St", "11111");
+        Member member2 = Factory.getInstance().MakeMember("Name", "Addr", "City", "St", "11111");
         if (member1.getID() == 0 && member2.getID() == 1
                 && (member1.getName() == null ? false : member1.getName().equals(member2.getName()))
                 && (member1.getAddress() == null ? false : member1.getAddress().equals(member2.getAddress()))
@@ -29,8 +29,8 @@ public class FactoryTester {
         /**
          * Test provider
          */
-        Provider provider1 = Factory.ProviderFactory.MakeProvider("Name", "Addr", "City", "St", "11111", "US BANK", "123456");
-        Provider provider2 = Factory.ProviderFactory.MakeProvider("Name", "Addr", "City", "St", "11111", "US BANK", "123456");
+        Provider provider1 = Factory.getInstance().MakeProvider("Name", "Addr", "City", "St", "11111", "US BANK", "123456");
+        Provider provider2 = Factory.getInstance().MakeProvider("Name", "Addr", "City", "St", "11111", "US BANK", "123456");
         if (provider1.getId() == 0 && provider2.getId() == 1
                 && (provider1.getProviderName() == null ? false : provider1.getProviderName().equals(provider2.getProviderName()))
                 && (provider1.getAddress() == null ? false : provider1.getAddress().equals(provider2.getAddress()))
@@ -47,8 +47,8 @@ public class FactoryTester {
         /**
          * Test services
          */
-        Service service1 = Factory.ServiceFactory.MakeService("Service", 50.00);
-        Service service2 = Factory.ServiceFactory.MakeService("Service", 50.00);
+        Service service1 = Factory.getInstance().MakeService("Service", 50.00);
+        Service service2 = Factory.getInstance().MakeService("Service", 50.00);
         if (service1.getID() == 0 && service2.getID() == 1
                 && (service1.getServiceName() == null ? false : service1.getServiceName().equals(service2.getServiceName()))
                 && service1.getServiceCost() == service2.getServiceCost()) {

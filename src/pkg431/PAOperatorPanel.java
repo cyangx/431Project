@@ -38,11 +38,11 @@ public class PAOperatorPanel extends javax.swing.JPanel {
 
         AddMemberButton = new javax.swing.JButton();
         UpdateMemberButton = new javax.swing.JButton();
-        AddProviderButton = new javax.swing.JButton();
-        UpdateProviderButton = new javax.swing.JButton();
-        AddServiceButton = new javax.swing.JButton();
-        OperatorMenuLabel = new javax.swing.JLabel();
         UpdateServiceButton = new javax.swing.JButton();
+        UpdateProviderButton = new javax.swing.JButton();
+        AddProviderButton = new javax.swing.JButton();
+        OperatorMenuLabel = new javax.swing.JLabel();
+        AddServiceButton = new javax.swing.JButton();
 
         AddMemberButton.setText("Add Member");
         AddMemberButton.addActionListener(new java.awt.event.ActionListener() {
@@ -58,10 +58,10 @@ public class PAOperatorPanel extends javax.swing.JPanel {
             }
         });
 
-        AddProviderButton.setText("Update Service");
-        AddProviderButton.addActionListener(new java.awt.event.ActionListener() {
+        UpdateServiceButton.setText("Update Service");
+        UpdateServiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddProviderButtonActionPerformed(evt);
+                UpdateServiceButtonActionPerformed(evt);
             }
         });
 
@@ -72,20 +72,20 @@ public class PAOperatorPanel extends javax.swing.JPanel {
             }
         });
 
-        AddServiceButton.setText("Add Provider");
-        AddServiceButton.addActionListener(new java.awt.event.ActionListener() {
+        AddProviderButton.setText("Add Provider");
+        AddProviderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddServiceButtonActionPerformed(evt);
+                AddProviderButtonActionPerformed(evt);
             }
         });
 
         OperatorMenuLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         OperatorMenuLabel.setText("Operator Menu");
 
-        UpdateServiceButton.setText("Add Service");
-        UpdateServiceButton.addActionListener(new java.awt.event.ActionListener() {
+        AddServiceButton.setText("Add Service");
+        AddServiceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UpdateServiceButtonActionPerformed(evt);
+                AddServiceButtonActionPerformed(evt);
             }
         });
 
@@ -100,13 +100,13 @@ public class PAOperatorPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(UpdateServiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddServiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(AddServiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AddProviderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(UpdateMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(UpdateProviderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(AddProviderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UpdateServiceButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(AddMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(121, Short.MAX_VALUE))
         );
@@ -120,30 +120,32 @@ public class PAOperatorPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(UpdateMemberButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AddServiceButton)
+                .addComponent(AddProviderButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(UpdateProviderButton)
                 .addGap(9, 9, 9)
-                .addComponent(UpdateServiceButton)
+                .addComponent(AddServiceButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AddProviderButton)
+                .addComponent(UpdateServiceButton)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void AddMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMemberButtonActionPerformed
-        // TODO add your handling code here:
-
         String[] options = new String[]{"Back"};
         JPanel memberPanel = new MemberMaintainanceJPanel(false, 0);
         JOptionPane.showOptionDialog(null, memberPanel,
-                "Test", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                "Member Maintainance", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
                 options, options[0]);
     }//GEN-LAST:event_AddMemberButtonActionPerformed
 
-    private void AddServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddServiceButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddServiceButtonActionPerformed
+    private void AddProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProviderButtonActionPerformed
+        String[] options = new String[]{"Back"};
+        JPanel providerPanel = new ProviderMaintainanceJPanel(false, 0);
+        JOptionPane.showOptionDialog(null, providerPanel,
+                "Provider Maintainance", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                options, options[0]);
+    }//GEN-LAST:event_AddProviderButtonActionPerformed
 
     private void UpdateMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateMemberButtonActionPerformed
         // TODO add your handling code here:
@@ -155,7 +157,7 @@ public class PAOperatorPanel extends javax.swing.JPanel {
                     String[] options = new String[]{"Back"};
                     JPanel memberPanel = new MemberMaintainanceJPanel(true, realID);
                     JOptionPane.showOptionDialog(null, memberPanel,
-                            "Test", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                            "Member Maintainance", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
                             options, options[0]);
                 } else {
                     JOptionPane.showMessageDialog(null, "ID does not exist");
@@ -170,13 +172,13 @@ public class PAOperatorPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_UpdateProviderButtonActionPerformed
 
-    private void UpdateServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateServiceButtonActionPerformed
+    private void AddServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddServiceButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UpdateServiceButtonActionPerformed
+    }//GEN-LAST:event_AddServiceButtonActionPerformed
 
-    private void AddProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProviderButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AddProviderButtonActionPerformed
+    private void UpdateServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateServiceButtonActionPerformed
+        
+    }//GEN-LAST:event_UpdateServiceButtonActionPerformed
 
     private String messagePrompt(String prompt) {
         String result = null;
