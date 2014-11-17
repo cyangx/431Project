@@ -17,6 +17,7 @@ public class Program {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(new TerminalSelection());
         f.pack();
+        f.setLocationRelativeTo(null);
         f.setVisible(true);
     }
     

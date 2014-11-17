@@ -1,5 +1,12 @@
 package pkg431;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,6 +17,8 @@ package pkg431;
  * @author Cha
  */
 public class PAOperatorPanel extends javax.swing.JPanel {
+
+    private final static int ID_SIZE = 9;
 
     /**
      * Creates new form ProviderPanel
@@ -27,85 +36,173 @@ public class PAOperatorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        AddMemberButton = new javax.swing.JButton();
+        UpdateMemberButton = new javax.swing.JButton();
+        AddProviderButton = new javax.swing.JButton();
+        UpdateProviderButton = new javax.swing.JButton();
+        AddServiceButton = new javax.swing.JButton();
+        OperatorMenuLabel = new javax.swing.JLabel();
+        UpdateServiceButton = new javax.swing.JButton();
 
-        jButton1.setText("Add Member");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddMemberButton.setText("Add Member");
+        AddMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddMemberButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Validate Member");
-
-        jButton3.setText("Remove Service");
-
-        jButton4.setText("Update Service");
-
-        jButton5.setText("Add Service");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        UpdateMemberButton.setText("Update Member");
+        UpdateMemberButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                UpdateMemberButtonActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Provider Menu");
+        AddProviderButton.setText("Update Service");
+        AddProviderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddProviderButtonActionPerformed(evt);
+            }
+        });
+
+        UpdateProviderButton.setText("Update Provider");
+        UpdateProviderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateProviderButtonActionPerformed(evt);
+            }
+        });
+
+        AddServiceButton.setText("Add Provider");
+        AddServiceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddServiceButtonActionPerformed(evt);
+            }
+        });
+
+        OperatorMenuLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        OperatorMenuLabel.setText("Operator Menu");
+
+        UpdateServiceButton.setText("Add Service");
+        UpdateServiceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateServiceButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(OperatorMenuLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141))
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(UpdateServiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(AddServiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpdateProviderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(AddProviderButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(AddMemberButton, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addGap(25, 25, 25)
+                .addComponent(OperatorMenuLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addComponent(AddMemberButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(UpdateMemberButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AddServiceButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(UpdateProviderButton)
+                .addGap(9, 9, 9)
+                .addComponent(UpdateServiceButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AddProviderButton)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void AddMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddMemberButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String[] options = new String[]{"Back"};
+        JPanel memberPanel = new MemberMaintainanceJPanel(false, 0);
+        JOptionPane.showOptionDialog(null, memberPanel,
+                "Test", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                options, options[0]);
+    }//GEN-LAST:event_AddMemberButtonActionPerformed
+
+    private void AddServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddServiceButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_AddServiceButtonActionPerformed
 
+    private void UpdateMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateMemberButtonActionPerformed
+        // TODO add your handling code here:
+        String id = this.messagePrompt("Member ID");
+        if (id != null) {
+            try {
+                int realID = Integer.parseInt(id);
+                if (MemberList.instance().validate(realID)) {
+                    String[] options = new String[]{"Back"};
+                    JPanel memberPanel = new MemberMaintainanceJPanel(true, realID);
+                    JOptionPane.showOptionDialog(null, memberPanel,
+                            "Test", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                            options, options[0]);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ID does not exist");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Invalid ID");
+            }
+        }
+    }//GEN-LAST:event_UpdateMemberButtonActionPerformed
+
+    private void UpdateProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProviderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateProviderButtonActionPerformed
+
+    private void UpdateServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateServiceButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UpdateServiceButtonActionPerformed
+
+    private void AddProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProviderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddProviderButtonActionPerformed
+
+    private String messagePrompt(String prompt) {
+        String result = null;
+        JPanel panel = new JPanel();
+        JLabel label = new JLabel(prompt);
+        JTextField input = new JTextField(ID_SIZE);
+        panel.add(label);
+        panel.add(input);
+        String[] options = new String[]{"OK", "Cancel"};
+        int option = JOptionPane.showOptionDialog(null, panel, prompt,
+                JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE,
+                null, options, options[1]);
+        if (option == 0) // pressing OK button
+        {
+            result = input.getText();
+        }
+        return result;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton AddMemberButton;
+    private javax.swing.JButton AddProviderButton;
+    private javax.swing.JButton AddServiceButton;
+    private javax.swing.JLabel OperatorMenuLabel;
+    private javax.swing.JButton UpdateMemberButton;
+    private javax.swing.JButton UpdateProviderButton;
+    private javax.swing.JButton UpdateServiceButton;
     // End of variables declaration//GEN-END:variables
 }

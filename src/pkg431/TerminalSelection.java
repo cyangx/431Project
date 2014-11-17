@@ -98,14 +98,18 @@ public class TerminalSelection extends javax.swing.JPanel {
 
     private void ProviderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProviderButtonActionPerformed
         String input = JOptionPane.showInputDialog(this, "Enter Provider ID:");
-        try {
-            if (ProviderList.instance().validate(Integer.parseInt(input))) {
-                // TODO Happy path
-            } else {
-                JOptionPane.showMessageDialog(null, "Provider does not exist");
+        if (input == null || (input != null && ("".equals(input)))) {
+            // they hit cancel
+        } else {
+            try {
+                if (ProviderList.instance().validate(Integer.parseInt(input))) {
+                    // TODO Happy path
+                } else {
+                    JOptionPane.showMessageDialog(null, "Provider does not exist");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Invalid ID");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_ProviderButtonActionPerformed
 
@@ -121,7 +125,19 @@ public class TerminalSelection extends javax.swing.JPanel {
     }//GEN-LAST:event_PizzaAnonymousManagerButtonActionPerformed
 
     private void PizzaAnonymousOperatorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PizzaAnonymousOperatorButtonActionPerformed
-        // TODO add your handling code here:
+        String pass = this.getPassword("Enter Admin password:");
+        if (pass != null) {
+            if (Security.validateAdmin(pass)) {
+                // TODO happy path;
+                String[] options = new String[]{"Back"};
+                JPanel operatorMenu = new PAOperatorPanel();
+                JOptionPane.showOptionDialog(null, operatorMenu,
+                        "Test", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                        options, options[0]);
+            } else {
+                JOptionPane.showMessageDialog(null, "Wrong Password");
+            }
+        }
     }//GEN-LAST:event_PizzaAnonymousOperatorButtonActionPerformed
 
     private String getPassword(String prompt) {
@@ -138,10 +154,7 @@ public class TerminalSelection extends javax.swing.JPanel {
         if (option == 0) // pressing OK button
         {
             char[] password = pass.getPassword();
-
             result = new String(password);
-            System.out.println(result);
-
         }
 
         return result;

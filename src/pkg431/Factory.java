@@ -8,9 +8,9 @@ package pkg431;
 public class Factory {
     
     // TODO: Possibly change ID's to strings, ensuring leading zeros are added to fill full size
-    private static int _memberID = 0; // ID for member creation
-    private static int _providerID = 0; // ID for provider creation
-    private static int _serviceID = 0; // ID for service creation
+    private static int _memberID = 1; // ID for member creation
+    private static int _providerID = 1; // ID for provider creation
+    private static int _serviceID = 1; // ID for service creation
     
     /**
     * This class is used to create Members
