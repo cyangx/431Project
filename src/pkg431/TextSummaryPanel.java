@@ -29,20 +29,17 @@ public class TextSummaryPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        BodyText = new javax.swing.JTextArea();
         SubjectLabel = new javax.swing.JLabel();
-
-        BodyText.setBackground(new java.awt.Color(0, 0, 0));
-        BodyText.setColumns(20);
-        BodyText.setForeground(new java.awt.Color(255, 255, 255));
-        BodyText.setLineWrap(true);
-        BodyText.setRows(5);
-        BodyText.setEnabled(false);
-        jScrollPane1.setViewportView(BodyText);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        BodyText = new javax.swing.JTextPane();
 
         SubjectLabel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         SubjectLabel.setText("Text");
+
+        BodyText.setBackground(new java.awt.Color(0, 0, 0));
+        BodyText.setForeground(new java.awt.Color(255, 255, 255));
+        BodyText.setEnabled(false);
+        jScrollPane1.setViewportView(BodyText);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -51,9 +48,11 @@ public class TextSummaryPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SubjectLabel)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(SubjectLabel)
+                        .addGap(0, 334, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,7 +67,7 @@ public class TextSummaryPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea BodyText;
+    private javax.swing.JTextPane BodyText;
     private javax.swing.JLabel SubjectLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

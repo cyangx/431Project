@@ -61,7 +61,7 @@ public class AccountingProcedureTester {
         /**
          * Test generate accounts payable
          */
-        AccountingProcedure.instance().generateAccountingProcedureReports();
+        AccountingProcedure.instance().generateAccountsPayableReports();
         
         /**
          * Test the reseting of the scheduled time
