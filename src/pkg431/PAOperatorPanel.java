@@ -189,11 +189,31 @@ public class PAOperatorPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_UpdateProviderButtonActionPerformed
 
     private void AddServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddServiceButtonActionPerformed
-        // TODO add your handling code here:
+        String[] options = new String[]{"Back"};
+        JPanel servicePanel = new ServiceMaintainanceJPanel(false, 0);
+        JOptionPane.showOptionDialog(null, servicePanel,
+                "Provider Maintainance", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                options, options[0]);
     }//GEN-LAST:event_AddServiceButtonActionPerformed
 
     private void UpdateServiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateServiceButtonActionPerformed
-        
+        String id = this.messagePrompt("Service ID");
+        if (id != null) {
+            try {
+                int realID = Integer.parseInt(id);
+                if (ServiceList.instance().validate(realID)) {
+                    String[] options = new String[]{"Back"};
+                    JPanel servicePanel = new ServiceMaintainanceJPanel(true, realID);
+                    JOptionPane.showOptionDialog(null, servicePanel,
+                            "Service Maintainance", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                            options, options[0]);
+                } else {
+                    JOptionPane.showMessageDialog(null, "ID does not exist");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Invalid ID");
+            }
+        }
     }//GEN-LAST:event_UpdateServiceButtonActionPerformed
 
     private String messagePrompt(String prompt) {

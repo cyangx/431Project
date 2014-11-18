@@ -17,7 +17,7 @@ public class ProviderMaintainanceJPanel extends javax.swing.JPanel {
     private boolean _update = false;
 
     /**
-     * Creates new form AddMemberJPanel
+     * Creates new form Provider Panel
      */
     public ProviderMaintainanceJPanel(boolean update, int ID) {
         initComponents();

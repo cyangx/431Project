@@ -23,6 +23,7 @@ public class LoadTester {
         SystemData.load();
         MemberList.load();
         ProviderList.load();
+        ServiceList.load();
         Factory.load();
 
         /**

@@ -14,6 +14,7 @@ public class Program {
     public static void main(String[] args) {
         MemberList.load();
         Factory.load();
+        ServiceList.load();
         ProviderList.load();
         // TODO code application logic here
         JFrame f = new JFrame("Pizza Anonymous");
