@@ -20,7 +20,7 @@ public class LoadTester {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SystemData.load();
+        ServiceRecordList.load();
         MemberList.load();
         ProviderList.load();
         ServiceList.load();

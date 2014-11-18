@@ -16,6 +16,7 @@ public class Program {
         Factory.load();
         ServiceList.load();
         ProviderList.load();
+        ServiceRecordList.load();
         // TODO code application logic here
         JFrame f = new JFrame("Pizza Anonymous");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

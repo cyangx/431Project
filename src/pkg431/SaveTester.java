@@ -63,8 +63,6 @@ public class SaveTester {
         /**
          * SAVE
          */
-        SystemData.save();       
-        //MemberList.save();
         
     }
     
