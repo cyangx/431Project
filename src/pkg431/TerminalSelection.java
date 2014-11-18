@@ -103,7 +103,11 @@ public class TerminalSelection extends javax.swing.JPanel {
         } else {
             try {
                 if (ProviderList.instance().validate(Integer.parseInt(input))) {
-                    // TODO Happy path
+                    String[] options = new String[]{"Back"};
+                    JPanel operatorMenu = new ProviderPanel(Integer.parseInt(input));
+                    JOptionPane.showOptionDialog(null, operatorMenu,
+                            "Test", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                            options, options[0]);
                 } else {
                     JOptionPane.showMessageDialog(null, "Provider does not exist");
                 }
@@ -128,7 +132,7 @@ public class TerminalSelection extends javax.swing.JPanel {
         String pass = this.getPassword("Enter Admin password:");
         if (pass != null) {
             if (Security.validateAdmin(pass)) {
-                // TODO happy path;
+
                 String[] options = new String[]{"Back"};
                 JPanel operatorMenu = new PAOperatorPanel();
                 JOptionPane.showOptionDialog(null, operatorMenu,
