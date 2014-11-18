@@ -14,6 +14,7 @@ public class Reporting {
 
     private final static String serviceDateFormat = "MM-dd-yyy";
     private final static String billDateFormat = "MM-dd-yyy hh:mm:ss";
+    private final static String EFT_PATH = "./EFT/";
 
     /**
      * Generates a provider report for the provider with the specified ID number
@@ -241,7 +242,7 @@ public class Reporting {
                     }
                 }
             }
-            // TODO Print EFT
+           
             printEFT(provider.getProviderName(), provider.getId(), provider.getBankAccountName(), provider.getBankAccountNum(), subTotalFee);
             
             //  prints the sub total for this provider
@@ -267,7 +268,7 @@ public class Reporting {
     {
         PrintWriter out;
         try {
-            out = new PrintWriter(name+number + ".txt");
+            out = new PrintWriter(EFT_PATH + name + "_" + number + ".txt");
             out.print(name + ", " + number + ", " + bank + ", " + bankNum + ", " + Amount);
             out.close();
         } catch (FileNotFoundException ex) {

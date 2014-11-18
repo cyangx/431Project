@@ -14,7 +14,7 @@ import java.util.logging.*;
  *
  * @author Garrett
  */
-public class AccountingProcedure implements Serializable {
+public class AccountingProcedure {
 
     private static final long serialVersionUID = 1L;
     private static final String FILE_PATH = "./SaveFiles/AccountingProcedure";
@@ -201,7 +201,6 @@ public class AccountingProcedure implements Serializable {
         generateReportTimer = new Timer();
         generateReportTimer.scheduleAtFixedRate(reportTask, dt, week);
         this.dateSet = dt.getTime();
-        AccountingProcedure.save();
     }
      public Date getReportTime()
      {
@@ -231,88 +230,6 @@ public class AccountingProcedure implements Serializable {
         } catch (IOException ex) {
             Logger.getLogger(AccountingProcedure.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-        private void writeObject(java.io.ObjectOutputStream output) {
-        try {
-            output.defaultWriteObject();
-            output.writeObject(accountingProcedure);
-        } catch (IOException ioe) {
-            System.out.println(ioe);
-        }
-    }
-
-    private void readObject(java.io.ObjectInputStream input) {
-        try {
-            if (accountingProcedure != null) {
-                return;
-            } else {
-                input.defaultReadObject();
-                if (accountingProcedure == null) {
-                    accountingProcedure = (AccountingProcedure) input.readObject();
-                } else {
-                    input.readObject();
-                }
-            }
-        } catch (IOException ioe) {
-            System.out.println("in Accounting Procedure readObject \n" + ioe);
-        } catch (ClassNotFoundException cnfe) {
-            cnfe.printStackTrace();
-        }
-    }
-
-    /**
-     * Save the systemData object structure to a file, for later deserialization
-     *
-     * @return True if the serialization completed successfully
-     */
-    public static boolean save() {
-        try {
-            // First off, create the stream used for writing bytes
-            FileOutputStream file = new FileOutputStream(FILE_PATH);
-            ObjectOutputStream out = new ObjectOutputStream(file);
-
-            // Then write the instance out to the file
-            out.writeObject(accountingProcedure);
-            out.close();
-
-            // Can return true if this has happened
-            return true;
-        } catch (IOException ex) {
-            ex.printStackTrace();
-
-            // An exception occuring means something was not successful
-            return false;
-        }
-    }
-
-    /**
-     * Load (deserialize) the saved systemData and related objects from the
-     * saved data file
-     *
-     * @return The instance that was created from loading, null if errored
-     */
-    public static AccountingProcedure load() {
-        File f = new File(FILE_PATH);
-        if (f.exists() && !f.isDirectory()) {
-            try {
-
-                // Create a reference to the file to read in
-                FileInputStream file = new FileInputStream(FILE_PATH);
-                ObjectInputStream in = new ObjectInputStream(file);
-
-                // DO IT!!!!
-                in.readObject();
-                in.close();
-                AccountingProcedure.instance().setReportTime(AccountingProcedure.instance().getReportTime());
-                // And return the instance to the memberList
-                return accountingProcedure;
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                return null;
-            }
-        }
-        return null;
     }
     
 

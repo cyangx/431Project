@@ -62,12 +62,6 @@ public class SaveTester {
         ServiceRecordList.getInstance().CaptureService(myProvider2, myMember2, myService, Now, "More Comments");
         ServiceRecordList.getInstance().CaptureService(myProvider, myMember, myService, Now, "Comments");
 
-        /**
-         * Edit Accounting Procedure
-         */
-        Date today = new Date();
-        Date tomorrow = new Date(today.getTime() + (60000 * 2));
-        AccountingProcedure.instance().setReportTime(tomorrow);
         System.exit(0);
     }
 

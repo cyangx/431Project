@@ -25,8 +25,6 @@ public class LoadTester {
         ProviderList.load();
         ServiceList.load();
         Factory.load();
-        AccountingProcedure.load();
-
         /**
          * Provider Test
          */
@@ -135,23 +133,7 @@ public class LoadTester {
             System.out.println("FACTORY FAILED");
         }
 
-        /**
-         * Load Accounting Procedure
-         */
-        if (AccountingProcedure.instance().getReportTime() != null) {
-            System.out.println("AP PASSED");
-        } else {
-            System.out.println("AP FAILED");
-        }
-        
-        try {
-        Thread.sleep(1000 * 60 * 3);
-        } catch (InterruptedException ex) {}
-        
         System.exit(0);
-        
-        }
-    
-        
 
+    }
 }
