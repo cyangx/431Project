@@ -63,7 +63,7 @@ public class ProviderPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Provider System");
 
-        UpdateButton.setText("Update Bank Information");
+        UpdateButton.setText("Update Provider Information");
         UpdateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UpdateButtonActionPerformed(evt);
@@ -156,7 +156,21 @@ public class ProviderPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ProviderDirectoryButtonActionPerformed
 
     private void UpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateButtonActionPerformed
-        // TODO generate a provider report
+
+        try {
+            if (ProviderList.instance().validate(pID)) {
+                String[] options = new String[]{"Back"};
+                JPanel providerPanel = new ProviderUpdateJPanel(pID);
+                JOptionPane.showOptionDialog(null, providerPanel,
+                        "Provider Maintainance", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                        options, options[0]);
+            } else {
+                JOptionPane.showMessageDialog(null, "ID does not exist");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Invalid ID");
+        }
+
     }//GEN-LAST:event_UpdateButtonActionPerformed
 
 

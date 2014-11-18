@@ -86,7 +86,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="UpdateButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Update Bank Information"/>
+        <Property name="text" type="java.lang.String" value="Update Provider Information"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpdateButtonActionPerformed"/>
