@@ -254,7 +254,7 @@ public class ProviderMaintainanceJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete member?", "Delete?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
-            MemberList.instance().delete(_ID);
+            ProviderList.instance().delete(_ID);
             ResetView();
         }
 
