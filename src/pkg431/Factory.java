@@ -18,25 +18,20 @@ public class Factory implements Serializable {
     // TODO: Possibly change ID's to strings, ensuring leading zeros are added to fill full size
     private static final long serialVersionUID = 1L;
     private static final String FILE_PATH = "./SaveFiles/Factory";
-    private int _memberID = 1; // ID for member creation
-    private int _providerID = 1; // ID for provider creation
-    private int _serviceID = 1; // ID for service creation
+    private int _memberID; // ID for member creation
+    private int _providerID; // ID for provider creation
+    private int _serviceID; // ID for service creation
     private static Factory _factory;
-    
-    private Factory()
-    {
-        
+
+    private Factory() {
+        _memberID = 1; // ID for member creation
+        _providerID = 1; // ID for provider creation
+        _serviceID = 1; // ID for service creation
     }
-    
-    public static Factory getInstance()
-    {
-        if(_factory == null)
-        {
-            Factory.load();
-            if(_factory == null)
-            {
-                _factory = new Factory();
-            }
+
+    public static Factory getInstance() {
+        if (_factory == null) {
+            _factory = new Factory();
         }
         return _factory;
     }
@@ -92,12 +87,40 @@ public class Factory implements Serializable {
         return result;
     }
 
+    private void writeObject(java.io.ObjectOutputStream output) {
+        try {
+            output.defaultWriteObject();
+            output.writeObject(_factory);
+        } catch (IOException ioe) {
+            System.out.println(ioe);
+        }
+    }
+
+    private void readObject(java.io.ObjectInputStream input) {
+        try {
+            if (_factory != null) {
+                return;
+            } else {
+                input.defaultReadObject();
+                if (_factory == null) {
+                    _factory = (Factory) input.readObject();
+                } else {
+                    input.readObject();
+                }
+            }
+        } catch (IOException ioe) {
+            System.out.println("in Factory readObject \n" + ioe);
+        } catch (ClassNotFoundException cnfe) {
+            cnfe.printStackTrace();
+        }
+    }
+
     /**
      * Save the systemData object structure to a file, for later deserialization
      *
      * @return True if the serialization completed successfully
      */
-    private static boolean save() {
+    public static boolean save() {
         try {
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
@@ -123,7 +146,7 @@ public class Factory implements Serializable {
      *
      * @return The instance that was created from loading, null if errored
      */
-    private static Factory load() {
+    public static Factory load() {
         File f = new File(FILE_PATH);
         if (f.exists() && !f.isDirectory()) { /* do something */
 

@@ -5,6 +5,7 @@
  */
 package pkg431;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,6 +19,8 @@ public class SaveTester {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        File f = new File("./SaveFiles/SystemData");
+        if(f.exists() && !f.isDirectory()) { f.delete(); }
         SystemData.instance();
         
         Calendar cal = Calendar.getInstance();
@@ -25,12 +28,12 @@ public class SaveTester {
         Date eightDaysAgo = cal.getTime();
         Date Now = new Date();
         
-        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "Bank", "123");
-        Provider myProvider2 = new Provider("Test Name2", 2, "Test Address2", "St. Croix", "WI", "56377", "Bank", "123");
-        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
-        Member myMember2 = new Member("Test Name2", 2, "Test Address2", "St. Croix", "WI", "66345");
-        Service myService = new Service("Test Name", 1, 500.59);
-        Service myService2 = new Service("Test Name2", 2, 50.01);
+        Provider myProvider = Factory.getInstance().MakeProvider("Test Name", "Test Address", "St. Cloud", "MN", "56301", "Bank", "123");
+        Provider myProvider2 = Factory.getInstance().MakeProvider("Test Name2", "Test Address2", "St. Croix", "WI", "56377", "Bank", "123");
+        Member myMember = Factory.getInstance().MakeMember("Test Name", "Test Address", "St. Cloud", "MN", "56301");
+        Member myMember2 = Factory.getInstance().MakeMember("Test Name2", "Test Address2", "St. Croix", "WI", "66345");
+        Service myService = Factory.getInstance().MakeService("Test Name", 500.59);
+        Service myService2 = Factory.getInstance().MakeService("Test Name2", 50.01);
         
         /**
          * Add Providers
@@ -61,6 +64,7 @@ public class SaveTester {
          * SAVE
          */
         SystemData.save();       
+        //MemberList.save();
         
     }
     

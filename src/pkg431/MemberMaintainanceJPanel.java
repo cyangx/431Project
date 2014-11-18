@@ -222,9 +222,9 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete member?", "Delete?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             MemberList.instance().delete(_ID);
+            
             ResetView();
-        }
-        
+        }   
     }//GEN-LAST:event_DeleteButtonActionPerformed
     private void ResetView() {
         _ID = 0;

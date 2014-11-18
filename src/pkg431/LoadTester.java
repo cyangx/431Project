@@ -21,6 +21,8 @@ public class LoadTester {
      */
     public static void main(String[] args) {
         SystemData.load();
+        MemberList.load();
+        Factory.load();
 
         /**
          * Provider Test
@@ -117,6 +119,19 @@ public class LoadTester {
             }
         } else {
             System.out.println("SERVICE_RECORD FAILED");
+        }
+        
+        /** Test Factory
+         * 
+         */
+        Member test = Factory.getInstance().MakeMember("", "", "", "", "");
+        if(test != null && test.getID() == 3)
+        {
+            System.out.println("FACTORY PASSED");
+        }
+        else
+        {
+            System.out.println("FACTORY FAILED");
         }
     }
 

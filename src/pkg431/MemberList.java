@@ -20,10 +20,7 @@ public class MemberList implements Serializable {
 
     public static MemberList instance() {
         if (memberList == null) {
-            MemberList.load(); //try loading
-            if (memberList == null) {
-                return (memberList = new MemberList());
-            }
+            return (memberList = new MemberList());
         }
         return memberList;
     }
@@ -103,7 +100,7 @@ public class MemberList implements Serializable {
      *
      * @return True if the serialization completed successfully
      */
-    private static boolean save() {
+    public static boolean save() {
         try {
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
@@ -129,10 +126,9 @@ public class MemberList implements Serializable {
      *
      * @return The instance that was created from loading, null if errored
      */
-    private static MemberList load() {
+    public static MemberList load() {
         File f = new File(FILE_PATH);
-        if (f.exists() && !f.isDirectory()) { /* do something */
-
+        if (f.exists() && !f.isDirectory()) {
             try {
 
                 // Create a reference to the file to read in
@@ -152,5 +148,4 @@ public class MemberList implements Serializable {
         }
         return null;
     }
-
 }

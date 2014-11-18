@@ -240,7 +240,7 @@ public class AddProviderPanel extends javax.swing.JFrame {
                 _name.getText(), _address.getText(), _city.getText(),
                 _state.getText(), _zipCode.getText(), _bankName.getText(),
                 _accountNumber.getText());
-        // Add member to the MemberList
+        // Add Provider to the ProviderList
 
         if (ProviderList.instance().addProvider(newProvider)) {
             JOptionPane.showMessageDialog(frame, "Added.");
