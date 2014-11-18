@@ -22,6 +22,7 @@ public class LoadTester {
     public static void main(String[] args) {
         SystemData.load();
         MemberList.load();
+        ProviderList.load();
         Factory.load();
 
         /**

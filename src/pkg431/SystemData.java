@@ -17,7 +17,7 @@ public class SystemData implements Serializable {
 
     private static final String FILE_PATH = "./SaveFiles/SystemData";
     private ServiceList serviceList;
-    private ProviderList providerList;
+    //private ProviderList providerList;
     private ServiceRecordList serviceRecordList;
     //private MemberList memberList;
     //private Factory factory;
@@ -33,7 +33,7 @@ public class SystemData implements Serializable {
 
     private SystemData() {
         serviceList = ServiceList.instance();
-        providerList = ProviderList.instance();
+        //providerList = ProviderList.instance();
         serviceRecordList = ServiceRecordList.getInstance();
         //memberList = MemberList.instance();
         //factory = Factory.getInstance();
@@ -41,7 +41,7 @@ public class SystemData implements Serializable {
 
     private void init() {
         serviceList = ServiceList.instance();
-        providerList = ProviderList.instance();
+        //providerList = ProviderList.instance();
         serviceRecordList = ServiceRecordList.getInstance();
         //memberList = MemberList.instance();
         //factory = Factory.getInstance();
