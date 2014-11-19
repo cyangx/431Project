@@ -47,8 +47,7 @@ public class SecurityTest {
         boolean expResult = false;
         boolean result = Security.validateProvider(Pwd);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(true, Security.validateProvider("PROVIDER"));
     }
 
     /**
@@ -61,8 +60,7 @@ public class SecurityTest {
         boolean expResult = false;
         boolean result = Security.validateAdmin(Pwd);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(true, Security.validateAdmin("ADMIN"));
     }
     
 }
