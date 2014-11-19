@@ -18,6 +18,9 @@ import static org.junit.Assert.*;
  */
 public class ServiceTest {
     
+    private final static int NAME_LENGTH = 20;
+    private final static double MAX_FEE = 999.99;
+    
     public ServiceTest() {
     }
     
@@ -36,19 +39,28 @@ public class ServiceTest {
     @After
     public void tearDown() {
     }
-
+    
+    /**
+     * Tests the constructor's truncation code
+     */
+    @Test
+    public void testConstructorTruncation()
+    {
+        System.out.println("Constructor Truncation");
+        Service myService = new Service("This name is too long for the constructor", 1, 100000.01);
+        assertTrue(NAME_LENGTH == myService.getServiceName().length()
+                    && MAX_FEE == myService.getServiceCost());
+    }
     /**
      * Test of getServiceName method, of class Service.
      */
     @Test
     public void testGetServiceName() {
         System.out.println("getServiceName");
-        Service instance = null;
-        String expResult = "";
+        Service instance = new Service("Test Name", 1, 500.59);
+        String expResult = "Test Name";
         String result = instance.getServiceName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,12 +69,10 @@ public class ServiceTest {
     @Test
     public void testGetServiceCost() {
         System.out.println("getServiceCost");
-        Service instance = null;
-        double expResult = 0.0;
+        Service instance = new Service("Test Name", 1, 500.59);
+        double expResult = 500.59;
         double result = instance.getServiceCost();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(expResult, result, 0);
     }
 
     /**
@@ -71,12 +81,10 @@ public class ServiceTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-        Service instance = null;
-        int expResult = 0;
+        Service instance = new Service("Test Name", 1, 500.59);
+        int expResult = 1;
         int result = instance.getID();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -85,12 +93,30 @@ public class ServiceTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        String _name = "";
-        double _fee = 0.0;
-        Service instance = null;
+        String _name = "Test";
+        double _fee = 15.22;
+        Service instance = new Service("Test Name", 1, 500.59);
         instance.update(_name, _fee);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
+        assertEquals(_name, instance.getServiceName());
+        assertEquals(_fee, instance.getServiceCost(), 0);
+        
+    }
+    
+    /**
+     * Test of update method, of class Service.
+     */
+    @Test
+    public void testUpdateTruncate() {
+        System.out.println("update Truncate");
+        String _name = "This should be truncated after update";
+        double _fee = MAX_FEE + 100.0256;
+        Service instance = new Service("Test Name", 1, 500.59);
+        instance.update(_name, _fee);
+        
+        assertEquals(NAME_LENGTH, instance.getServiceName().length());
+        assertEquals(MAX_FEE, instance.getServiceCost(), 0);
+        
     }
     
 }
