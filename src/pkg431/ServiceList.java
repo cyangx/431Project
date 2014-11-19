@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 public class ServiceList implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final String FILE_PATH = "./SaveFiles/ServiceList";
+    public static final String FILE_PATH = "./SaveFiles/ServiceList";
     private List<Service> _services = new LinkedList<>();
     private static ServiceList serviceList;
 
