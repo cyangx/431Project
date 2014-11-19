@@ -15,24 +15,26 @@ import static org.junit.Assert.*;
 /**
  *
  * @author Garrett
+ * @author Cha
+ *
  */
 public class MemberTest {
-    
+
     public MemberTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,15 +45,22 @@ public class MemberTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-//        String Name = "";
-//        String Address = "";
-//        String City = "";
-//        String State = "";
-//        String ZipCode = "";
-//        Member instance = null;
-//        instance.update(Name, Address, City, State, ZipCode);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        String Name = "Bob";
+        String Address = "123 Fake St";
+        String City = "St Cloud";
+        String State = "MN";
+        String ZipCode = "56304";
+
+        Member instance = new Member("", 1, "", "", "", "");
+        instance.update(Name, Address, City, State, ZipCode);
+
+        assertNotNull(instance);
+        assertEquals(Name, instance.getName());
+        assertEquals(Address, instance.getAddress());
+        assertEquals(City, instance.getCity());
+        assertEquals(State, instance.getState());
+        assertEquals(ZipCode, instance.getZipcode());
+
     }
 
     /**
@@ -60,12 +69,10 @@ public class MemberTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-//        Member instance = null;
-//        String expResult = "";
-//        String result = instance.getName();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        String expResult = "Test Name";
+        String result = instance.getName();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -74,12 +81,10 @@ public class MemberTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-//        Member instance = null;
-//        int expResult = 0;
-//        int result = instance.getID();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        int expResult = 6;
+        int result = instance.getID();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -88,12 +93,10 @@ public class MemberTest {
     @Test
     public void testGetAddress() {
         System.out.println("getAddress");
-//        Member instance = null;
-//        String expResult = "";
-//        String result = instance.getAddress();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        String expResult = "Test Address";
+        String result = instance.getAddress();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -102,12 +105,10 @@ public class MemberTest {
     @Test
     public void testGetCity() {
         System.out.println("getCity");
-//        Member instance = null;
-//        String expResult = "";
-//        String result = instance.getCity();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        String expResult = "St. Cloud";
+        String result = instance.getCity();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -116,12 +117,10 @@ public class MemberTest {
     @Test
     public void testGetState() {
         System.out.println("getState");
-//        Member instance = null;
-//        String expResult = "";
-//        String result = instance.getState();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        String expResult = "MN";
+        String result = instance.getState();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -130,12 +129,10 @@ public class MemberTest {
     @Test
     public void testGetZipcode() {
         System.out.println("getZipcode");
-//        Member instance = null;
-//        String expResult = "";
-//        String result = instance.getZipcode();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        String expResult = "56301";
+        String result = instance.getZipcode();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -143,13 +140,12 @@ public class MemberTest {
      */
     @Test
     public void testIsSuspend() {
+        // Member is not suspended
         System.out.println("isSuspend");
-//        Member instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.isSuspend();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        boolean expResult = false;
+        boolean result = instance.isSuspend();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -158,11 +154,12 @@ public class MemberTest {
     @Test
     public void testSetSuspendStatus() {
         System.out.println("setSuspendStatus");
-//        boolean _suspendStatus = false;
-//        Member instance = null;
-//        instance.setSuspendStatus(_suspendStatus);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        boolean _suspendStatus = true;
+        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
+        instance.setSuspendStatus(_suspendStatus);
+        boolean result = instance.isSuspend();
+        assertEquals(_suspendStatus, result);
+
     }
-    
+
 }
