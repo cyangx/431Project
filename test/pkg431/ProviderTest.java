@@ -43,12 +43,12 @@ public class ProviderTest {
     @Test
     public void testGetProviderName() {
         System.out.println("getProviderName");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getProviderName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getProviderName();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -57,12 +57,12 @@ public class ProviderTest {
     @Test
     public void testGetId() {
         System.out.println("getId");
-        Provider instance = null;
-        int expResult = 0;
-        int result = instance.getId();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        int expResult = 0;
+//        int result = instance.getId();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -71,12 +71,12 @@ public class ProviderTest {
     @Test
     public void testGetAddress() {
         System.out.println("getAddress");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getAddress();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getAddress();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -85,12 +85,12 @@ public class ProviderTest {
     @Test
     public void testGetCity() {
         System.out.println("getCity");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getCity();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getCity();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -99,12 +99,12 @@ public class ProviderTest {
     @Test
     public void testGetState() {
         System.out.println("getState");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getState();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getState();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -113,12 +113,12 @@ public class ProviderTest {
     @Test
     public void testGetZipcode() {
         System.out.println("getZipcode");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getZipcode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getZipcode();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -127,12 +127,12 @@ public class ProviderTest {
     @Test
     public void testUpdateBankAccount() {
         System.out.println("updateBankAccount");
-        String bankName = "";
-        String accountNum = "";
-        Provider instance = null;
-        instance.updateBankAccount(bankName, accountNum);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        String bankName = "";
+//        String accountNum = "";
+//        Provider instance = null;
+//        instance.updateBankAccount(bankName, accountNum);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -141,12 +141,12 @@ public class ProviderTest {
     @Test
     public void testGetBankAccountName() {
         System.out.println("getBankAccountName");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getBankAccountName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getBankAccountName();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -155,12 +155,12 @@ public class ProviderTest {
     @Test
     public void testGetBankAccountNum() {
         System.out.println("getBankAccountNum");
-        Provider instance = null;
-        String expResult = "";
-        String result = instance.getBankAccountNum();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Provider instance = null;
+//        String expResult = "";
+//        String result = instance.getBankAccountNum();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -169,15 +169,15 @@ public class ProviderTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        String name = "";
-        String address = "";
-        String city = "";
-        String state = "";
-        String zipCode = "";
-        Provider instance = null;
-        instance.update(name, address, city, state, zipCode);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        String name = "";
+//        String address = "";
+//        String city = "";
+//        String state = "";
+//        String zipCode = "";
+//        Provider instance = null;
+//        instance.update(name, address, city, state, zipCode);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
     
 }

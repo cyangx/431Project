@@ -43,15 +43,15 @@ public class MemberTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        String Name = "";
-        String Address = "";
-        String City = "";
-        String State = "";
-        String ZipCode = "";
-        Member instance = null;
-        instance.update(Name, Address, City, State, ZipCode);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        String Name = "";
+//        String Address = "";
+//        String City = "";
+//        String State = "";
+//        String ZipCode = "";
+//        Member instance = null;
+//        instance.update(Name, Address, City, State, ZipCode);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,12 +60,12 @@ public class MemberTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        String expResult = "";
+//        String result = instance.getName();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -74,12 +74,12 @@ public class MemberTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-        Member instance = null;
-        int expResult = 0;
-        int result = instance.getID();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        int expResult = 0;
+//        int result = instance.getID();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,12 +88,12 @@ public class MemberTest {
     @Test
     public void testGetAddress() {
         System.out.println("getAddress");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getAddress();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        String expResult = "";
+//        String result = instance.getAddress();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -102,12 +102,12 @@ public class MemberTest {
     @Test
     public void testGetCity() {
         System.out.println("getCity");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getCity();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        String expResult = "";
+//        String result = instance.getCity();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -116,12 +116,12 @@ public class MemberTest {
     @Test
     public void testGetState() {
         System.out.println("getState");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getState();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        String expResult = "";
+//        String result = instance.getState();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -130,12 +130,12 @@ public class MemberTest {
     @Test
     public void testGetZipcode() {
         System.out.println("getZipcode");
-        Member instance = null;
-        String expResult = "";
-        String result = instance.getZipcode();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        String expResult = "";
+//        String result = instance.getZipcode();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -144,12 +144,12 @@ public class MemberTest {
     @Test
     public void testIsSuspend() {
         System.out.println("isSuspend");
-        Member instance = null;
-        boolean expResult = false;
-        boolean result = instance.isSuspend();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Member instance = null;
+//        boolean expResult = false;
+//        boolean result = instance.isSuspend();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -158,11 +158,11 @@ public class MemberTest {
     @Test
     public void testSetSuspendStatus() {
         System.out.println("setSuspendStatus");
-        boolean _suspendStatus = false;
-        Member instance = null;
-        instance.setSuspendStatus(_suspendStatus);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        boolean _suspendStatus = false;
+//        Member instance = null;
+//        instance.setSuspendStatus(_suspendStatus);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
     
 }

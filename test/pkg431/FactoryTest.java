@@ -43,11 +43,11 @@ public class FactoryTest {
     @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        Factory expResult = null;
-        Factory result = Factory.getInstance();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Factory expResult = null;
+//        Factory result = Factory.getInstance();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -56,17 +56,17 @@ public class FactoryTest {
     @Test
     public void testMakeMember() {
         System.out.println("MakeMember");
-        String Name = "";
-        String Address = "";
-        String City = "";
-        String State = "";
-        String ZipCode = "";
-        Factory instance = null;
-        Member expResult = null;
-        Member result = instance.MakeMember(Name, Address, City, State, ZipCode);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        String Name = "";
+//        String Address = "";
+//        String City = "";
+//        String State = "";
+//        String ZipCode = "";
+//        Factory instance = null;
+//        Member expResult = null;
+//        Member result = instance.MakeMember(Name, Address, City, State, ZipCode);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -75,19 +75,19 @@ public class FactoryTest {
     @Test
     public void testMakeProvider() {
         System.out.println("MakeProvider");
-        String Name = "";
-        String Address = "";
-        String City = "";
-        String State = "";
-        String ZipCode = "";
-        String bankName = "";
-        String accNumber = "";
-        Factory instance = null;
-        Provider expResult = null;
-        Provider result = instance.MakeProvider(Name, Address, City, State, ZipCode, bankName, accNumber);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        String Name = "";
+//        String Address = "";
+//        String City = "";
+//        String State = "";
+//        String ZipCode = "";
+//        String bankName = "";
+//        String accNumber = "";
+//        Factory instance = null;
+//        Provider expResult = null;
+//        Provider result = instance.MakeProvider(Name, Address, City, State, ZipCode, bankName, accNumber);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -96,14 +96,14 @@ public class FactoryTest {
     @Test
     public void testMakeService() {
         System.out.println("MakeService");
-        String Name = "";
-        double Fee = 0.0;
-        Factory instance = null;
-        Service expResult = null;
-        Service result = instance.MakeService(Name, Fee);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        String Name = "";
+//        double Fee = 0.0;
+//        Factory instance = null;
+//        Service expResult = null;
+//        Service result = instance.MakeService(Name, Fee);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -112,11 +112,11 @@ public class FactoryTest {
     @Test
     public void testSave() {
         System.out.println("save");
-        boolean expResult = false;
-        boolean result = Factory.save();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        boolean expResult = false;
+//        boolean result = Factory.save();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -125,11 +125,11 @@ public class FactoryTest {
     @Test
     public void testLoad() {
         System.out.println("load");
-        Factory expResult = null;
-        Factory result = Factory.load();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        Factory expResult = null;
+//        Factory result = Factory.load();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
     
 }
