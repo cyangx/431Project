@@ -268,7 +268,9 @@ public class Reporting {
     {
         PrintWriter out;
         try {
-            out = new PrintWriter(EFT_PATH + name + "_" + number + ".txt");
+            File file = new File(EFT_PATH + name + "_" + number + ".txt");
+            file.getParentFile().mkdirs();
+            out = new PrintWriter(file);
             out.print(name + ", " + number + ", " + bank + ", " + bankNum + ", " + Amount);
             out.close();
         } catch (FileNotFoundException ex) {
