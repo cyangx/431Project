@@ -25,6 +25,11 @@ public class ServiceListTest {
 
     @BeforeClass
     public static void setUpClass() {
+        File f = new File(ServiceList.FILE_PATH);
+        if(f.exists() && !f.isDirectory())
+        {
+            f.delete();
+        }
         ServiceList instance = ServiceList.instance();
         instance.addService(new Service("This name is too long for the constructor", 1, 200));
         instance.addService(new Service(null, 2, 0));

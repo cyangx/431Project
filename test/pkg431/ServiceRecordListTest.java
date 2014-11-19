@@ -28,6 +28,11 @@ public class ServiceRecordListTest {
     
     @BeforeClass
     public static void setUpClass() {
+        File f = new File(ServiceRecordList.FILE_PATH);
+        if(f.exists() && !f.isDirectory())
+        {
+            f.delete();
+        }
         /**
          * Set up test data
          */
