@@ -28,6 +28,16 @@ public class ServiceRecordListTest {
     
     @BeforeClass
     public static void setUpClass() {
+        /**
+         * Set up test data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        ServiceRecordList instance = ServiceRecordList.getInstance();
+        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
+        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
     }
     
     @AfterClass
@@ -47,14 +57,6 @@ public class ServiceRecordListTest {
      */
     @Test
     public void testGetInstance() {
-        /**
-         * Set up test data
-         */
-        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
-        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
-        Service myService = new Service("Test Name", 1, 500.59);
-        Date myDate = new Date();
-        
         System.out.println("getInstance");
         ServiceRecordList expResult = null;
         ServiceRecordList result = ServiceRecordList.getInstance();
@@ -66,20 +68,11 @@ public class ServiceRecordListTest {
      */
     @Test
     public void testGetServiceRecords() {
-        /**
-         * Set up Test Data
-         */
-        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
-        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
-        Service myService = new Service("Test Name", 1, 500.59);
-        Date myDate = new Date();
         
         System.out.println("getServiceRecords");
-        ServiceRecordList instance = ServiceRecordList.getInstance();
-        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
-        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
+        
         int expResult = 2;
-        Iterator<ServiceRecord> it = instance.getServiceRecords();
+        Iterator<ServiceRecord> it = ServiceRecordList.getInstance().getServiceRecords();
         int result = 0;
         while(it.hasNext())
         {
@@ -96,15 +89,6 @@ public class ServiceRecordListTest {
     public void testCaptureService() {
         
         System.out.println("CaptureService");
-        /**
-         * Set up Test Data
-         */
-        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
-        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
-        Service myService = new Service("Test Name", 1, 500.59);
-        Date myDate = new Date();
-        String comments = "Comments";
-        ServiceRecordList instance = ServiceRecordList.getInstance();
         Iterator<ServiceRecord> it = ServiceRecordList.getInstance().getServiceRecords();
         
         List<ServiceRecord> srl = new LinkedList<>();
@@ -137,18 +121,7 @@ public class ServiceRecordListTest {
     @Test
     public void testRemoveServiceRecord() {
         System.out.println("RemoveServiceRecord");
-        /**
-         * Set up Test Data
-         */
-        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
-        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
-        Service myService = new Service("Test Name", 1, 500.59);
-        Date myDate = new Date();
-        String comments = "Comments";
         ServiceRecordList instance = ServiceRecordList.getInstance();
-        instance.CaptureService(myProvider, myMember, myService, myDate, comments);
-        instance.CaptureService(myProvider, myMember, myService, myDate, comments);
-        
         Iterator<ServiceRecord> it = ServiceRecordList.getInstance().getServiceRecords();
         List<ServiceRecord> srl = new LinkedList<>();
         int count = 0;
@@ -175,7 +148,7 @@ public class ServiceRecordListTest {
     public void testSave() {
         System.out.println("save");
         boolean expResult = false;
-        boolean result = ServiceRecordList.save();
+        ServiceRecordList.save();
         File f = new File(ServiceRecordList.FILE_PATH);
         assertTrue(f.exists() && !f.isDirectory());
     }

@@ -5,6 +5,7 @@
  */
 package pkg431;
 
+import java.io.File;
 import java.util.Iterator;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,22 +19,28 @@ import static org.junit.Assert.*;
  * @author Garrett
  */
 public class ServiceListTest {
-    
+
     public ServiceListTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
+        ServiceList instance = ServiceList.instance();
+        instance.addService(new Service("This name is too long for the constructor", 1, 200));
+        instance.addService(new Service(null, 2, 0));
+        instance.addService(new Service("This is twenty five chars", 3, 1000000));
+        instance.addService(new Service("Test Name", 4, 0.00003));
+        instance.addService(new Service("", 5, 1));
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -46,9 +53,7 @@ public class ServiceListTest {
         System.out.println("instance");
         ServiceList expResult = null;
         ServiceList result = ServiceList.instance();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertFalse(result.equals(expResult));
     }
 
     /**
@@ -57,13 +62,13 @@ public class ServiceListTest {
     @Test
     public void testAddService() {
         System.out.println("addService");
-        Service service = null;
-        ServiceList instance = null;
-        boolean expResult = false;
-        boolean result = instance.addService(service);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ServiceList instance = ServiceList.instance();
+
+        assertTrue(null != instance.getService(1)
+                && null != instance.getService(2)
+                && null != instance.getService(3)
+                && null != instance.getService(4)
+                && null != instance.getService(5));
     }
 
     /**
@@ -72,13 +77,12 @@ public class ServiceListTest {
     @Test
     public void testGetService() {
         System.out.println("getService");
-        int ID = 0;
-        ServiceList instance = null;
-        Service expResult = null;
-        Service result = instance.getService(ID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ServiceList instance = ServiceList.instance();
+        assertTrue(null != instance.getService(1)
+                && null != instance.getService(2)
+                && null != instance.getService(3)
+                && null != instance.getService(4)
+                && null != instance.getService(5));
     }
 
     /**
@@ -87,12 +91,15 @@ public class ServiceListTest {
     @Test
     public void testGetServiceDirectory() {
         System.out.println("getServiceDirectory");
-        ServiceList instance = null;
-        Iterator<Service> expResult = null;
-        Iterator<Service> result = instance.getServiceDirectory();
+        ServiceList instance = ServiceList.instance();
+        int expResult = 5;
+        int result = 0;
+        Iterator<Service> it = instance.getServiceDirectory();
+        while (it.hasNext()) {
+            it.next();
+            result++;
+        }
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -101,12 +108,10 @@ public class ServiceListTest {
     @Test
     public void testGetServiceDirectoryText() {
         System.out.println("getServiceDirectoryText");
-        ServiceList instance = null;
-        String expResult = "";
+        ServiceList instance = ServiceList.instance();
+        int expResult = 5;
         String result = instance.getServiceDirectoryText();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(result.split(System.lineSeparator()).length == expResult);
     }
 
     /**
@@ -115,26 +120,8 @@ public class ServiceListTest {
     @Test
     public void testValidate() {
         System.out.println("validate");
-        int ID = 0;
-        ServiceList instance = null;
-        boolean expResult = false;
-        boolean result = instance.validate(ID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of delete method, of class ServiceList.
-     */
-    @Test
-    public void testDelete() {
-        System.out.println("delete");
-        int ID = 0;
-        ServiceList instance = null;
-        instance.delete(ID);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ServiceList instance = ServiceList.instance();
+        assertTrue(instance.validate(1));
     }
 
     /**
@@ -143,13 +130,22 @@ public class ServiceListTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-        int ID = 0;
-        String Name = "";
-        double fee = 0.0;
-        ServiceList instance = null;
-        instance.update(ID, Name, fee);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ServiceList instance = ServiceList.instance();
+        instance.update(1, "Service 1", 500);
+        assertTrue(instance.getService(1).getServiceName().equals("Service 1")
+                && instance.getService(1).getServiceCost() == 500);
+    }
+
+    /**
+     * Test of delete method, of class ServiceList.
+     */
+    @Test
+    public void testDelete() {
+        System.out.println("delete");
+        int ID = 5;
+        ServiceList instance = ServiceList.instance();
+        instance.delete(ID);
+        assertFalse(instance.validate(ID));
     }
 
     /**
@@ -159,10 +155,9 @@ public class ServiceListTest {
     public void testSave() {
         System.out.println("save");
         boolean expResult = false;
-        boolean result = ServiceList.save();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ServiceList.save();
+        File f = new File(ServiceList.FILE_PATH);
+        assertTrue(f.exists() && !f.isDirectory());
     }
 
     /**
@@ -171,11 +166,9 @@ public class ServiceListTest {
     @Test
     public void testLoad() {
         System.out.println("load");
-        ServiceList expResult = null;
         ServiceList result = ServiceList.load();
+        ServiceList expResult = ServiceList.instance();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
-    
+
 }
