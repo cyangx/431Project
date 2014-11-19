@@ -43,13 +43,28 @@ public class ServiceRecordTest {
      */
     @Test
     public void testGetProvider() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        
         System.out.println("getProvider");
-        ServiceRecord instance = null;
-        Provider expResult = null;
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    "Comments");
+        Provider expResult = myProvider;
         Provider result = instance.getProvider();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue((expResult.getProviderName() == null ? false : expResult.getProviderName().equals(result.getProviderName()))
+                    && (expResult.getAddress() == null ? false : expResult.getAddress().equals(result.getAddress()))
+                    && (expResult.getCity() == null ? false : expResult.getCity().equals(result.getCity()))
+                    && (expResult.getState() == null ? false : expResult.getState().equals(result.getState()))
+                    && (expResult.getZipcode() == null ? false : expResult.getZipcode().equals(result.getZipcode())));
     }
 
     /**
@@ -57,13 +72,28 @@ public class ServiceRecordTest {
      */
     @Test
     public void testGetMember() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        
         System.out.println("getMember");
-        ServiceRecord instance = null;
-        Member expResult = null;
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    "Comments");
+        Member expResult = myMember;
         Member result = instance.getMember();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue((expResult.getName() == null ? false : expResult.getName().equals(instance.getMember().getName()))
+                    && (expResult.getAddress() == null ? false : expResult.getAddress().equals(instance.getMember().getAddress()))
+                    && (expResult.getCity() == null ? false : expResult.getCity().equals(instance.getMember().getCity()))
+                    && (expResult.getState() == null ? false : expResult.getState().equals(instance.getMember().getState()))
+                    && (expResult.getZipcode() == null ? false : expResult.getZipcode().equals(instance.getMember().getZipcode())));
     }
 
     /**
@@ -71,13 +101,25 @@ public class ServiceRecordTest {
      */
     @Test
     public void testGetService() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        
         System.out.println("getService");
-        ServiceRecord instance = null;
-        Service expResult = null;
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    "Comments");
+        Service expResult = myService;
         Service result = instance.getService();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue((expResult.getServiceName() == null ? false : expResult.getServiceName().equals(result.getServiceName()))
+                    && expResult.getServiceCost() == result.getServiceCost());
     }
 
     /**
@@ -85,13 +127,24 @@ public class ServiceRecordTest {
      */
     @Test
     public void testGetBillDate() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        
         System.out.println("getBillDate");
-        ServiceRecord instance = null;
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    "Comments");
         Date expResult = null;
         Date result = instance.getBillDate();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertFalse(result.equals(expResult));
     }
 
     /**
@@ -99,12 +152,24 @@ public class ServiceRecordTest {
      */
     @Test
     public void testSetBillDate() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        
         System.out.println("setBillDate");
-        Date _billDate = null;
-        ServiceRecord instance = null;
+        Date _billDate = new Date();
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    "Comments");
         instance.setBillDate(_billDate);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(instance.getBillDate() == _billDate);
     }
 
     /**
@@ -112,13 +177,25 @@ public class ServiceRecordTest {
      */
     @Test
     public void testGetServiceDate() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        
         System.out.println("getServiceDate");
-        ServiceRecord instance = null;
-        Date expResult = null;
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    "Comments");
+        
+        Date expResult = myDate;
         Date result = instance.getServiceDate();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -126,13 +203,51 @@ public class ServiceRecordTest {
      */
     @Test
     public void testGetComments() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        String comments = "Comments";
         System.out.println("getComments");
-        ServiceRecord instance = null;
-        String expResult = "";
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    comments);
+        String expResult = comments;
         String result = instance.getComments();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+     /**
+     * Test of comment truncation
+     */
+    @Test
+    public void testCommentsTruncation() {
+        /**
+         * Set up Test Data
+         */
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        String comments = "12345678901234567890123456789012345678901234567890123"
+                + "456789012345678901234567890123456789012345678"
+                + "9012345678901234567890";
+        System.out.println("Comment Trunction");
+        ServiceRecord instance = new ServiceRecord(
+                    myProvider,
+                    myMember,
+                    myService,
+                    myDate,
+                    comments);
+        int expResult = 100;
+        String result = instance.getComments();
+        assertEquals(expResult, result.length());
     }
     
 }

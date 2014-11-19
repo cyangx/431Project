@@ -23,7 +23,6 @@ public class SaveTester {
         if (f.exists() && !f.isDirectory()) {
             f.delete();
         }
-        SystemData.instance();
 
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, -8);

@@ -26,7 +26,7 @@ public class ProviderInterface {
 
     private ProviderInterface() {
         // load the system data
-        SystemData.load();
+  
     }
 
     public static ProviderInterface instance() {
@@ -140,13 +140,11 @@ public class ProviderInterface {
     }
 
     private void save() {
-        // save system data
-        SystemData.save();
     }
 
     private void retrieve() {
         // get system data
-        SystemData.load();
+      
     }
 
     public void process() {
