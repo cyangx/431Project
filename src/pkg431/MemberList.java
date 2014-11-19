@@ -25,22 +25,13 @@ public class MemberList implements Serializable {
         return memberList;
     }
 
-    /**
-     *
-     * @param member
-     * @return
-     */
     public boolean addMember(Member member) {
         members.add(member);
         MemberList.save();
         return true;
     }
 
-    /**
-     *
-     * @param ID, the id of the member
-     * @return a member if found, else return null
-     */
+    // returns the member if found
     public Member getMember(int ID) {
         for (Member member : members) {
             if (ID == member.getID()) {
@@ -50,19 +41,10 @@ public class MemberList implements Serializable {
         return null;
     }
 
-    /**
-     *
-     * @return members iterator
-     */
     public Iterator<Member> getMembers() {
         return this.members.iterator();
     }
 
-    /**
-     *
-     * @param ID, the id of the member
-     * @return true if a member is found, else return false
-     */
     public boolean validate(int ID) {
         for (Member member : members) {
             if (ID == member.getID()) {
@@ -72,26 +54,11 @@ public class MemberList implements Serializable {
         return false;
     }
 
-    /**
-     * Deletes a member from the member list
-     *
-     * @param ID, the id of the member
-     */
     public void delete(int ID) {
         this.members.remove(this.getMember(ID));
         MemberList.save();
     }
 
-    /**
-     * Updates a member in the member list
-     *
-     * @param ID, the id of the member
-     * @param Name, the name of the member
-     * @param Address, the address of the member
-     * @param City, the city of the member
-     * @param State, the state of the member
-     * @param ZipCode, the zip code of the member
-     */
     public void updateMember(int ID, String Name, String Address, String City, String State, String ZipCode) {
         Member member = this.getMember(ID);
         if (null != member) {
