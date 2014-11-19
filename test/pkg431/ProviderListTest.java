@@ -16,24 +16,46 @@ import static org.junit.Assert.*;
 /**
  *
  * @author Garrett
+ * @author Cha
  */
 public class ProviderListTest {
-    
+
     public ProviderListTest() {
     }
-    
+    ProviderList providerList;
+    Provider myProvider1, myProvider2, myProvider3,
+            myProvider4, myProvider5;
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
+        providerList = ProviderList.instance();
+        myProvider1 = new Provider("This name is too long for the constructor",
+                1, "This address is too long for the constructor",
+                "This is a really big city name", "AAZ", "5637778",
+                "This is a long bank of characters", "123456789");
+        myProvider2 = new Provider(null, 2, null, null, null, null, null, null);
+        myProvider3 = new Provider("This is twenty five chars", 3,
+                "This is twenty five chars", "Thisisfourteen", "AZ", "56377",
+                "This is twenty five chars", "12345");
+        myProvider4 = new Provider("Test Name", 4, "Test Address", "St. Cloud",
+                "MN", "56301", "Bank 1", "12345");
+        myProvider5 = new Provider("", 5, "", "", "", "", "", "");
+        providerList.addProvider(myProvider1);
+        providerList.addProvider(myProvider2);
+        providerList.addProvider(myProvider3);
+        providerList.addProvider(myProvider4);
+        providerList.addProvider(myProvider5);
+
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,11 +66,7 @@ public class ProviderListTest {
     @Test
     public void testInstance() {
         System.out.println("instance");
-//        ProviderList expResult = null;
-//        ProviderList result = ProviderList.instance();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        assertNotNull(providerList);
     }
 
     /**
@@ -57,13 +75,11 @@ public class ProviderListTest {
     @Test
     public void testAddProvider() {
         System.out.println("addProvider");
-//        Provider provider = null;
-//        ProviderList instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.addProvider(provider);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Provider myProvider6 = new Provider("Provider Six", 6, "", "", "", "", "", "");
+
+        boolean expResult = true;
+        boolean result = providerList.addProvider(myProvider6);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -72,12 +88,8 @@ public class ProviderListTest {
     @Test
     public void testGetProviderIDs() {
         System.out.println("getProviderIDs");
-//        ProviderList instance = null;
-//        Iterator<Provider> expResult = null;
-//        Iterator<Provider> result = instance.getProviderIDs();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Iterator<Provider> result = providerList.getProviderIDs();
+        assertNotNull(result);
     }
 
     /**
@@ -86,13 +98,10 @@ public class ProviderListTest {
     @Test
     public void testGetProvider() {
         System.out.println("getProvider");
-//        int ID = 0;
-//        ProviderList instance = null;
-//        Provider expResult = null;
-//        Provider result = instance.getProvider(ID);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        int ID = 2;
+        Provider result = providerList.getProvider(ID);
+        assertNotNull(result);
+        assertEquals(ID, result.getId());
     }
 
     /**
@@ -101,13 +110,10 @@ public class ProviderListTest {
     @Test
     public void testValidate() {
         System.out.println("validate");
-//        int ID = 0;
-//        ProviderList instance = null;
-//        boolean expResult = false;
-//        boolean result = instance.validate(ID);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        int ID = 3;
+        boolean expResult = true;
+        boolean result = providerList.validate(ID);
+        assertEquals(expResult, result);
     }
 
     /**
@@ -116,11 +122,18 @@ public class ProviderListTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-//        int ID = 0;
-//        ProviderList instance = null;
-//        instance.delete(ID);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        // Add a provider
+        int ID = 10;
+        Provider myProvider10 = new Provider("", 10, "", "", "", "", "", "");
+        boolean expResult = true;
+        boolean result = providerList.addProvider(myProvider10);
+        assertEquals(expResult, result);
+        // Delete the added provider
+        Provider expResult2 = null;
+        providerList.delete(ID);
+        Provider provider = providerList.getProvider(ID);
+        assertEquals(expResult2, provider);
+
     }
 
     /**
@@ -129,16 +142,21 @@ public class ProviderListTest {
     @Test
     public void testUpdate() {
         System.out.println("update");
-//        int ID = 0;
-//        String name = "";
-//        String address = "";
-//        String city = "";
-//        String state = "";
-//        String zipCode = "";
-//        ProviderList instance = null;
-//        instance.update(ID, name, address, city, state, zipCode);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        int ID = 1;
+        String name = "Pizza Clinic";
+        String address = "1234 Awesome Ave";
+        String city = "St. Cloud";
+        String state = "MN";
+        String zipCode = "56301";
+        providerList.update(ID, name, address, city, state, zipCode);
+        Provider result = providerList.getProvider(ID);
+        assertNotNull(result);
+        assertEquals(name, result.getProviderName());
+        assertEquals(address, result.getAddress());
+        assertEquals(city, result.getCity());
+        assertEquals(state, result.getState());
+        assertEquals(zipCode, result.getZipcode());
+
     }
 
     /**
@@ -147,13 +165,14 @@ public class ProviderListTest {
     @Test
     public void testUpdateBankAccount() {
         System.out.println("updateBankAccount");
-//        int ID = 0;
-//        String bankName = "";
-//        String accNum = "";
-//        ProviderList instance = null;
-//        instance.updateBankAccount(ID, bankName, accNum);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        int ID = 3;
+        String bankName = "Bank 2";
+        String accountNum = "9876";
+        providerList.updateBankAccount(ID, bankName, accountNum);
+        Provider result = providerList.getProvider(ID);
+        assertEquals(bankName, result.getBankAccountName());
+        assertEquals(accountNum, result.getBankAccountNum());
+
     }
 
     /**
@@ -162,11 +181,9 @@ public class ProviderListTest {
     @Test
     public void testSave() {
         System.out.println("save");
-//        boolean expResult = false;
-//        boolean result = ProviderList.save();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean result = ProviderList.save();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -175,11 +192,8 @@ public class ProviderListTest {
     @Test
     public void testLoad() {
         System.out.println("load");
-//        ProviderList expResult = null;
-//        ProviderList result = ProviderList.load();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        ProviderList result = ProviderList.load();
+        assertNotNull(result);
     }
-    
+
 }

@@ -20,6 +20,12 @@ import static org.junit.Assert.*;
  */
 public class MemberTest {
 
+    /**
+     * Set up members
+     */
+    Member myMember1, myMember2, myMember3,
+            myMember4, myMember5;
+
     public MemberTest() {
     }
 
@@ -33,6 +39,12 @@ public class MemberTest {
 
     @Before
     public void setUp() {
+        myMember1 = new Member("This name is too long for the constructor", 1, "This address is too long for the constructor", "This is a really big city name", "AAZ", "5637778");
+        myMember2 = new Member(null, 2, null, null, null, null);
+        myMember3 = new Member("This is twenty five chars", 3, "This is twenty five chars", "Thisisfourteen", "AZ", "56377");
+        myMember4 = new Member("Test Name", 4, "Test Address", "St. Cloud", "MN", "56301");
+        myMember5 = new Member("", 5, "", "", "", "");
+
     }
 
     @After
@@ -50,16 +62,13 @@ public class MemberTest {
         String City = "St Cloud";
         String State = "MN";
         String ZipCode = "56304";
-
-        Member instance = new Member("", 1, "", "", "", "");
-        instance.update(Name, Address, City, State, ZipCode);
-
-        assertNotNull(instance);
-        assertEquals(Name, instance.getName());
-        assertEquals(Address, instance.getAddress());
-        assertEquals(City, instance.getCity());
-        assertEquals(State, instance.getState());
-        assertEquals(ZipCode, instance.getZipcode());
+        myMember1.update(Name, Address, City, State, ZipCode);
+        assertNotNull(myMember1);
+        assertEquals(Name, myMember1.getName());
+        assertEquals(Address, myMember1.getAddress());
+        assertEquals(City, myMember1.getCity());
+        assertEquals(State, myMember1.getState());
+        assertEquals(ZipCode, myMember1.getZipcode());
 
     }
 
@@ -69,9 +78,8 @@ public class MemberTest {
     @Test
     public void testGetName() {
         System.out.println("getName");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
         String expResult = "Test Name";
-        String result = instance.getName();
+        String result = myMember4.getName();
         assertEquals(expResult, result);
     }
 
@@ -81,9 +89,8 @@ public class MemberTest {
     @Test
     public void testGetID() {
         System.out.println("getID");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
-        int expResult = 6;
-        int result = instance.getID();
+        int expResult = 5;
+        int result = myMember5.getID();
         assertEquals(expResult, result);
     }
 
@@ -93,9 +100,8 @@ public class MemberTest {
     @Test
     public void testGetAddress() {
         System.out.println("getAddress");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
         String expResult = "Test Address";
-        String result = instance.getAddress();
+        String result = myMember4.getAddress();
         assertEquals(expResult, result);
     }
 
@@ -105,9 +111,8 @@ public class MemberTest {
     @Test
     public void testGetCity() {
         System.out.println("getCity");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
         String expResult = "St. Cloud";
-        String result = instance.getCity();
+        String result = myMember4.getCity();
         assertEquals(expResult, result);
     }
 
@@ -117,9 +122,8 @@ public class MemberTest {
     @Test
     public void testGetState() {
         System.out.println("getState");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
         String expResult = "MN";
-        String result = instance.getState();
+        String result = myMember4.getState();
         assertEquals(expResult, result);
     }
 
@@ -129,9 +133,8 @@ public class MemberTest {
     @Test
     public void testGetZipcode() {
         System.out.println("getZipcode");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
         String expResult = "56301";
-        String result = instance.getZipcode();
+        String result = myMember4.getZipcode();
         assertEquals(expResult, result);
     }
 
@@ -142,9 +145,8 @@ public class MemberTest {
     public void testIsSuspend() {
         // Member is not suspended
         System.out.println("isSuspend");
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
         boolean expResult = false;
-        boolean result = instance.isSuspend();
+        boolean result = myMember4.isSuspend();
         assertEquals(expResult, result);
     }
 
@@ -155,9 +157,8 @@ public class MemberTest {
     public void testSetSuspendStatus() {
         System.out.println("setSuspendStatus");
         boolean _suspendStatus = true;
-        Member instance = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
-        instance.setSuspendStatus(_suspendStatus);
-        boolean result = instance.isSuspend();
+        myMember4.setSuspendStatus(_suspendStatus);
+        boolean result = myMember4.isSuspend();
         assertEquals(_suspendStatus, result);
 
     }

@@ -23,6 +23,12 @@ public class MemberListTest {
 
     public MemberListTest() {
     }
+    /**
+     * Setup member list and members
+     */
+    MemberList memberList;
+    Member myMember1, myMember2, myMember3,
+            myMember4, myMember5;
 
     @BeforeClass
     public static void setUpClass() {
@@ -34,6 +40,22 @@ public class MemberListTest {
 
     @Before
     public void setUp() {
+        memberList = MemberList.instance();
+        myMember1 = new Member("This name is too long for the constructor", 1,
+                "This address is too long for the constructor",
+                "This is a really big city name", "AAZ", "5637778");
+        myMember2 = new Member(null, 2, null, null, null, null);
+        myMember3 = new Member("This is twenty five chars", 3,
+                "This is twenty five chars", "Thisisfourteen", "AZ", "56377");
+        myMember4 = new Member("Test Name", 4, "Test Address",
+                "St. Cloud", "MN", "56301");
+        myMember5 = new Member("", 5, "", "", "", "");
+        memberList.addMember(myMember1);
+        memberList.addMember(myMember2);
+        memberList.addMember(myMember3);
+        memberList.addMember(myMember4);
+        memberList.addMember(myMember5);
+
     }
 
     @After
@@ -46,8 +68,7 @@ public class MemberListTest {
     @Test
     public void testInstance() {
         System.out.println("instance");
-        MemberList result = MemberList.instance();
-        assertNotNull(result);
+        assertNotNull(memberList);
     }
 
     /**
@@ -56,10 +77,10 @@ public class MemberListTest {
     @Test
     public void testAddMember() {
         System.out.println("addMember");
-        Member member = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
-        MemberList instance = MemberList.instance();
         boolean expResult = true;
-        boolean result = instance.addMember(member);
+        Member myMember6 = new Member("Test Name", 6, "Test Address",
+                "St. Cloud", "MN", "56301");
+        boolean result = memberList.addMember(myMember6);
         assertEquals(expResult, result);
     }
 
@@ -69,13 +90,12 @@ public class MemberListTest {
     @Test
     public void testGetMember() {
         System.out.println("getMember");
-        int ID = 6;
-        MemberList instance = MemberList.instance();
-        Member member = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
-        instance.addMember(member);
-        Member result = instance.getMember(ID);
         // Get the member with ID 6
+        int ID = 3;
+        Member result = memberList.getMember(ID);
+        assertNotNull(result);
         assertEquals(ID, result.getID());
+
     }
 
     /**
@@ -84,12 +104,8 @@ public class MemberListTest {
     @Test
     public void testGetMembers() {
         System.out.println("getMembers");
-//        MemberList instance = null;
-//        Iterator<Member> expResult = null;
-//        Iterator<Member> result = instance.getMembers();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Iterator<Member> result = memberList.getMembers();
+        assertNotNull(result);
     }
 
     /**
@@ -98,12 +114,9 @@ public class MemberListTest {
     @Test
     public void testValidate() {
         System.out.println("validate");
-        int ID = 6;
-        MemberList instance = MemberList.instance();
-        Member member = new Member("Test Name", 6, "Test Address", "St. Cloud", "MN", "56301");
-        instance.addMember(member);
+        int ID = 5;
         boolean expResult = true;
-        boolean result = instance.validate(ID);
+        boolean result = memberList.validate(ID);
         assertEquals(expResult, result);
     }
 
@@ -113,14 +126,17 @@ public class MemberListTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        int ID = 3;
-        MemberList instance = MemberList.instance();
+        // Add a member
+        int ID = 10;
         Member member = new Member("Test Name", ID, "Test Address", "St. Cloud", "MN", "56301");
-        instance.addMember(member);
-        Member expResult = null;
-        instance.delete(ID);
-        Member result = instance.getMember(ID);
+        boolean expResult = true;
+        boolean result = memberList.addMember(member);
         assertEquals(expResult, result);
+        // delete the added member
+        Member expResult2 = null;
+        memberList.delete(ID);
+        Member result2 = memberList.getMember(ID);
+        assertEquals(expResult2, result2);
     }
 
     /**
@@ -129,24 +145,20 @@ public class MemberListTest {
     @Test
     public void testUpdateMember() {
         System.out.println("updateMember");
-        Member member = new Member("", 1, "", "", "", "");
-
-        int ID = 1;
+        int ID = 2;
         String Name = "Bob";
         String Address = "123 Fake St";
         String City = "St Cloud";
         String State = "MN";
         String ZipCode = "56304";
-        MemberList instance = MemberList.instance();
-        instance.addMember(member);
-        instance.updateMember(ID, Name, Address, City, State, ZipCode);
-
-        assertEquals(Name, member.getName());
-        assertEquals(Address, member.getAddress());
-        assertEquals(City, member.getCity());
-        assertEquals(State, member.getState());
-        assertEquals(ZipCode, member.getZipcode());
-
+        memberList.updateMember(ID, Name, Address, City, State, ZipCode);
+        Member result = memberList.getMember(ID);
+        assertNotNull(result);
+        assertEquals(Name, result.getName());
+        assertEquals(Address, result.getAddress());
+        assertEquals(City, result.getCity());
+        assertEquals(State, result.getState());
+        assertEquals(ZipCode, result.getZipcode());
     }
 
     /**
@@ -155,11 +167,9 @@ public class MemberListTest {
     @Test
     public void testSave() {
         System.out.println("save");
-//        boolean expResult = false;
-//        boolean result = MemberList.save();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        boolean expResult = true;
+        boolean result = MemberList.save();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -168,11 +178,8 @@ public class MemberListTest {
     @Test
     public void testLoad() {
         System.out.println("load");
-//        MemberList expResult = null;
-//        MemberList result = MemberList.load();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        MemberList result = MemberList.load();
+        assertNotNull(result);
     }
 
 }
