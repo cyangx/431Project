@@ -34,14 +34,24 @@ public class FactoryTest {
 
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("save");
+        boolean expResult = true;
+        boolean result = Factory.save();
+        assertEquals(expResult, result);
+        
+        System.out.println("load");
+            Factory f = Factory.load();
+            assertNull(f);
     }
 
     @AfterClass
     public static void tearDownClass() {
+        
     }
 
     @Before
     public void setUp() {
+                    
     }
 
     @After
@@ -181,26 +191,26 @@ public class FactoryTest {
 
     }
 
-    /**
-     * Test of save method, of class Factory.
-     */
-    @Test
-    public void testSave() {
-        System.out.println("save");
-        boolean expResult = true;
-        boolean result = Factory.save();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of load method, of class Factory.
-     */
-    @Test
-    public void testLoad() {
-        //    System.out.println("load");
-        //    Factory result = Factory.load();
-        //    assertNotNull(result);
-
-    }
+//    /**
+//     * Test of save method, of class Factory.
+//     */
+//    @Test
+//    public void testSave() {
+//        System.out.println("save");
+//        boolean expResult = true;
+//        boolean result = Factory.save();
+//        assertEquals(expResult, result);
+//    }
+//
+//    /**
+//     * Test of load method, of class Factory.
+//     */
+//    @Test
+//    public void testLoad() {
+//            System.out.println("load");
+//            Factory result = Factory.load();
+//            assertNotNull(result);
+//
+//    }
 
 }

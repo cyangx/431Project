@@ -93,6 +93,21 @@ public class ServiceRecordListTest {
     public void testCaptureService() {
         
         System.out.println("CaptureService");
+        Provider myProvider = new Provider("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        Member myMember = new Member("Test Name", 1, "Test Address", "St. Cloud", "MN", "56301");
+        Service myService = new Service("Test Name", 1, 500.59);
+        Date myDate = new Date();
+        ServiceRecordList instance = ServiceRecordList.getInstance();
+        int expResult = 0;
+        Iterator<ServiceRecord> it1 = ServiceRecordList.getInstance().getServiceRecords();
+        while (it1.hasNext()) {
+            it1.next();
+            expResult++;
+        }
+        expResult++;
+        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
+        
+        
         Iterator<ServiceRecord> it = ServiceRecordList.getInstance().getServiceRecords();
         
         List<ServiceRecord> srl = new LinkedList<>();
@@ -101,22 +116,7 @@ public class ServiceRecordListTest {
             srl.add(it.next());
         }
         
-        assertTrue((srl.get(0).getProvider().getProviderName() == null ? false : srl.get(0).getProvider().getProviderName().equals(srl.get(1).getProvider().getProviderName()))
-                    && (srl.get(0).getProvider().getAddress() == null ? false : srl.get(0).getProvider().getAddress().equals(srl.get(1).getProvider().getAddress()))
-                    && (srl.get(0).getProvider().getCity() == null ? false : srl.get(0).getProvider().getCity().equals(srl.get(1).getProvider().getCity()))
-                    && srl.get(0).getProvider().getId() == srl.get(1).getProvider().getId()
-                    && (srl.get(0).getProvider().getState() == null ? false : srl.get(0).getProvider().getState().equals(srl.get(1).getProvider().getState()))
-                    && (srl.get(0).getProvider().getZipcode() == null ? false : srl.get(0).getProvider().getZipcode().equals(srl.get(1).getProvider().getZipcode()))
-                    && (srl.get(0).getMember().getName() == null ? false : srl.get(0).getMember().getName().equals(srl.get(1).getMember().getName()))
-                    && (srl.get(0).getMember().getAddress() == null ? false : srl.get(0).getMember().getAddress().equals(srl.get(1).getMember().getAddress()))
-                    && (srl.get(0).getMember().getCity() == null ? false : srl.get(0).getMember().getCity().equals(srl.get(1).getMember().getCity()))
-                    && srl.get(0).getMember().getID() == srl.get(1).getMember().getID()
-                    && (srl.get(0).getMember().getState() == null ? false : srl.get(0).getMember().getState().equals(srl.get(1).getMember().getState()))
-                    && (srl.get(0).getMember().getZipcode() == null ? false : srl.get(0).getMember().getZipcode().equals(srl.get(1).getMember().getZipcode()))
-                    && srl.get(0).getService().getID() == srl.get(1).getService().getID()
-                    && srl.get(0).getService().getServiceCost() == srl.get(1).getService().getServiceCost()
-                    && (srl.get(0).getService().getServiceName() == null ? false : srl.get(0).getService().getServiceName().equals(srl.get(1).getService().getServiceName()))
-                    && srl.get(0).getServiceDate() == srl.get(1).getServiceDate());
+        assertTrue(srl.size() == expResult);
     }
 
     /**
