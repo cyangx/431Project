@@ -11,7 +11,8 @@ import java.util.*;
 import java.util.logging.*;
 
 /**
- *
+ * The Accounting Procedure class for automatically running
+ * reports
  * @author Garrett
  */
 public class AccountingProcedure {

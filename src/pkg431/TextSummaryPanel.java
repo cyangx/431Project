@@ -6,7 +6,7 @@
 package pkg431;
 
 /**
- *
+ * Generic panel for displaying text (read only)
  * @author Garrett
  */
 public class TextSummaryPanel extends javax.swing.JPanel {

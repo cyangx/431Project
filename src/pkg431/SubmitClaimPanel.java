@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
- *
+ * GUI for submitting a claim to Pizza Anonymous
  * @author Garrett
  */
 public class SubmitClaimPanel extends javax.swing.JPanel {

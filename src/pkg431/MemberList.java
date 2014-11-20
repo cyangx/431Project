@@ -4,7 +4,8 @@ import java.util.*;
 import java.io.*;
 
 /**
- *
+ * Control class for Members
+ * Adding, Removing, Updating
  * @author Cha
  */
 public class MemberList implements Serializable {

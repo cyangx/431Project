@@ -8,7 +8,7 @@ package pkg431;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * Special GUI for a provider to update their own information
  * @author Garrett
  */
 public class ProviderUpdateJPanel extends javax.swing.JPanel {

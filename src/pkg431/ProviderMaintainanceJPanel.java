@@ -8,7 +8,7 @@ package pkg431;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * GUI for updating, adding, and deleting providers
  * @author Garrett
  */
 public class ProviderMaintainanceJPanel extends javax.swing.JPanel {

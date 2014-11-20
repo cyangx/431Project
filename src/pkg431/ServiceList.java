@@ -7,7 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /*
- *
+ * Control class for the Services
  * @author Nabin
  */
 public class ServiceList implements Serializable {

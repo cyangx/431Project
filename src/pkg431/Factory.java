@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- *
+ * Factory for Member, Provider, and Service Creation
  * @author Garrett
  * @since 11/7/14
  */

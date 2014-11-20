@@ -3,7 +3,7 @@ package pkg431;
 import javax.swing.JFrame;
 
 /**
- *
+ * Main program that launches the GUI
  * @author Garrett
  */
 public class Program {

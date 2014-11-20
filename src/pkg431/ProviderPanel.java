@@ -9,7 +9,8 @@ import javax.swing.JPanel;
  * and open the template in the editor.
  */
 /**
- *
+ * GUI for use by the Providers
+ * @author Garrett
  * @author Cha
  */
 public class ProviderPanel extends javax.swing.JPanel {

@@ -3,7 +3,7 @@ package pkg431;
 import java.io.Serializable;
 
 /**
- *
+ * Member Class representing Pizza Anonymous clients
  * @author Garrett
  * @author Cha
  * @since 11/7/14

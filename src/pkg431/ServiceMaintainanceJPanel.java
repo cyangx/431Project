@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.text.NumberFormatter;
 
 /**
- *
+ * GUI for adding, updating, and deleting services
  * @author Garrett
  */
 public class ServiceMaintainanceJPanel extends javax.swing.JPanel {

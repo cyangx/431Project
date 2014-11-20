@@ -3,7 +3,8 @@ package pkg431;
 import java.io.Serializable;
 
 /**
- *
+ * Entity Class representing a service provided by Pizza Anonymous
+ * @author Garrett
  * @author Nabin
  * @since 11/7/14
  */

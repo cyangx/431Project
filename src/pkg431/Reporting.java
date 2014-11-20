@@ -7,7 +7,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Reporting class for running reports on Members, Providers, and Accounts
+ * Payable
  * @author Garrett
  */
 public class Reporting {

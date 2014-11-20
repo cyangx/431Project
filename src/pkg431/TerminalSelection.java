@@ -9,7 +9,7 @@ import java.util.Arrays;
 import javax.swing.*;
 
 /**
- *
+ * Terminal for selecting which terminal to use
  * @author Garrett
  */
 public class TerminalSelection extends javax.swing.JPanel {
