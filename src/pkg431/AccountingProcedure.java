@@ -207,30 +207,6 @@ public class AccountingProcedure {
         return new Date(this.dateSet);
      }
     
-    /**
-     * Reads the files from Acme
-     * May not be needed
-     */
-    public void readAcmeFile()
-    {
-        try {
-            List<String> lines = Files.readAllLines(Paths.get("Acme.txt"), Charset.defaultCharset());
-            for(String line : lines)
-            {
-                String[] parts = line.split(" ");
-                if(parts.length >= 2)
-                {
-                    Member myMember = MemberList.instance().getMember(Integer.parseInt(parts[0]));
-                    if(myMember != null)
-                    {
-                        myMember.setSuspendStatus(("S".equals(parts[1])));
-                    }
-                }
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(AccountingProcedure.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     
 
 }

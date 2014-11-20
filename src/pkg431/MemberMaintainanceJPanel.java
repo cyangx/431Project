@@ -48,6 +48,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
         _address = new javax.swing.JTextField();
         _city = new javax.swing.JTextField();
         DeleteButton = new javax.swing.JButton();
+        SuspendedCheckBox = new javax.swing.JCheckBox();
 
         _state.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +107,13 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
             }
         });
 
+        SuspendedCheckBox.setText("Suspended");
+        SuspendedCheckBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SuspendedCheckBoxActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,16 +134,18 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(Add))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(28, 28, 28)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(_state, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(_city, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(_address, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(_name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(_name, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Add)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(SuspendedCheckBox)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(DeleteButton)
                         .addContainerGap())
@@ -174,7 +184,9 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(_zipCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Add)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Add)
+                    .addComponent(SuspendedCheckBox))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -193,6 +205,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
                     this._name.getText(), this._address.getText(),
                     this._city.getText(), this._state.getText(),
                     this._zipCode.getText());
+            MemberList.instance().getMember(_ID).setSuspendStatus(this.SuspendedCheckBox.isSelected());
             JOptionPane.showMessageDialog(null, "Updated.");
         } else {
             // Create a member
@@ -226,6 +239,10 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
             ResetView();
         }   
     }//GEN-LAST:event_DeleteButtonActionPerformed
+
+    private void SuspendedCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SuspendedCheckBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SuspendedCheckBoxActionPerformed
     private void ResetView() {
         _ID = 0;
         _update = false;
@@ -247,6 +264,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
                 this._name.setText(myMember.getName());
                 this._state.setText(myMember.getState());
                 this._zipCode.setText(myMember.getZipcode());
+                this.SuspendedCheckBox.setSelected(myMember.isSuspend());
             }
         }
         else
@@ -259,6 +277,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JButton DeleteButton;
+    private javax.swing.JCheckBox SuspendedCheckBox;
     private javax.swing.JTextField _address;
     private javax.swing.JTextField _city;
     private javax.swing.JTextField _name;

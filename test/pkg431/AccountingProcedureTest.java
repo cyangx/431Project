@@ -24,6 +24,19 @@ public class AccountingProcedureTest {
     
     @BeforeClass
     public static void setUpClass() {
+                /**
+         * Set up test data
+         */
+        Provider myProvider = new Provider("Test Name", 450, "Test Address", "St. Cloud", "MN", "56301", "bank", "123");
+        ProviderList.instance().addProvider(myProvider);
+        Member myMember = new Member("Test Name", 450, "Test Address", "St. Cloud", "MN", "56301");
+        MemberList.instance().addMember(myMember);
+        Service myService = new Service("Test Name", 450, 500.59);
+        ServiceList.instance().addService(myService);
+        Date myDate = new Date();
+        ServiceRecordList instance = ServiceRecordList.getInstance();
+        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
+        instance.CaptureService(myProvider, myMember, myService, myDate, "test");
     }
     
     @AfterClass
@@ -44,11 +57,8 @@ public class AccountingProcedureTest {
     @Test
     public void testInstance() {
         System.out.println("instance");
-//        AccountingProcedure expResult = null;
-//        AccountingProcedure result = AccountingProcedure.instance();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        AccountingProcedure result = AccountingProcedure.instance();
+        assertNotNull(result);
     }
 
     /**
@@ -57,12 +67,9 @@ public class AccountingProcedureTest {
     @Test
     public void testGenerateMemberReports() {
         System.out.println("generateMemberReports");
-//        AccountingProcedure instance = null;
-//        String expResult = "";
-//        String result = instance.generateMemberReports();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        AccountingProcedure instance = AccountingProcedure.instance();
+        String result = instance.generateMemberReports();
+        assertTrue(result.length() > 0);
     }
 
     /**
@@ -71,12 +78,9 @@ public class AccountingProcedureTest {
     @Test
     public void testGenerateProviderReports() {
         System.out.println("generateProviderReports");
-//        AccountingProcedure instance = null;
-//        String expResult = "";
-//        String result = instance.generateProviderReports();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        AccountingProcedure instance = AccountingProcedure.instance();
+        String result = instance.generateProviderReports();
+        assertTrue(result.length() > 0);
     }
 
     /**
@@ -85,51 +89,22 @@ public class AccountingProcedureTest {
     @Test
     public void testGenerateAccountsPayableReports() {
         System.out.println("generateAccountsPayableReports");
-//        AccountingProcedure instance = null;
-//        String expResult = "";
-//        String result = instance.generateAccountsPayableReports();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        AccountingProcedure instance = AccountingProcedure.instance();
+        String result = instance.generateAccountsPayableReports();
+        assertTrue(result.length() > 0);
     }
 
     /**
      * Test of setReportTime method, of class AccountingProcedure.
      */
     @Test
-    public void testSetReportTime() {
+    public void testSetandSetReportTime() {
         System.out.println("setReportTime");
-//        Date dt = null;
-//        AccountingProcedure instance = null;
-//        instance.setReportTime(dt);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getReportTime method, of class AccountingProcedure.
-     */
-    @Test
-    public void testGetReportTime() {
-        System.out.println("getReportTime");
-//        AccountingProcedure instance = null;
-//        Date expResult = null;
-//        Date result = instance.getReportTime();
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of readAcmeFile method, of class AccountingProcedure.
-     */
-    @Test
-    public void testReadAcmeFile() {
-        System.out.println("readAcmeFile");
-//        AccountingProcedure instance = null;
-//        instance.readAcmeFile();
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        Date dt = new Date();
+        AccountingProcedure instance = AccountingProcedure.instance();
+        instance.setReportTime(dt);
+        assertTrue(dt.equals(instance.getReportTime()));
+        
     }
     
 }
