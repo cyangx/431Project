@@ -10,6 +10,7 @@ import javax.swing.JPanel;
  */
 /**
  * GUI for use by the Providers
+ *
  * @author Garrett
  * @author Cha
  */
@@ -107,19 +108,21 @@ public class ProviderPanel extends javax.swing.JPanel {
 
     private void ValidateMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ValidateMemberButtonActionPerformed
         String input = JOptionPane.showInputDialog(this, "Enter Member ID:");
-        try {
-            if (MemberList.instance().validate(Integer.parseInt(input))) {
-                Member myMember = MemberList.instance().getMember(Integer.parseInt(input));
-                if (myMember.isSuspend()) {
-                    JOptionPane.showMessageDialog(null, "Member Suspended.");
+        if (null != input) {
+            try {
+                if (MemberList.instance().validate(Integer.parseInt(input))) {
+                    Member myMember = MemberList.instance().getMember(Integer.parseInt(input));
+                    if (myMember.isSuspend()) {
+                        JOptionPane.showMessageDialog(null, "Member Suspended.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Member is valid.");
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(null, "Member is valid.");
+                    JOptionPane.showMessageDialog(null, "Member Does not exist.");
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Member Does not exist.");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Invalid ID.");
             }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Invalid ID.");
         }
     }//GEN-LAST:event_ValidateMemberButtonActionPerformed
 
