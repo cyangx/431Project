@@ -90,8 +90,8 @@ public class FactoryTest {
         member1 = Factory.getInstance().MakeMember(Name1, Address1, City1, State1, ZipCode1);
         member2 = Factory.getInstance().MakeMember(Name2, Address2, City2, State2, ZipCode2);
 
-        int member1_ID = 1;
-        int member2_ID = 2;
+        int member1_ID = 100000000;
+        int member2_ID = 100000001;
         assertNotNull(member1);
         assertNotNull(member2);
 
@@ -137,8 +137,8 @@ public class FactoryTest {
         provider1 = Factory.getInstance().MakeProvider(Name1, Address1, City1, State1, ZipCode1, BankName1, BankNumber1);
         provider2 = Factory.getInstance().MakeProvider(Name2, Address2, City2, State2, ZipCode2, BankName2, BankNumber2);
 
-        int provider1_ID = 1;
-        int provider2_ID = 2;
+        int provider1_ID = 100000000;
+        int provider2_ID = 100000001;
         assertNotNull(provider1);
         assertNotNull(provider2);
 
@@ -168,8 +168,8 @@ public class FactoryTest {
     @Test
     public void testMakeService() {
         System.out.println("MakeService");
-        int service1_ID = 1;
-        int service2_ID = 2;
+        int service1_ID = 100000;
+        int service2_ID = 100001;
 
         String Name1 = "Service 1";
         double Fee1 = 50.00;

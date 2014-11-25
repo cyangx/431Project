@@ -24,9 +24,9 @@ public class Factory implements Serializable {
     private static Factory _factory;
 
     private Factory() {
-        _memberID = 1; // ID for member creation
-        _providerID = 1; // ID for provider creation
-        _serviceID = 1; // ID for service creation
+        _memberID = 100000000; // ID for member creation
+        _providerID = 100000000; // ID for provider creation
+        _serviceID = 100000; // ID for service creation
     }
 
     public static Factory getInstance() {
