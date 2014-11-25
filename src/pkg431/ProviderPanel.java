@@ -115,7 +115,19 @@ public class ProviderPanel extends javax.swing.JPanel {
                     if (myMember.isSuspend()) {
                         JOptionPane.showMessageDialog(null, "Member Suspended.");
                     } else {
-                        JOptionPane.showMessageDialog(null, "Member is valid.");
+                        //JOptionPane.showMessageDialog(null, "Member is valid.");
+                        Member member = MemberList.instance().getMember(Integer.parseInt(input));
+                        String memberInfo = member.getName() + System.lineSeparator()
+                                + member.getID() + System.lineSeparator() +
+                                member.getAddress() + System.lineSeparator() +
+                                member.getCity() + System.lineSeparator() + 
+                                member.getState() + System.lineSeparator() +
+                                member.getZipcode() + System.lineSeparator();
+                        String[] options = new String[]{"Back"};
+                        JPanel pd = new TextSummaryPanel("Member Information", memberInfo);
+                        JOptionPane.showOptionDialog(null, pd,
+                                "Member Information", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                                options, options[0]);
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Member Does not exist.");
