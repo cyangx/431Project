@@ -10,6 +10,7 @@ import java.io.Serializable;
 
 /**
  * Factory for Member, Provider, and Service Creation
+ *
  * @author Garrett
  * @since 11/7/14
  */
@@ -48,10 +49,13 @@ public class Factory implements Serializable {
      * @return The new member
      */
     public synchronized Member MakeMember(String Name, String Address, String City, String State, String ZipCode) {
-        Member result = new Member(Name, _memberID, Address, City, State, ZipCode);
-        _memberID++;
-        Factory.save();
-        return result;
+        if (_memberID + 1 < 1000000000) {
+            Member result = new Member(Name, _memberID, Address, City, State, ZipCode);
+            _memberID++;
+            Factory.save();
+            return result;
+        }
+        return null;
     }
 
     /**
@@ -67,9 +71,12 @@ public class Factory implements Serializable {
      */
     public synchronized Provider MakeProvider(String Name, String Address, String City, String State, String ZipCode, String bankName, String accNumber) {
         Provider result = new Provider(Name, _providerID, Address, City, State, ZipCode, bankName, accNumber);
-        _providerID++;
-        Factory.save();
-        return result;
+        if (_providerID + 1 < 1000000000) {
+            _providerID++;
+            Factory.save();
+            return result;
+        }
+        return null;
     }
 
     /**
@@ -81,10 +88,13 @@ public class Factory implements Serializable {
      * @return the new Service
      */
     public synchronized Service MakeService(String Name, double Fee) {
-        Service result = new Service(Name, _serviceID, Fee);
-        _serviceID++;
-        Factory.save();
-        return result;
+        if (_serviceID + 1 < 1000000) {
+            Service result = new Service(Name, _serviceID, Fee);
+            _serviceID++;
+            Factory.save();
+            return result;
+        }
+        return null;
     }
 
     private void writeObject(java.io.ObjectOutputStream output) {
