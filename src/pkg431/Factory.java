@@ -19,6 +19,7 @@ public class Factory implements Serializable {
     // TODO: Possibly change ID's to strings, ensuring leading zeros are added to fill full size
     private static final long serialVersionUID = 1L;
     private static final String FILE_PATH = "./SaveFiles/Factory";
+    private static final String SAVE_DIRECTORY = "./SaveFiles/";
     private int _memberID; // ID for member creation
     private int _providerID; // ID for provider creation
     private int _serviceID; // ID for service creation
@@ -132,6 +133,7 @@ public class Factory implements Serializable {
      */
     public static boolean save() {
         try {
+            checkSaveDirectory();
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -178,5 +180,11 @@ public class Factory implements Serializable {
             }
         }
         return null;
+    }
+    private static void checkSaveDirectory() {
+        File saveDir = new File(SAVE_DIRECTORY);
+        if (!saveDir.exists()) {
+            saveDir.mkdirs();
+        }
     }
 }

@@ -12,6 +12,7 @@ public class ServiceRecordList implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FILE_PATH = "./SaveFiles/ServiceRecordList";
+    private static final String SAVE_DIRECTORY = "./SaveFiles/";
     private static ServiceRecordList instance;
     private List<ServiceRecord> serviceRecords = new LinkedList<>();
 
@@ -105,6 +106,7 @@ public class ServiceRecordList implements Serializable {
      */
     public static boolean save() {
         try {
+            checkSaveDirectory();
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -151,5 +153,10 @@ public class ServiceRecordList implements Serializable {
         }
         return null;
     }
-
+    private static void checkSaveDirectory() {
+        File saveDir = new File(SAVE_DIRECTORY);
+        if (!saveDir.exists()) {
+            saveDir.mkdirs();
+        }
+    }
 }

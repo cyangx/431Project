@@ -12,6 +12,7 @@ public class MemberList implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final String FILE_PATH = "./SaveFiles/MemberList";
+    private static final String SAVE_DIRECTORY = "./SaveFiles/";
     private List<Member> members = new LinkedList<>();
     private static MemberList memberList;
 
@@ -136,6 +137,7 @@ public class MemberList implements Serializable {
      */
     public static boolean save() {
         try {
+            checkSaveDirectory();
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -181,5 +183,13 @@ public class MemberList implements Serializable {
             }
         }
         return null;
+    }
+    private static void checkSaveDirectory()
+    {
+        File saveDir = new File(SAVE_DIRECTORY);
+        if(!saveDir.exists())
+        {
+            saveDir.mkdirs();
+        }
     }
 }

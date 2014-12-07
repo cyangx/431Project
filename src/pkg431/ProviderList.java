@@ -12,7 +12,6 @@ package pkg431;
  Also contains methods for serializing and deserializing the information
  Information is stored/retrieved via a linked list.
  */
-
 import java.util.*;
 import java.io.*;
 
@@ -20,6 +19,7 @@ public class ProviderList implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private static final String FILE_PATH = "./SaveFiles/ProviderList";
+    private static final String SAVE_DIRECTORY = "./SaveFiles/";
     private List<Provider> providers = new LinkedList<>();
     private static ProviderList providerList;
 
@@ -133,6 +133,7 @@ public class ProviderList implements Serializable {
      */
     public static boolean save() {
         try {
+            checkSaveDirectory();
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -178,5 +179,12 @@ public class ProviderList implements Serializable {
             }
         }
         return null;
+    }
+
+    private static void checkSaveDirectory() {
+        File saveDir = new File(SAVE_DIRECTORY);
+        if (!saveDir.exists()) {
+            saveDir.mkdirs();
+        }
     }
 }

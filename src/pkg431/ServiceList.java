@@ -14,6 +14,7 @@ public class ServiceList implements Serializable {
 
     private static final long serialVersionUID = 1L;
     public static final String FILE_PATH = "./SaveFiles/ServiceList";
+    private static final String SAVE_DIRECTORY = "./SaveFiles/";
     private List<Service> _services = new LinkedList<>();
     private static ServiceList serviceList;
 
@@ -76,16 +77,14 @@ public class ServiceList implements Serializable {
     public Iterator<Service> getServiceDirectory() {
         return this._services.iterator();
     }
-    
-    public String getServiceDirectoryText()
-    {
+
+    public String getServiceDirectoryText() {
         String result = new String();
         Iterator<Service> it = this.getServiceDirectory();
-        while(it.hasNext())
-        {
+        while (it.hasNext()) {
             Service myService = it.next();
-            result += myService.getID() + " " + myService.getServiceName() +
-                    " " + myService.getServiceCost() + System.lineSeparator();
+            result += myService.getID() + " " + myService.getServiceName()
+                    + " " + myService.getServiceCost() + System.lineSeparator();
         }
         return result;
     }
@@ -111,14 +110,15 @@ public class ServiceList implements Serializable {
         }
         ServiceList.save();
     }
-    
-        /**
+
+    /**
      * Save the systemData object structure to a file, for later deserialization
      *
      * @return True if the serialization completed successfully
      */
     public static boolean save() {
         try {
+            checkSaveDirectory();
             // First off, create the stream used for writing bytes
             FileOutputStream file = new FileOutputStream(FILE_PATH);
             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -166,4 +166,10 @@ public class ServiceList implements Serializable {
         return null;
     }
 
+    private static void checkSaveDirectory() {
+        File saveDir = new File(SAVE_DIRECTORY);
+        if (!saveDir.exists()) {
+            saveDir.mkdirs();
+        }
+    }
 }
