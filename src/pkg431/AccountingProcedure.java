@@ -11,8 +11,8 @@ import java.util.*;
 import java.util.logging.*;
 
 /**
- * The Accounting Procedure class for automatically running
- * reports
+ * The Accounting Procedure class for automatically running reports
+ *
  * @author Garrett
  */
 public class AccountingProcedure {
@@ -34,11 +34,10 @@ public class AccountingProcedure {
     private TimerTask memberTask;
     // Date that was set for the ReportTimer
     private long dateSet;
-    
 
     /**
-     * Private Constructor for the singleton AccountingProcedure
-     * Creates a scheduled task to print all reports at midnight on Friday
+     * Private Constructor for the singleton AccountingProcedure Creates a
+     * scheduled task to print all reports at midnight on Friday
      */
     private AccountingProcedure() {
         generateReportTimer = new Timer();
@@ -51,7 +50,7 @@ public class AccountingProcedure {
                 AccountingProcedure.instance().generateAccountsPayableReports();
             }
         };
-        
+
         this.memberTask = new java.util.TimerTask() {
             @Override
             public void run() {
@@ -67,14 +66,14 @@ public class AccountingProcedure {
         scheduledDate.set(Calendar.MINUTE, 0);
         scheduledDate.set(Calendar.SECOND, 0);
         scheduledDate.set(Calendar.MILLISECOND, 0);
-        
+
         Calendar memberDate = (Calendar) Calendar.getInstance().clone();
         memberDate.setTime(new Date());
         memberDate.set(Calendar.HOUR, 22);
         memberDate.set(Calendar.MINUTE, 0);
         memberDate.set(Calendar.SECOND, 0);
         memberDate.set(Calendar.MILLISECOND, 0);
-        
+
         long week = 604800000;
         long day = 86400000;
         generateReportTimer.scheduleAtFixedRate(reportTask, scheduledDate.getTime(), week);
@@ -82,7 +81,8 @@ public class AccountingProcedure {
     }
 
     /**
-     * Calculates the date of next Friday 
+     * Calculates the date of next Friday
+     *
      * @return Date for next Friday
      */
     private Date nextFriday() {
@@ -94,12 +94,13 @@ public class AccountingProcedure {
         }
         Calendar nextFriday = (Calendar) today.clone();
         nextFriday.add(Calendar.DAY_OF_WEEK, daysUntilNextFriday);
-        
+
         return nextFriday.getTime();
     }
 
     /**
      * Gets the instance of the Singleton
+     *
      * @return Instance of the Singleton
      */
     public static AccountingProcedure instance() {
@@ -114,6 +115,7 @@ public class AccountingProcedure {
      * Generates a member report for all members in the list
      */
     public String generateMemberReports() {
+        this.checkReportDirectory();
         String result = new String();
         Calendar myCal = (Calendar) Calendar.getInstance().clone();
         myCal.add(Calendar.DATE, -7);
@@ -141,6 +143,7 @@ public class AccountingProcedure {
      * Generates a provider report for all providers in the list
      */
     public String generateProviderReports() {
+        this.checkReportDirectory();
         String result = new String();
         Calendar myCal = (Calendar) Calendar.getInstance().clone();
         myCal.add(Calendar.DATE, -7);
@@ -167,6 +170,7 @@ public class AccountingProcedure {
      * Generates an accounts payable Report
      */
     public String generateAccountsPayableReports() {
+        this.checkReportDirectory();
         String result = new String();
         Calendar myCal = (Calendar) Calendar.getInstance().clone();
         myCal.add(Calendar.DATE, -7);
@@ -186,6 +190,7 @@ public class AccountingProcedure {
 
     /**
      * Sets the time when report should be auto-generated (weekly)
+     *
      * @param dt Date to generate the reports next
      */
     public void setReportTime(Date dt) {
@@ -203,11 +208,17 @@ public class AccountingProcedure {
         generateReportTimer.scheduleAtFixedRate(reportTask, dt, week);
         this.dateSet = dt.getTime();
     }
-     public Date getReportTime()
-     {
-        return new Date(this.dateSet);
-     }
-    
-    
 
+    public Date getReportTime() {
+        return new Date(this.dateSet);
+    }
+    private void checkReportDirectory()
+    {
+        File reportingDir = new File(REPORT_FILE_PATH);
+        if(!reportingDir.exists())
+        {
+            reportingDir.mkdirs();
+        }
+    }
+            
 }
