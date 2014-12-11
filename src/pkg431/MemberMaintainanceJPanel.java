@@ -209,6 +209,7 @@ public class MemberMaintainanceJPanel extends javax.swing.JPanel {
             // Add member to the MemberList
             if (MemberList.instance().addMember(newMember)) {
                 JOptionPane.showMessageDialog(null, "Added.");
+                MemberList.instance().getMember(newMember.getID()).setSuspendStatus(this.SuspendedCheckBox.isSelected());
                 ResetView();
             }
         }
