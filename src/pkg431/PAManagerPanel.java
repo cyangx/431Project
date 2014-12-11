@@ -106,7 +106,7 @@ public class PAManagerPanel extends javax.swing.JPanel {
         String[] options = new String[]{"Back"};
         JPanel pd = new TextSummaryPanel("Provider Report", AccountingProcedure.instance().generateProviderReports());
         JOptionPane.showOptionDialog(null, pd,
-                "Service Directory", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                "Provider Report", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
                 options, options[0]);
     }//GEN-LAST:event_ProviderReportButtonActionPerformed
 
@@ -114,7 +114,7 @@ public class PAManagerPanel extends javax.swing.JPanel {
         String[] options = new String[]{"Back"};
         JPanel pd = new TextSummaryPanel("Account Payable Report", AccountingProcedure.instance().generateAccountsPayableReports());
         JOptionPane.showOptionDialog(null, pd,
-                "Service Directory", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                "Accounts Payable", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
                 options, options[0]);
     }//GEN-LAST:event_AccountsPayableReportButtonActionPerformed
 
@@ -122,7 +122,7 @@ public class PAManagerPanel extends javax.swing.JPanel {
         String[] options = new String[]{"Back"};
         JPanel pd = new TextSummaryPanel("Member Report", AccountingProcedure.instance().generateMemberReports());
         JOptionPane.showOptionDialog(null, pd,
-                "Service Directory", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
+                "Member Report", JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null,
                 options, options[0]);
     }//GEN-LAST:event_MemberReportButtonActionPerformed
 
